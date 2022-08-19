@@ -1,4 +1,6 @@
+import React, {Component} from 'react';
 import { StatusBar } from 'expo-status-bar';
+import {Image} from 'react-native';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
@@ -10,11 +12,11 @@ export default function App() {
     <View style={styles.container}>
       <Text>
         Suck my ass
-        <Image
+      </Text>
+      <Image
           style={{width: 150, height: 150}}
           source={require('./assets/Geun.jpg')}
         />
-      </Text>
       <StatusBar style="auto" />
     </View>
   );
