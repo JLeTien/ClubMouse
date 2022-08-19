@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import {Image} from 'react-native';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Image, Text, View } from 'react-native';
 
 export default function App() {
   console.log("App executed");
