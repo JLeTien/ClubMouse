@@ -10,6 +10,7 @@ export default function App() {
     <View style={styles.container}>
       <Text>
         Hi Team Club Mouse
+        My name is James
       </Text>
       <StatusBar style="auto" />
     </View>
