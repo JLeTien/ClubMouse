@@ -9,8 +9,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>
-        Hi Team Club Mouse
-        My name is James
+        Suck my ass
+        <Image
+          style={{width: 150, height: 150}}
+          source={require('./assets/Geun.jpg')}
+        />
       </Text>
       <StatusBar style="auto" />
     </View>
@@ -20,7 +23,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'dodgerblue',
     alignItems: 'center',
     justifyContent: 'center',
   },
