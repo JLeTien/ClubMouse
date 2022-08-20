@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-    ImageBackground, StyleSheet, View, Image, Text, Button, Alert
+    ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 
@@ -13,18 +13,17 @@ const WelcomeScreen = () => {
             style={styles.background}
             source={require("../assets/Galaxy.png")}
         >
-            <View style={styles.logoContainer}>
+            <SafeAreaView style={styles.logoContainer}>
                 <Image style={styles.logo} source={require('../assets/Rose.jpg')}/>
                 <Text style={styles.text}> SLEEP SLEEP SLEEP </Text>
-            </View>
-            {/* <View style={styles.loginButton}></View>
-            <View style={styles.registerButton}></View> */}
-            <View style={styles.buttonContainer}>
+            </SafeAreaView>
+
+            <SafeAreaView style={styles.buttonContainer}>
                 <Button onPress={() => navigation.navigate("HomeScreen")} title="Home!!!!" color="pink"/>
                 <Button title="Login" color="pink" style={styles.loginButton}
                 onPress={login}/>
                 <Button title="Register" color="pink" style={styles.registerButton}/>
-            </View>
+            </SafeAreaView>
         </ImageBackground>
     );
 }

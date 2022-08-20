@@ -9,10 +9,10 @@ const HomeScreen = () => {
   return (
     <ImageBackground
             style={styles.background}
-            source={require("../assets/Sikk.jpg")}
+            source={require("../assets/Galaxy.png")}
         >
             <SafeAreaView>
-                <Text style={{ color: "white", fontSize: 40}}>Welcome Back!!!!</Text>
+                <Text style={{ color: "white", fontSize: 40}}>HOME</Text>
                 <Button onPress={() => navigation.navigate("ProfileScreen")} title="GO TO PROFILE!"/>
             </SafeAreaView>
 
@@ -23,7 +23,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   background: {
       flex: 1,
-      justifyContent: "flex-end",
+      justifyContent: "center",
       alignItems: "center",
   }
 })

@@ -8,10 +8,10 @@ const ProfileScreen = () => {
     return (
         <ImageBackground
             style={styles.background}
-            source={require("../assets/Space.png")}
+            source={require("../assets/Galaxy.png")}
         >
             <SafeAreaView>
-                <Text>ProfileScreen</Text>
+                <Text style={{ color: "white", fontSize: 40}}>PROFILE</Text>
             </SafeAreaView>
 
         </ImageBackground>
@@ -21,9 +21,9 @@ const ProfileScreen = () => {
 const styles = StyleSheet.create({
     background: {
         flex: 1,
-        justifyContent: "flex-end",
+        justifyContent: "center",
         alignItems: "center",
     }
-  })
+})
 
 export default ProfileScreen
