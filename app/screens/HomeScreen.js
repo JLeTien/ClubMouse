@@ -1,10 +1,21 @@
 import React from 'react';
-
+import { 
+    ImageBackground, 
+    StyleSheet, 
+    View, 
+    Image,
+    Text,
+    Button,
+    Alert
+} from 'react-native';
 function HomeScreen(props) {
     return (
-        <div>
-            
-        </div>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Button
+          title="Go to Profile"
+          onPress={() => navigation.navigate('Profile')}
+        />
+      </View>
     );
 }
 
