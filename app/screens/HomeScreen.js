@@ -1,23 +1,31 @@
 import React from 'react';
-import { 
-    ImageBackground, 
-    StyleSheet, 
-    View, 
-    Image,
-    Text,
-    Button,
-    Alert
-} from 'react-native';
+import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView} from 'react-native';
+import { useNavigation } from '@react-navigation/native'
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-function HomeScreen(props) {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button
-          title="Go to Profile"
-          onPress={() => navigation.navigate('Profile')}
-        />
-      </View>
-    );
+const HomeScreen = () => {
+  const navigation = useNavigation();
+
+  return (
+    <ImageBackground
+            style={styles.background}
+            source={require("../assets/Sikk.jpg")}
+        >
+            <SafeAreaView>
+                <Text style={{ color: "white", fontSize: 40}}>Welcome Back!!!!</Text>
+                <Button onPress={() => navigation.navigate("ProfileScreen")} title="GO TO PROFILE!"/>
+            </SafeAreaView>
+
+        </ImageBackground>
+  )
 }
 
-export default HomeScreen;
+const styles = StyleSheet.create({
+  background: {
+      flex: 1,
+      justifyContent: "flex-end",
+      alignItems: "center",
+  }
+})
+
+export default HomeScreen

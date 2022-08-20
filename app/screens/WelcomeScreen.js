@@ -1,32 +1,29 @@
 import React from 'react';
 import { 
-    ImageBackground, 
-    StyleSheet, 
-    View, 
-    Image,
-    Text,
-    Button,
-    Alert
+    ImageBackground, StyleSheet, View, Image, Text, Button, Alert
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 
-function WelcomeScreen(props) {
+const WelcomeScreen = () => {
     const login = () => Alert.alert("Login")
+    const navigation = useNavigation();
 
     return (
         <ImageBackground
             style={styles.background}
-            source={require("../assets/Space.png")}
+            source={require("../assets/Galaxy.png")}
         >
             <View style={styles.logoContainer}>
-                <Image style={styles.logo} source={require('../assets/Geun.jpg')}/>
+                <Image style={styles.logo} source={require('../assets/Rose.jpg')}/>
                 <Text style={styles.text}> SLEEP SLEEP SLEEP </Text>
             </View>
             {/* <View style={styles.loginButton}></View>
             <View style={styles.registerButton}></View> */}
             <View style={styles.buttonContainer}>
-                <Button title="Login" style={styles.loginButton}
+                <Button onPress={() => navigation.navigate("HomeScreen")} title="Home!!!!" color="pink"/>
+                <Button title="Login" color="pink" style={styles.loginButton}
                 onPress={login}/>
-                <Button title="Register" style={styles.registerButton}/>
+                <Button title="Register" color="pink" style={styles.registerButton}/>
             </View>
         </ImageBackground>
     );
@@ -41,16 +38,17 @@ const styles = StyleSheet.create({
     loginButton: {
         width:"100%",
         height: 70,
-        backgroundColor: "#302852",
+        backgroundColor: "white",
+        color:"white"
     },
     registerButton: {
         width:"100%",
         height: 70,
-        backgroundColor: "black",
+        backgroundColor: "white",
     },
     logo: {
-        width: 250,
-        height: 250,
+        width: 400,
+        height: 400,
     },
     logoContainer: {
         position: 'absolute',
@@ -66,5 +64,7 @@ const styles = StyleSheet.create({
     }
 
 })
+
+
 
 export default WelcomeScreen;
