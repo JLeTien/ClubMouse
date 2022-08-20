@@ -1,19 +1,11 @@
 import React, {Component} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { 
-  StyleSheet, 
-  Image, 
-  Text, 
-  TouchableWithoutFeedback, 
-  TouchableOpacity,
-  SafeAreaView,
-  TouchableHighlight,
-  Button,
-  Alert,
-  Dimensions,
-  View,
-} from 'react-native';
+import { StyleSheet, Image, Text, TouchableWithoutFeedback, TouchableOpacity, 
+  SafeAreaView, TouchableHighlight, Button, Alert, Dimensions, View } from 'react-native';
 import WelcomeScreen from './app/screens/WelcomeScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import StackNavigator from './StackNavigator';
+
 
 export default function App() {
   console.log("App executed");
@@ -21,7 +13,10 @@ export default function App() {
   console.log(Dimensions.get("screen"));
 
   return (
-    <WelcomeScreen/>
+    <NavigationContainer>
+      <StackNavigator/>
+        {/* { <WelcomeScreen/> } */}
+    </NavigationContainer>
     /*<SafeAreaView style={styles.container}>
         { <Text numberOfLines={3}>
           Hi my name is geun, scratch my belly
