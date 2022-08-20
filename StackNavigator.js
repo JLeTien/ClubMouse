@@ -5,6 +5,7 @@ import Home from './app/screens/HomeScreen';
 import HomeScreen from './app/screens/HomeScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import ProfileScreen from './app/screens/ProfileScreen';
+import SignUpScreen from './app/screens/SignUpScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ const StackNavigator = () => {
             <Stack.Screen name="WelcomeScreen" component = {WelcomeScreen} />
             <Stack.Screen name="HomeScreen" component = {HomeScreen} />
             <Stack.Screen name="ProfileScreen" component = {ProfileScreen} />
+            <Stack.Screen name="SignUpScreen" component = {SignUpScreen} />
         </Stack.Group>
     </Stack.Navigator>
   )
