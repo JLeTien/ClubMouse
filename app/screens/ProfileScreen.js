@@ -8,7 +8,7 @@ const ProfileScreen = () => {
     return (
         <ImageBackground
             style={styles.background}
-            source={require("../assets/Galaxy.png")}
+            source={require("../assets/space1.png")}
         >
             <SafeAreaView>
                 <Text style={{ color: "white", fontSize: 40}}>PROFILE</Text>
