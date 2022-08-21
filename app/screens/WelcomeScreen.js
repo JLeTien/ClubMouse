@@ -22,7 +22,7 @@ const WelcomeScreen = () => {
                 <Button onPress={() => navigation.navigate("HomeScreen")} title="Home!!!!" color="pink"/>
                 <Button title="Login" color="pink" style={styles.loginButton}
                 onPress={login}/>
-                <Button title="Register" color="pink" style={styles.registerButton}/>
+                <Button onPress={() => navigation.navigate("SignUpScreen")} title="sign up"/>
             </SafeAreaView>
         </ImageBackground>
     );
@@ -41,8 +41,9 @@ const styles = StyleSheet.create({
         color:"white"
     },
     registerButton: {
+        alignSelf: 'stretch',
+        textAlign: 'center',
         width:"100%",
-        height: 70,
         backgroundColor: "white",
     },
     logo: {
@@ -58,7 +59,6 @@ const styles = StyleSheet.create({
         color: "white",
     },
     buttonContainer: {
-        alignItems: "center",
         bottom: 50,
     }
 
