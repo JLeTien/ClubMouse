@@ -11,11 +11,11 @@ const WelcomeScreen = () => {
     return (
         <ImageBackground
             style={styles.background}
-            source={require("../assets/Galaxy.png")}
+            source={require("../assets/background.jpg")}
         >
             <SafeAreaView style={styles.logoContainer}>
-                <Image style={styles.logo} source={require('../assets/Rose.jpg')}/>
-                <Text style={styles.text}> Hyoon Enjoyer </Text>
+                <Text style={styles.text}> Welcome to Plan-it </Text>
+                <Image style={styles.logo} source={require('../assets/sleeping.png')}/>
             </SafeAreaView>
 
             <SafeAreaView style={styles.buttonContainer}>
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
     },
     logo: {
-        width: 400,
-        height: 400,
+        width: 300,
+        height: 300,
     },
     logoContainer: {
         position: 'absolute',

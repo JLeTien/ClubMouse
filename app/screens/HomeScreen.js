@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView} from 'react-native';
+import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 
 const HomeScreen = () => {
@@ -8,12 +8,14 @@ const HomeScreen = () => {
   return (
     <ImageBackground
             style={styles.background}
-            source={require("../assets/space.png")}
+            source={require("../assets/background.jpg")}
         >
             <SafeAreaView>
                 <Image style={styles.logo} source={require('../assets/Hyoon.jpg')}/>
                 <Text style={{ color: "white", fontSize: 40}}>HOME</Text>
-                <Button onPress={() => navigation.navigate("ProfileScreen")} title="GO TO PROFILE!"/>
+                <TouchableOpacity style={{ width:200, backgroundColor:"white" }}>
+                  <Button onPress={() => navigation.navigate("ProfileScreen")} title="GO TO PROFILE!" style={styles.button}/>
+                </TouchableOpacity>
             </SafeAreaView>
 
         </ImageBackground>
@@ -30,6 +32,15 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
   },
+  button: {
+    flexDirection: 'row', 
+        height: 50, 
+        backgroundColor: 'yellow',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 50,
+        elevation:3,
+  }
 })
 
 export default HomeScreen

@@ -8,7 +8,7 @@ const ProfileScreen = () => {
     return (
         <ImageBackground
             style={styles.background}
-            source={require("../assets/space1.png")}
+            source={require("../assets/background.jpg")}
         >
             <SafeAreaView>
                 <Text style={{ color: "white", fontSize: 40}}>PROFILE</Text>
