@@ -18,7 +18,7 @@ return (
       <CustomInput placeholder="Username" value={Username} setValue={setUsername}/>
       <CustomInput placeholder="Email" value={Email} setValue={setEmail}/>
       <CustomInput placeholder="Password" value={Password} setValue={setPassword} secureTextEntry={true}/>
-      <CustomButton text="SignUp" onPress={onSignInPressed}/>
+      <CustomButton text="Sign Up" onPress={onSignInPressed}/>
     </View>
   )
 }
