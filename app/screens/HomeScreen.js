@@ -11,7 +11,6 @@ const HomeScreen = () => {
             source={require("../assets/background.jpg")}
         >
             <SafeAreaView>
-                <Image style={styles.logo} source={require('../assets/Hyoon.jpg')}/>
                 <Text style={{ color: "white", fontSize: 40}}>HOME</Text>
                 <TouchableOpacity style={{ width:200, backgroundColor:"white" }}>
                   <Button onPress={() => navigation.navigate("ProfileScreen")} title="GO TO PROFILE!" style={styles.button}/>
