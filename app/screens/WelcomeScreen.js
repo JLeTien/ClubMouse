@@ -15,7 +15,7 @@ const WelcomeScreen = () => {
         >
             <SafeAreaView style={styles.logoContainer}>
                 <Image style={styles.logo} source={require('../assets/Rose.jpg')}/>
-                <Text style={styles.text}> SLEEP SLEEP SLEEP </Text>
+                <Text style={styles.text}> Hyoon Enjoyer </Text>
             </SafeAreaView>
 
             <SafeAreaView style={styles.buttonContainer}>
