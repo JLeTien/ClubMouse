@@ -5,7 +5,6 @@ import {
 import { useNavigation } from '@react-navigation/native'
 
 const WelcomeScreen = () => {
-    const login = () => Alert.alert("Login")
     const navigation = useNavigation();
 
     return (
@@ -20,8 +19,7 @@ const WelcomeScreen = () => {
 
             <SafeAreaView style={styles.buttonContainer}>
                 <Button onPress={() => navigation.navigate("HomeScreen")} title="Home!!!!" color="pink"/>
-                <Button title="Login" color="pink" style={styles.loginButton}
-                onPress={login}/>
+                <Button onPress={() => navigation.navigate("LoginScreen")} title="Login"/>
                 <Button onPress={() => navigation.navigate("SignUpScreen")} title="sign up"/>
             </SafeAreaView>
         </ImageBackground>

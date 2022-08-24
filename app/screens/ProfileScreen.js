@@ -3,8 +3,10 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
 
-const ProfileScreen = () => {
+const ProfileScreen = ({route}) => {
     const navigation = useNavigation();
+    const { Username } = route.params;
+    const { Age } = route.params;
     return (
         <ImageBackground
             style={styles.background}
@@ -12,8 +14,8 @@ const ProfileScreen = () => {
         >
             <SafeAreaView style={styles.logoContainer}>
                 <Image style={styles.logo} source={require('../assets/Hyoon.jpg')}/>
-                <Text style={styles.text}>Name:</Text>
-                <Text style={styles.text}>Age:</Text>
+                <Text style={styles.text}>Name:{Username}</Text>
+                <Text style={styles.text}>Age: {Age}</Text>
                 <Text style={styles.text}>Id:s</Text>
             </SafeAreaView>
 
