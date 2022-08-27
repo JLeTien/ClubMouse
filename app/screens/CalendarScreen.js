@@ -1,7 +1,11 @@
-import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, SnapshotViewIOS } from 'react-native'
-import React from 'react'
+import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, SnapshotViewIOS, TouchableOpacity } from 'react-native'
+import React, {useState} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context'
+import {Card, Avatar} from 'react-native-paper';
+import {Agenda} from 'react-native-calendars';
 import { useNavigation } from '@react-navigation/native'
+import CustomInput from '../../CustomInput';
+import CustomButton from '../../CustomButton';
 
 const timeToString = (time) => {
     const date = new Date(time);
@@ -12,6 +16,8 @@ const timeToString = (time) => {
 const CalendarScreen = () => {
     const navigation = useNavigation();
     const [items, setItems] = useState({});
+    const [Todolist, setTodo]=useState();
+    const [marksDate, setMarksDate] = useState({});
     const loadItems = (day) => {
         setTimeout(() => {
           for (let i = -15; i < 85; i++) {
@@ -19,12 +25,13 @@ const CalendarScreen = () => {
             const strTime = timeToString(time);
             if (!items[strTime]) {
               items[strTime] = [];
-              const numItems = Math.floor(Math.random() * 3 + 1);
+              const numItems = 1;
               for (let j = 0; j < numItems; j++) {
                 items[strTime].push({
-                  name: 'Item for ' + strTime + ' #' + j,
+                  name: '',
                   height: Math.max(50, Math.floor(Math.random() * 150)),
                 });
+                
               }
             }
           }
@@ -38,7 +45,7 @@ const CalendarScreen = () => {
     
       const renderItem = (item) => {
         return (
-          <TouchableOpacity style={{marginRight: 10, marginTop: 17}}>
+          <TouchableOpacity style={{marginRight: 8, marginTop: 17}}>
             <Card>
               <Card.Content>
                 <View
@@ -47,8 +54,7 @@ const CalendarScreen = () => {
                     justifyContent: 'space-between',
                     alignItems: 'center',
                   }}>
-                  <Text>{item.name}</Text>
-                  <Avatar.Text label="J" />
+                  <CustomInput placeholder='' value={Todolist} setValue={setTodo}/>
                 </View>
               </Card.Content>
             </Card>
@@ -61,12 +67,12 @@ const CalendarScreen = () => {
           <Agenda
             items={items}
             loadItemsForMonth={loadItems}
-            selected={'2017-05-16'}
+            selected={'2022-08-27'}
             renderItem={renderItem}
           />
         </View>
-      );
+      )
     };
 
 AppRegistry.registerComponent('IosFonts', () => IosFonts);
-export default ProfileScreen
+export default CalendarScreen

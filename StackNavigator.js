@@ -18,9 +18,9 @@ const StackNavigator = () => {
         <Stack.Group>
             <Stack.Screen name="WelcomeScreen" component = {WelcomeScreen} />
             <Stack.Screen name="HomeScreen" component = {HomeScreen} />
-            <Stack.Screen name="ProfileScreen" component = {ProfileScreen} />
             <Stack.Screen name="SignUpScreen" component = {SignUpScreen} />
             <Stack.Screen name="CalendarScreen" component = {CalendarScreen} />
+            <Stack.Screen name="ProfileScreen" component = {ProfileScreen} />
             <Stack.Screen name="LoginScreen" component = {LoginScreen} />
         </Stack.Group>
         <Stack.Group screenOptions={{presentation: 'modal'}}>
