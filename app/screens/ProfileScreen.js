@@ -6,14 +6,20 @@ import { useNavigation } from '@react-navigation/native'
 // 
 const ProfileScreen = ({ route }) => {
     const navigation = useNavigation();
+    const { Username = "Name"} = route.params;
+    const { Age = "Age"} = route.params;
     return (
         // Background Image
         <ImageBackground
             style={styles.background}
             source={require("../assets/background.jpg")}
         >
-            <SafeAreaView style = {styles.container}>
-                <Text style = {styles.text}>Hello</Text>
+            
+            <SafeAreaView style={styles.logoContainer}>
+                <Image style={styles.logo} source={require('../assets/Hyoon.jpg')}/>
+                <Text style={styles.text}>Name:{Username}</Text>
+                <Text style={styles.text}>Age: {Age}</Text>
+                <Text style={styles.text}>Id:123123123</Text>
             </SafeAreaView>
         </ImageBackground>
 
