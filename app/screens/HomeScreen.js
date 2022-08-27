@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native'
+import CustomButton from '../../CustomButton';
+import CustomInput from '../../CustomInput';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const [Username]=useState('DEFALT NAME');
+  const [Age]=useState('12903409132');
 
   return (
     <ImageBackground
@@ -13,7 +17,7 @@ const HomeScreen = () => {
             <SafeAreaView>
                 <Text style={{ color: "white", fontSize: 40}}>HOME</Text>
                 <TouchableOpacity style={{ width:200, backgroundColor:"white" }}>
-                  <Button onPress={() => navigation.navigate("ProfileScreen")} title="GO TO PROFILE!" style={styles.button}/>
+                <CustomButton text="PROFILE" onPress={() => navigation.navigate("ProfileScreen",{Username,Age})} />
                 </TouchableOpacity>
             </SafeAreaView>
 

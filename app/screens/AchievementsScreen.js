@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, SnapshotViewIOS } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -25,3 +26,9 @@ const styles = StyleSheet.create({
 })
 
 export default AchievementsScreen
+=======
+import React from 'react';
+import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native'
+
+>>>>>>> e6614a81c3de72fdb30dd48eedb7f7408573e99a
