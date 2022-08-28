@@ -15,10 +15,10 @@ const Tab = createBottomTabNavigator();
 const NavigationBar = () => {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="HomeScreen" component={HomeScreen}/>
-            <Tab.Screen name="ProfileScreen" component={ProfileScreen}/>
-            <Tab.Screen name="CalendarScreen" component={CalendarScreen}/>
-            <Tab.Screen name="AchievementsScreen" component={AchievementsScreen}/>
+            <Tab.Screen name="Home" component={HomeScreen}/>
+            <Tab.Screen name="Calendar" component={CalendarScreen}/>
+            <Tab.Screen name="Achievements" component={AchievementsScreen}/>
+            <Tab.Screen name="Profile" component={ProfileScreen}/>
         </Tab.Navigator>
     )
 
