@@ -13,7 +13,6 @@ const ProfileScreen = ({ route }) => {
         <SafeAreaView
             style={styles.background}
         >
-
             {/* Title */}
             <View style={styles.profileContainer}>
                 <Text style={styles.title}>Profile</Text>
