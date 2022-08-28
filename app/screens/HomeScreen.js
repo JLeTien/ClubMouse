@@ -7,11 +7,16 @@ const HomeScreen = () => {
 
   return (
   
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text 
-        onPress={() => navigation.navigate("HomeScreen")}
-        style={{ fontSize: 26, fontWeight: 'bold'}}>Home Screen</Text>
-    </View>
+    <SafeAreaView style={styles.background}>
+      <View style={styles.top}> 
+        <Text 
+          onPress={() => navigation.navigate("HomeScreen")}
+          style={styles.text}>Good Night Anthony</Text>
+      </View>
+      <View syle={styles.middle}>
+
+      </View>
+    </SafeAreaView>
   )
 }
 
@@ -23,10 +28,13 @@ const styles = StyleSheet.create({
       backgroundColor: "#302852"
   },
   top: {
-    flex: 0.2,
+    paddingTop: 20,
+    justifyContent: "flex-start",
+    alignItems: "flex-end",
+    flex: 1,
   },
   middle: {
-    flex: 0.5,
+    flex: 1,
   },
   button: {
     flexDirection: 'row', 
@@ -42,7 +50,8 @@ const styles = StyleSheet.create({
     fontSize: 40,
   },
   text: {
-    color: "white"
+    color: "white",
+    fontSize: 20,
   }
 })
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { StyleSheet, style } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
 // Screens
@@ -14,15 +14,38 @@ const Tab = createBottomTabNavigator();
 // This is the set up for the basic components for the navigation bar
 const NavigationBar = () => {
     return (
-        <Tab.Navigator>
-            <Tab.Screen name="HomeScreen" component={HomeScreen}/>
-            <Tab.Screen name="CalendarScreen" component={CalendarScreen}/>
-            <Tab.Screen name="AchievementsScreen" component={AchievementsScreen}/>
-            <Tab.Screen name="ProfileScreen" component={ProfileScreen}/>
+        <Tab.Navigator 
+            tabBarOptions={{
+                showIcon: true,
+                showLabel: true,
+                lazyLoad: true,
+                activeTintColor: 'purple',
+                inactiveTintColor: 'white',
+                activeBackgroundColor: '#6577B8',
+                inactiveBackgroundColor: '#6577B8',
+                style: {
+                    backgroundColor: 'transparent',
+                    borderTopWidth: 0,
+                    position: 'absolute',
+                    left: 50,
+                    right: 50,
+                    bottom: 20,
+                    height: 100
+                  }
+            }}>
+            <Tab.Screen name="Home" component={HomeScreen}/>
+            <Tab.Screen name="Calendar" component={CalendarScreen}/>
+            <Tab.Screen name="Achievements" component={AchievementsScreen}/>
+            <Tab.Screen name="Profile" component={ProfileScreen}/>
         </Tab.Navigator>
     )
 }
 
+const styles = StyleSheet.create({
+    menu: {
+        backgroundColor: "black"
+    }
+})
 
 
 export default NavigationBar

@@ -6,13 +6,12 @@ import { useNavigation } from '@react-navigation/native'
 const AchievementsScreen = () => {
     const navigation = useNavigation();
     return (
-        <ImageBackground
+        <SafeAreaView
             style={styles.background}
-            source={require("../assets/background.jpg")}
         >
             <SafeAreaView style={styles.logoContainer}>
             </SafeAreaView>
-        </ImageBackground>
+        </SafeAreaView>
     )
 }
 
@@ -21,6 +20,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "flex-start",
         alignItems: "center",
+        backgroundColor: "#302852"
     }
 })
 
