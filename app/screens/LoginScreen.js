@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView} from 'react-native';
+import { StyleSheet, View, Image, Text, Button, Alert, SafeAreaView } from 'react-native';
 import Logo from "../assets/yeji.jpg"
 import CustomInput from '../../CustomInput';
 import CustomButton from '../../CustomButton';

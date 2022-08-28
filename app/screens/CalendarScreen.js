@@ -1,6 +1,5 @@
 import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, SnapshotViewIOS, TouchableOpacity } from 'react-native'
 import React, {useState} from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context'
 import {Card, Avatar} from 'react-native-paper';
 import {Agenda} from 'react-native-calendars';
 import { useNavigation } from '@react-navigation/native'
