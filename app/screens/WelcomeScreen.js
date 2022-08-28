@@ -3,6 +3,7 @@ import {
     ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
+import NavigationBar from '../NavigationBar';
 
 const WelcomeScreen = () => {
     const navigation = useNavigation();
@@ -18,7 +19,7 @@ const WelcomeScreen = () => {
             </SafeAreaView>
 
             <SafeAreaView style={styles.buttonContainer}>
-                <Button onPress={() => navigation.navigate("HomeScreen")} title="Home!!!!" color="pink"/>
+                <Button onPress={() => navigation.navigate(NavigationBar)} title="Home!!!!" color="pink"/>
                 <Button onPress={() => navigation.navigate("LoginScreen")} title="Login"/>
                 <Button onPress={() => navigation.navigate("SignUpScreen")} title="sign up"/>
                 <Button onPress={() => navigation.navigate("CalendarScreen")} title="Calendar"/>
