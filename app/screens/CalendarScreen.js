@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 import CustomInput from '../../CustomInput';
 import CustomButton from '../../CustomButton';
 
-const timeToString = (time) => {
+const timeToString = ({time, navigation}) => {
     const date = new Date(time);
     return date.toISOString().split('T')[0];
   };
