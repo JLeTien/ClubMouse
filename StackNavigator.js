@@ -5,7 +5,6 @@ import Home from './app/screens/HomeScreen';
 import HomeScreen from './app/screens/HomeScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import ProfileScreen from './app/screens/ProfileScreen';
-import Modal from './app/screens/Modal';
 import SignUpScreen from './app/screens/SignUpScreen';
 import CalendarScreen from './app/screens/CalendarScreen';
 import LoginScreen from './app/screens/LoginScreen';
@@ -22,9 +21,6 @@ const StackNavigator = () => {
             <Stack.Screen name="CalendarScreen" component = {CalendarScreen} />
             <Stack.Screen name="ProfileScreen" component = {ProfileScreen} />
             <Stack.Screen name="LoginScreen" component = {LoginScreen} />
-        </Stack.Group>
-        <Stack.Group screenOptions={{presentation: 'modal'}}>
-            <Stack.Screen name="Modal" component = {Modal} />
         </Stack.Group>
     </Stack.Navigator>
   )
