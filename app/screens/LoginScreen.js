@@ -27,10 +27,10 @@ return (
 
 const styles = StyleSheet.create({
     root:{
-        alignItems: "center",
-        paddingTop:"25%",
-        
-        
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor:"#302852"
     },
     logo:{
         width: 200,

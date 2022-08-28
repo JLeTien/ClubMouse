@@ -9,12 +9,13 @@ const WelcomeScreen = () => {
     const navigation = useNavigation();
 
     return (
-        <ImageBackground
+        <SafeAreaView
             style={styles.background}
-            source={require("../assets/background.jpg")}
         >
             <SafeAreaView style={styles.logoContainer}>
                 <Text style={styles.text}> Welcome to Plan-it </Text>
+                <Text style={styles.text}> This app allows you to plan your schedule and 
+                    monitor your sleep for a healthy brain. </Text>
                 <Image style={styles.logo} source={require('../assets/sleeping.png')}/>
             </SafeAreaView>
 
@@ -24,7 +25,7 @@ const WelcomeScreen = () => {
                 <Button onPress={() => navigation.navigate("SignUpScreen")} title="sign up"/>
                 <Button onPress={() => navigation.navigate("CalendarScreen")} title="Calendar"/>
             </SafeAreaView>
-        </ImageBackground>
+        </SafeAreaView>
     );
 }
 
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "flex-end",
         alignItems: "center",
+        backgroundColor: "#302852"
     },
     loginButton: {
         width:"100%",
