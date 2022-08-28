@@ -3,7 +3,7 @@ import {
     ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
-import NavigationBar from '../NavigationBar';
+import NavigationBar from '../navigation/NavigationBar';
 
 const WelcomeScreen = () => {
     const navigation = useNavigation();

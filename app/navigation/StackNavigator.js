@@ -1,13 +1,13 @@
 import { View, Text, Button } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './app/screens/HomeScreen';
-import WelcomeScreen from './app/screens/WelcomeScreen';
-import ProfileScreen from './app/screens/ProfileScreen';
-import SignUpScreen from './app/screens/SignUpScreen';
-import CalendarScreen from './app/screens/CalendarScreen';
-import LoginScreen from './app/screens/LoginScreen';
-import NavigationBar from './app/NavigationBar';
+import HomeScreen from '../screens/HomeScreen';
+import WelcomeScreen from '../screens/WelcomeScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import SignUpScreen from '../screens/SignUpScreen';
+import CalendarScreen from '../screens/CalendarScreen';
+import LoginScreen from '../screens/LoginScreen';
+import NavigationBar from './NavigationBar';
 
 const Stack = createNativeStackNavigator();
 

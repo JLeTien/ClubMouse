@@ -3,10 +3,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // Screens
-import ProfileScreen from './screens/ProfileScreen';
-import CalendarScreen from './screens/CalendarScreen';
-import HomeScreen from './screens/HomeScreen';
-import AchievementsScreen from './screens/AchievementsScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import CalendarScreen from '../screens/CalendarScreen';
+import HomeScreen from '../screens/HomeScreen';
+import AchievementsScreen from '../screens/AchievementsScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,12 +15,13 @@ const NavigationBar = () => {
     return (
         <Tab.Navigator>
             <Tab.Screen name="HomeScreen" component={HomeScreen}/>
-            <Tab.Screen name="ProfileScreen" component={ProfileScreen}/>
             <Tab.Screen name="CalendarScreen" component={CalendarScreen}/>
             <Tab.Screen name="AchievementsScreen" component={AchievementsScreen}/>
+            <Tab.Screen name="ProfileScreen" component={ProfileScreen}/>
         </Tab.Navigator>
     )
-
 }
+
+
 
 export default NavigationBar
