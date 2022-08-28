@@ -10,14 +10,12 @@ const ProfileScreen = ({ route }) => {
     const { Age = "Age"} = route.params;
     return (
         // Background Image
-        <ImageBackground
+        <SafeAreaView
             style={styles.background}
-            source={require("../assets/background.jpg")}
         >
             {/* Title */}
             <View style={styles.profileContainer}>
                 <Text style={styles.title}>Profile</Text>
-
             </View>
             
             {/* Avatar Logo*/}
@@ -36,7 +34,7 @@ const ProfileScreen = ({ route }) => {
                 <Text style={styles.levelText}>Level 1</Text>
                 {/* <Image style={styles.xp} source={require('../assets/xpBar.png')}/> */}
             </View>
-        </ImageBackground>
+        </SafeAreaView>
 
         
     )
@@ -48,6 +46,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "flex-start",
         alignItems: "center",
+        backgroundColor: "#302852"
     },
     // Title
     profileContainer: {
@@ -65,7 +64,6 @@ const styles = StyleSheet.create({
         margin: 10,
         fontWeight: "bold"
     },
-
     // Logo
     logoContainer: {
         // flex: 0,
@@ -76,7 +74,6 @@ const styles = StyleSheet.create({
         height: 200,
         justifyContent: "flex-start"
     },
-
     // User Details
     userContainer: {
         justifyContent: "center",
