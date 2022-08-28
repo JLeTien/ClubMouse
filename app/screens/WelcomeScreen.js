@@ -23,7 +23,6 @@ const WelcomeScreen = () => {
                 <Button onPress={() => navigation.navigate(NavigationBar)} title="Home!!!!" color="pink"/>
                 <Button onPress={() => navigation.navigate("LoginScreen")} title="Login"/>
                 <Button onPress={() => navigation.navigate("SignUpScreen")} title="sign up"/>
-                <Button onPress={() => navigation.navigate("CalendarScreen")} title="Calendar"/>
             </SafeAreaView>
         </SafeAreaView>
     );
