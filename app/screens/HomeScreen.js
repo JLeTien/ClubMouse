@@ -10,18 +10,17 @@ const HomeScreen = () => {
   const [Age]=useState('12903409132');
 
   return (
-    <ImageBackground
-            style={styles.background}
-            source={require("../assets/background.jpg")}
-        >
-            <SafeAreaView>
-                <Text style={{ color: "white", fontSize: 40}}>HOME</Text>
-                <TouchableOpacity style={{ width:200, backgroundColor:"white" }}>
-                <CustomButton text="PROFILE" onPress={() => navigation.navigate("ProfileScreen",{Username,Age})} />
-                </TouchableOpacity>
-            </SafeAreaView>
-
-        </ImageBackground>
+    <SafeAreaView style={styles.background}>
+            <View style={styles.top}>
+              <Text style={styles.heading}> Home </Text>
+              <Text style={styles.text}> Good Morning Anthony </Text>
+            </View>
+            <View style={styles.middle}>
+              <TouchableOpacity style={styles.button}>
+              <CustomButton text="PROFILE" onPress={() => navigation.navigate("ProfileScreen",{Username,Age})} />
+              </TouchableOpacity>
+            </View>
+        </SafeAreaView>
   )
 }
 
@@ -30,19 +29,29 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
+      backgroundColor: "#302852"
   },
-  logo: {
-    width: 200,
-    height: 200,
+  top: {
+    flex: 0.2,
+  },
+  middle: {
+    flex: 0.5,
   },
   button: {
     flexDirection: 'row', 
-        height: 50, 
-        backgroundColor: 'yellow',
+        height: 50,
+        width:200,
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 50,
         elevation:3,
+  },
+  heading: {
+    color: "white",
+    fontSize: 40,
+  },
+  text: {
+    color: "white"
   }
 })
 
