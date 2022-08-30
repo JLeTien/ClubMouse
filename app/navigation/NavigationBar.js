@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 const NavigationBar = () => {
     return (
         <Tab.Navigator 
-            tabBarOptions={{
+            screenOptions={{
                 showIcon: true,
                 showLabel: true,
                 lazyLoad: true,
@@ -39,12 +39,6 @@ const NavigationBar = () => {
         </Tab.Navigator>
     )
 }
-
-const styles = StyleSheet.create({
-    menu: {
-        backgroundColor: "black"
-    }
-})
 
 
 export default NavigationBar
