@@ -14,6 +14,7 @@ const Tab = createBottomTabNavigator();
 const NavigationBar = () => {
     return (
         <Tab.Navigator 
+            initialRouteName="NavigationBar"
             screenOptions={{
                 showIcon: true,
                 showLabel: true,

@@ -4,6 +4,7 @@ import Logo from "../assets/yeji.jpg"
 import CustomInput from '../../CustomInput';
 import CustomButton from '../../CustomButton';
 import { useNavigation } from '@react-navigation/native'
+import NavigationBar from '../navigation/NavigationBar';
 
 const LoginScreen = () => {
 const [Username, setUsername]=useState('');
@@ -20,7 +21,7 @@ return (
       <CustomInput placeholder="Username" value={Username} setValue={setUsername}/>
       <CustomInput placeholder="Password" value={Password} setValue={setPassword} secureTextEntry={true}/>
       <CustomInput placeholder="Age" value={Age} setValue={setAge}/>
-      <CustomButton text="Log In" onPress={() => navigation.navigate("ProfileScreen",{Username,Age})} />
+      <CustomButton text="Log In" onPress={() => navigation.navigate("NavigationBar", { screen: "Profile", params: {Username, Age} } )} />
     </View>
   )
 }
