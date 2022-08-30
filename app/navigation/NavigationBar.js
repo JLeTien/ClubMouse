@@ -19,6 +19,7 @@ const NavigationBar = () => {
                 tabBarActiveTintColor: 'white',
                 tabBarInactiveTintColor: 'grey',
                 tabBarShowLabel:false,
+                headerShown: false,
                 tabBarStyle:{
                     backgroundColor:'black'
                 }
