@@ -16,23 +16,13 @@ const NavigationBar = () => {
         <Tab.Navigator 
             initialRouteName="NavigationBar"
             screenOptions={{
-                showIcon: true,
-                showLabel: true,
-                lazyLoad: true,
-                activeTintColor: 'purple',
-                inactiveTintColor: 'white',
-                activeBackgroundColor: '#6577B8',
-                inactiveBackgroundColor: '#6577B8',
-                style: {
-                    backgroundColor: 'transparent',
-                    borderTopWidth: 0,
-                    position: 'absolute',
-                    left: 50,
-                    right: 50,
-                    bottom: 20,
-                    height: 100
-                  }
-            }}>
+                tabBarActiveTintColor: 'white',
+                tabBarInactiveTintColor: 'grey',
+                tabBarShowLabel:false,
+                tabBarStyle:{
+                    backgroundColor:'black'
+                }
+              }}>
             <Tab.Screen name="Home" component={HomeScreen}/>
             <Tab.Screen name="Calendar" component={CalendarScreen}/>
             <Tab.Screen name="Achievements" component={AchievementsScreen}/>

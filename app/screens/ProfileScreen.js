@@ -6,18 +6,18 @@ import { useNavigation } from '@react-navigation/native'
 // 
 const ProfileScreen = ({ route }) => {
     const navigation = useNavigation();
-    const [time,setTime] = useState(null);
-    useEffect(() => {
-        let time = getCurrentTime();
-        setTime(time);
-      }, []);
-      const getCurrentTime = () => {
-        let today = new Date();
-        let hours = (today.getHours() < 10 ? '0' : '') + today.getHours();
-        let minutes = (today.getMinutes() < 10 ? '0' : '') + today.getMinutes();
-        let seconds = (today.getSeconds() < 10 ? '0' : '') + today.getSeconds();
-        return hours + ':' + minutes + ':' + seconds;
-      }
+    // const [time,setTime] = useState(null);
+    // useEffect(() => {
+    //     let time = getCurrentTime();
+    //     setTime(time);
+    //   }, []);
+    //   const getCurrentTime = () => {
+    //     let today = new Date();
+    //     let hours = (today.getHours() < 10 ? '0' : '') + today.getHours();
+    //     let minutes = (today.getMinutes() < 10 ? '0' : '') + today.getMinutes();
+    //     let seconds = (today.getSeconds() < 10 ? '0' : '') + today.getSeconds();
+    //     return hours + ':' + minutes + ':' + seconds;
+    //   }
     
      const { Username = "Name"} = route.params;
      const { Age = "Age"} = route.params;
@@ -33,7 +33,7 @@ const ProfileScreen = ({ route }) => {
             
             {/* Avatar Logo*/}
             <View style={styles.logoContainer}>
-                <Text style={styles.paragraph}>{'Current time'} - {time}</Text>
+                {/* <Text style={styles.paragraph}>{'Current time'} - {time}</Text> */}
                 <Image style={styles.logo} source={require('../assets/Hyoon.jpg')}/>
             </View>
 
