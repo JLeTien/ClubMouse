@@ -35,7 +35,7 @@ const NavigationBar = () => {
             <Tab.Screen name="Home" component={HomeScreen}/>
             <Tab.Screen name="Calendar" component={CalendarScreen}/>
             <Tab.Screen name="Achievements" component={AchievementsScreen}/>
-            <Tab.Screen name="Profile" component={ProfileScreen}/>
+            <Tab.Screen name="Profile" component={ProfileScreen} initialParams={{Username:"defaultuser",Age:"99999"}}/>
         </Tab.Navigator>
     )
 }

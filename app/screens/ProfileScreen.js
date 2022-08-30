@@ -19,8 +19,8 @@ const ProfileScreen = ({ route }) => {
         return hours + ':' + minutes + ':' + seconds;
       }
     
-    // const { Username = "Name"} = route.params;
-    // const { Age = "Age"} = route.params;
+     const { Username = "Name"} = route.params;
+     const { Age = "Age"} = route.params;
     return (
         // Background Image
         <SafeAreaView
@@ -39,7 +39,9 @@ const ProfileScreen = ({ route }) => {
 
             {/* User Details */}
             <View style={styles.userContainer}>
-                <Text style={styles.userText}>Name: {/* {Username} */}</Text>
+                <Text style={styles.userText}>Name: {Username}</Text>
+                <Text style={styles.userText}>Age: {Age}</Text>
+                
                 <Text style={styles.userText}>Id: 123123123</Text>
             </View>
 
