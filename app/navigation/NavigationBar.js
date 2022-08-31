@@ -19,11 +19,25 @@ const NavigationBar = () => {
             initialRouteName="NavigationBar"
             screenOptions={({ route }) => ({
                 tabBarActiveTintColor: 'white',
-                tabBarInactiveTintColor: 'grey',
+                tabBarInactiveTintColor: 'black',
                 tabBarShowLabel:false,
                 headerShown: false,
+                tabBarIconStyle: {
+                    alignContent: 'center',
+                    bottom: -15
+                },
                 tabBarStyle:{
-                    backgroundColor:'black'
+                    backgroundColor: '#6577B8',
+                    borderTopWidth: 0,
+                    borderTopLeftRadius: 40,
+                    borderTopRightRadius: 40,
+                    borderBottomLeftRadius: 40,
+                    borderBottomRightRadius: 40,
+                    position: 'absolute',
+                    left: 10,
+                    right: 10,
+                    bottom: 10,
+                    height: 80
                 },
                 tabBarIcon: ({ color, size }) => {
                     const icons = {

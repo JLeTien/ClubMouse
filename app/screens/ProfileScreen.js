@@ -22,37 +22,26 @@ const ProfileScreen = ({ route }) => {
      const { Username = "Name"} = route.params;
      const { Age = "Age"} = route.params;
     return (
-        // Background Image
-        <SafeAreaView
-            style={styles.background}
-        >
-            {/* Title */}
-            <View style={styles.profileContainer}>
-                <Text style={styles.title}>Profile</Text>
-            </View>
-            
-            {/* Avatar Logo*/}
-            <View style={styles.logoContainer}>
-                {/* <Text style={styles.paragraph}>{'Current time'} - {time}</Text> */}
-                <Image style={styles.logo} source={require('../assets/Hyoon.jpg')}/>
+        <SafeAreaView style={styles.background}>
+            <View style={styles.top}> 
+                <View>
+                    <Image style={styles.logo} source={require('../assets/Hyoon.jpg')}/>
+                </View>
+                <View>
+                    <Text style={styles.userText}>Name: {Username}</Text>
+                    <Text style={styles.userText}>Age: {Age}</Text>
+                    <Text style={styles.userText}>Id: 123123123</Text>
+                </View>
             </View>
 
-            {/* User Details */}
-            <View style={styles.userContainer}>
-                <Text style={styles.userText}>Name: {Username}</Text>
-                <Text style={styles.userText}>Age: {Age}</Text>
-                
-                <Text style={styles.userText}>Id: 123123123</Text>
-            </View>
-
-            {/* Level */}
-            <View style={styles.levelContainer}>
+            <View style={styles.middle}>
                 <Text style={styles.levelText}>Level 1</Text>
-                {/* <Image style={styles.xp} source={require('../assets/xpBar.png')}/> */}
+                <Image style={styles.xp} source={require('../assets/xpBar.png')}/>
+            </View>
+
+            <View style={styles.bottom}>
             </View>
         </SafeAreaView>
-
-        
     )
 }
 
@@ -60,19 +49,29 @@ const styles = StyleSheet.create({
     // Deels with the background
     background: {
         flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "center",
         backgroundColor: "#302852"
     },
     // Title
-    profileContainer: {
-        // flex: 1,
-        // justifyContent: "center",
-        margin: 10,
-        top: 75,
-        // borderColor: "white",
-        // borderWidth: 1,
-        // backgroundColor: "black"
+    top: {
+        alignItems:"top",
+        justifyContent: "top",
+        margin: 30,
+        top:50,
+        borderColor: "white",
+        borderWidth: 1,
+    },
+    middle: {
+        flex: 0.3,
+        borderColor: "white",
+        borderWidth: 1,
+        margin: 30,
+        alignContent: 'center',
+    },
+    bottom: {
+        flex: 0.3,
+        borderColor: "white",
+        borderWidth: 1, 
+        margin: 30,
     },
     title: {
         fontSize: 40,
@@ -80,15 +79,12 @@ const styles = StyleSheet.create({
         margin: 10,
         fontWeight: "bold"
     },
-    // Logo
-    logoContainer: {
-        // flex: 0,
-        top: 75,
-
-    },
     logo: {
         width: 200,
         height: 200,
+        borderRadius: 200/2,
+        borderColor: 'white',
+        borderWidth: 3,
         justifyContent: "flex-start"
     },
     // User Details
@@ -105,10 +101,9 @@ const styles = StyleSheet.create({
     },
     userText: {
         fontSize: 20,
-        color: "white"
-
+        color: "white",
+        alignContent: 'flex-end'
     },
-
     // Level
     levelContainer: {
         justifyContent: "center",
@@ -124,12 +119,10 @@ const styles = StyleSheet.create({
     levelText: {
         fontSize: 20,
         color: "white",
+        justifyContent:'center',
     },
     xp: {
-        // width: 300,
-        // height: 50,
         resizeMode: 4,
-        // justifyContent: "flex-start",
     }
 })
 
