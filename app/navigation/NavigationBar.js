@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { Feather } from '@expo/vector-icons';
 
 // Screens
 import ProfileScreen from '../screens/ProfileScreen';
@@ -15,18 +17,41 @@ const NavigationBar = () => {
     return (
         <Tab.Navigator 
             initialRouteName="NavigationBar"
-            screenOptions={{
+            screenOptions={({ route }) => ({
                 tabBarActiveTintColor: 'white',
                 tabBarInactiveTintColor: 'grey',
                 tabBarShowLabel:false,
                 tabBarStyle:{
                     backgroundColor:'black'
-                }
-              }}>
-            <Tab.Screen name="Home" component={HomeScreen}/>
-            <Tab.Screen name="Calendar" component={CalendarScreen}/>
-            <Tab.Screen name="Achievements" component={AchievementsScreen}/>
-            <Tab.Screen name="Profile" component={ProfileScreen} initialParams={{Username:"defaultuser",Age:"99999"}}/>
+                },
+                tabBarIcon: ({ color, size }) => {
+                    const icons = {
+                        Home: 'home',
+                        Calendar: 'calendar',
+                        Achievements: 'award',
+                        Profile: 'user'
+                    }
+                    return (
+                        <Feather 
+                        name={icons[route.name]} 
+                        color={color} 
+                        size={size}/>
+                    );
+                },
+            })}>
+            <Tab.Screen 
+                name="Home" 
+                component={HomeScreen}/>
+            <Tab.Screen 
+                name="Calendar" 
+                component={CalendarScreen}/>
+            <Tab.Screen 
+                name="Achievements" 
+                component={AchievementsScreen}/>
+            <Tab.Screen 
+                name="Profile" 
+                component={ProfileScreen} 
+                initialParams={{Username:"defaultuser",Age:"99999"}}/>
         </Tab.Navigator>
     )
 }
