@@ -1,7 +1,18 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect,useRef} from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native'
-
+import { Canvas, useFrame } from '@react-three/fiber/native'
+function Box(props) {
+  const mesh = useRef(null)
+  const [hovered, setHover] = useState(false)
+  const [active, setActive] = useState(false)
+  return (
+    <mesh>
+      <sphereGeometry />
+      <meshStandardMaterial color="blue" />
+    </mesh>
+  )
+}
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [time,setTime] = useState(null);
@@ -19,6 +30,12 @@ const HomeScreen = () => {
   
   return (
     <SafeAreaView style={styles.background}>
+        <Canvas>
+      <ambientLight />
+      <pointLight position={[10, 10, 10]} />
+      <Box position={[-1.2, 0, 0]} />
+
+    </Canvas>
       <View style={styles.top}> 
         <Text 
           onPress={() => navigation.navigate("HomeScreen")}
@@ -38,7 +55,6 @@ const styles = StyleSheet.create({
   background: {
       flex: 1,
       justifyContent: "center",
-      alignItems: "center",
       backgroundColor: "#302852"
   },
   top: {
