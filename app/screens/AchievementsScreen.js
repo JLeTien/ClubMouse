@@ -116,6 +116,8 @@ const styles = StyleSheet.create({
         margin:20
     },
     picture: {
+        width:100,
+        height:100,
         flex: 1
     },
     text: {

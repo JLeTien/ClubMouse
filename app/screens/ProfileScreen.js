@@ -24,13 +24,11 @@ const ProfileScreen = ({ route }) => {
     return (
         <SafeAreaView style={styles.background}>
             <View style={styles.top}> 
-                <View>
-                    <Image style={styles.logo} source={require('../assets/Hyoon.jpg')}/>
-                </View>
-                <View>
-                    <Text style={styles.userText}>Name: {Username}</Text>
-                    <Text style={styles.userText}>Age: {Age}</Text>
-                    <Text style={styles.userText}>Id: 123123123</Text>
+                <Image style={styles.logo} source={require('../assets/Hyoon.jpg')}/>
+                <View style={styles.info}>
+                    <Text style={styles.userText}>{Username}</Text>
+                    <Text style={styles.userText}>{Age}</Text>
+                    <Text style={styles.userText}>ID: 123123123</Text>
                 </View>
             </View>
 
@@ -53,25 +51,31 @@ const styles = StyleSheet.create({
     },
     // Title
     top: {
-        alignItems:"top",
-        justifyContent: "top",
         margin: 30,
         top:50,
         borderColor: "white",
         borderWidth: 1,
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-evenly"
+    },
+    info: {
+        flexDirection: "column"
     },
     middle: {
         flex: 0.3,
+        margin: 30,
         borderColor: "white",
         borderWidth: 1,
-        margin: 30,
-        alignContent: 'center',
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-evenly"
     },
     bottom: {
         flex: 0.3,
         borderColor: "white",
         borderWidth: 1, 
-        margin: 30,
+        margin: 20,
     },
     title: {
         fontSize: 40,
@@ -80,8 +84,8 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     logo: {
-        width: 200,
-        height: 200,
+        width: 150,
+        height: 150,
         borderRadius: 200/2,
         borderColor: 'white',
         borderWidth: 3,
@@ -118,8 +122,7 @@ const styles = StyleSheet.create({
     },
     levelText: {
         fontSize: 20,
-        color: "white",
-        justifyContent:'center',
+        color: "white"
     },
     xp: {
         resizeMode: 4,

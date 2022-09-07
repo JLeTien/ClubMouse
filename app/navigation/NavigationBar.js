@@ -28,6 +28,7 @@ const NavigationBar = () => {
                 },
                 tabBarStyle:{
                     backgroundColor: '#6577B8',
+                    opacity: 0.9,
                     borderTopWidth: 0,
                     borderTopLeftRadius: 40,
                     borderTopRightRadius: 40,
