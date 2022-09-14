@@ -20,7 +20,7 @@ const WelcomeScreen = () => {
             </SafeAreaView>
 
             <SafeAreaView style={styles.buttonContainer}>
-                <Button onPress={() => navigation.navigate(NavigationBar)} title="Home!!!!" color="pink"/>
+                <Button onPress={() => navigation.navigate(NavigationBar)} title="HOILNKLJASC" color="pink"/>
                 <Button onPress={() => navigation.navigate("LoginScreen")} title="Login"/>
                 <Button onPress={() => navigation.navigate("SignUpScreen")} title="sign up"/>
             </SafeAreaView>
