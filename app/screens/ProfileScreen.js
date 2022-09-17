@@ -6,82 +6,73 @@ import { useNavigation } from '@react-navigation/native'
 // 
 const ProfileScreen = ({ route }) => {
     const navigation = useNavigation();
-    // const [time,setTime] = useState(null);
-    // useEffect(() => {
-    //     let time = getCurrentTime();
-    //     setTime(time);
-    //   }, []);
-    //   const getCurrentTime = () => {
-    //     let today = new Date();
-    //     let hours = (today.getHours() < 10 ? '0' : '') + today.getHours();
-    //     let minutes = (today.getMinutes() < 10 ? '0' : '') + today.getMinutes();
-    //     let seconds = (today.getSeconds() < 10 ? '0' : '') + today.getSeconds();
-    //     return hours + ':' + minutes + ':' + seconds;
-    //   }
     
      const { Username = "Name"} = route.params;
      const { Age = "Age"} = route.params;
     return (
         <SafeAreaView style={styles.background}>
-            <View style={styles.top}> 
+            {/* user container */}
+            <View style={styles.userContainer}> 
                 <Image style={styles.logo} source={require('../assets/Hyoon.jpg')}/>
-                <View style={styles.info}>
+                <View style={styles.infoContainer}>
                     <Text style={styles.userText}>{Username}</Text>
                     <Text style={styles.userText}>{Age}</Text>
                     <Text style={styles.userText}>ID: 123123123</Text>
                 </View>
             </View>
-
-            <View style={styles.middle}>
+            {/* level container */}
+            <View style={styles.levelContainer}>
                 <Text style={styles.levelText}>Level 1</Text>
                 <Image style={styles.xp} source={require('../assets/xpBar.png')}/>
             </View>
 
-            <View style={styles.bottom}>
+            {/* stats container */}
+            <View style={styles.statsContainer}>
+                <Text style={styles.levelText}>Statistics</Text>
+                <Text style={styles.userText}>Most Consecutive Sleeps: 10</Text>
+                <Text style={styles.userText}>Total Number of Sleeps: 100</Text>
+                <Text style={styles.userText}>Another statisitc: Cool</Text>
+            </View>
+
+            {/* showcase container */}
+            <View style={styles.showcaseContainer}>
+                <Text style={styles.showcaseText}>Badges Showcase</Text>
+                {/* container to hold the badges */}
+                <View style={styles.bigBadgesContainer}>
+                    {/* badge 1 */}
+                    <View style={styles.badgesContainer}>
+                        <Image style={styles.badges} source={require('../assets/Hyoon.jpg')}/>
+                    </View>
+                    {/* badge 2 */}
+                    <View style={styles.badgesContainer}>
+                        <Image style={styles.badges} source={require('../assets/Hyoon.jpg')}/>
+                    </View>
+                    {/* badge 3 */}
+                    <View style={styles.badgesContainer}>
+                        <Image style={styles.badges} source={require('../assets/Hyoon.jpg')}/>
+                    </View>
+                </View> 
             </View>
         </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
-    // Deels with the background
+    // Deals with the background
     background: {
         flex: 1,
         backgroundColor: "#302852"
     },
-    // Title
-    top: {
+
+    // User Details
+    userContainer: {
         margin: 30,
-        top:50,
+        top: 50,
         borderColor: "white",
         borderWidth: 1,
         flexDirection: "row",
         flexWrap: "wrap",
         justifyContent: "space-evenly"
-    },
-    info: {
-        flexDirection: "column"
-    },
-    middle: {
-        flex: 0.3,
-        margin: 30,
-        borderColor: "white",
-        borderWidth: 1,
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "space-evenly"
-    },
-    bottom: {
-        flex: 0.3,
-        borderColor: "white",
-        borderWidth: 1, 
-        margin: 20,
-    },
-    title: {
-        fontSize: 40,
-        color: "white",
-        margin: 10,
-        fontWeight: "bold"
     },
     logo: {
         width: 150,
@@ -91,17 +82,9 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         justifyContent: "flex-start"
     },
-    // User Details
-    userContainer: {
-        justifyContent: "center",
-        borderRadius: 40,
-        width: 300,
-        height: 75,
-        top: 95,
-        borderColor: "white",
-        borderWidth: 1,
-        backgroundColor: "#5d34a5",
-        alignItems: "center"
+    // For text in user container
+    infoContainer: {
+        flexDirection: "column"
     },
     userText: {
         fontSize: 20,
@@ -110,15 +93,13 @@ const styles = StyleSheet.create({
     },
     // Level
     levelContainer: {
-        justifyContent: "center",
-        borderRadius: 40,
-        width: 300,
-        height: 50,
-        top: 105,
+        flex: 0.3,
+        margin: 30,
         borderColor: "white",
         borderWidth: 1,
-        backgroundColor: "#5d34a5",
-        alignItems: "center"
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-evenly"
     },
     levelText: {
         fontSize: 20,
@@ -126,7 +107,53 @@ const styles = StyleSheet.create({
     },
     xp: {
         resizeMode: 4,
-    }
+    },
+
+    // Container for stats
+    statsContainer: {
+        flex: 0.3,
+        margin: 30,
+        borderColor: "white",
+        borderWidth: 1,
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-evenly",
+        bottom: 50
+    },
+
+    // Showcase of badges
+    showcaseContainer: {
+        flex: 0.35,
+        borderColor: "white",
+        borderWidth: 1, 
+        marginHorizontal: 20,
+        marginTop: 20,
+        bottom: 90,
+    },
+    showcaseText: {
+        fontSize: 20,
+        color: "white",
+        textAlign: 'center'
+    },
+    bigBadgesContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        borderColor: "white",
+        borderWidth: 1, 
+    },
+    badgesContainer: {
+        width: '33.333%',
+        borderWidth: 1
+    },
+    badges: {
+        width: 100,
+        height: 100,
+        borderRadius: 200/2,
+        borderColor: 'white',
+        borderWidth: 3,
+        margin: 5,
+    },
+
 })
 
 AppRegistry.registerComponent('IosFonts', () => IosFonts);
