@@ -13,23 +13,23 @@ const AchievementsScreen = () => {
                 <View style={styles.box}>
                     <Image style={styles.picture} source={require('../assets/Tree.png')}/>
                     <View style={styles.info}> 
-                        <Text> SHREK </Text>
+                        <Text> Tree </Text>
                         <Text> Complete 5 Sleep: 3/5 </Text>
                         <Progress.Bar progress={0.7} width={200} height={10} animated={true} color={'#57CC99'}/>
                     </View>
                 </View>
                 <View style={styles.box}>
-                    <Image style={styles.picture} source={require('../assets/shrek.png')}/>
+                    <Image style={styles.picture} source={require('../assets/Dog.png')}/>
                     <View style={styles.info}> 
-                        <Text> SHREK </Text>
+                        <Text> Dog </Text>
                         <Text> Complete 5 Sleep: 3/5 </Text>
                         <Progress.Bar progress={0.7} width={200} height={10} animated={true} color={'#57CC99'}/>
                     </View>
                 </View>
                 <View style={styles.box}>
-                    <Image style={styles.picture} source={require('../assets/shrek.png')}/>
+                    <Image style={styles.picture} source={require('../assets/Cow.png')}/>
                     <View style={styles.info}> 
-                        <Text> SHREK </Text>
+                        <Text> Cow </Text>
                         <Text> Complete 5 Sleep: 3/5 </Text>
                         <Progress.Bar progress={0.7} width={200} height={10} animated={true} color={'#57CC99'}/>
                     </View>

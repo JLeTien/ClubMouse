@@ -13,7 +13,7 @@ const ProfileScreen = ({ route }) => {
         <SafeAreaView style={styles.background}>
             {/* user container */}
             <View style={styles.userContainer}> 
-                <Image style={styles.logo} source={require('../assets/Hyoon.jpg')}/>
+                <Image style={styles.logo} source={require('../assets/Girl.png')}/>
                 <View style={styles.infoContainer}>
                     <Text style={styles.userText}>{Username}</Text>
                     <Text style={styles.userText}>{Age}</Text>
@@ -41,11 +41,11 @@ const ProfileScreen = ({ route }) => {
                 <View style={styles.bigBadgesContainer}>
                     {/* badge 1 */}
                     <View style={styles.badgesContainer}>
-                        <Image style={styles.badges} source={require('../assets/Hyoon.jpg')}/>
+                        <Image style={styles.badges} source={require('../assets/Robot.png')}/>
                     </View>
                     {/* badge 2 */}
                     <View style={styles.badgesContainer}>
-                        <Image style={styles.badges} source={require('../assets/Hyoon.jpg')}/>
+                        <Image style={styles.badges} source={require('../assets/Narwhal.png')}/>
                     </View>
                     {/* badge 3 */}
                     <View style={styles.badgesContainer}>
