@@ -19,7 +19,7 @@ const AchievementsScreen = () => {
                     </View>
                 </View>
                 <View style={styles.box}>
-                    <Image style={styles.picture} source={require('../assets/Dog.png')}/>
+                    <Image style={styles.picture} source={require('../assets/AppleTree.png')}/>
                     <View style={styles.info}> 
                         <Text> Dog </Text>
                         <Text> Complete 5 Sleep: 3/5 </Text>
@@ -27,7 +27,31 @@ const AchievementsScreen = () => {
                     </View>
                 </View>
                 <View style={styles.box}>
+                    <Image style={styles.picture} source={require('../assets/Dog.png')}/>
+                    <View style={styles.info}> 
+                        <Text> Cow </Text>
+                        <Text> Complete 5 Sleep: 3/5 </Text>
+                        <Progress.Bar progress={0.7} width={200} height={10} animated={true} color={'#57CC99'}/>
+                    </View>
+                </View>
+                <View style={styles.box}>
                     <Image style={styles.picture} source={require('../assets/Cow.png')}/>
+                    <View style={styles.info}> 
+                        <Text> Cow </Text>
+                        <Text> Complete 5 Sleep: 3/5 </Text>
+                        <Progress.Bar progress={0.7} width={200} height={10} animated={true} color={'#57CC99'}/>
+                    </View>
+                </View>
+                <View style={styles.box}>
+                    <Image style={styles.picture} source={require('../assets/Eagle.png')}/>
+                    <View style={styles.info}> 
+                        <Text> Cow </Text>
+                        <Text> Complete 5 Sleep: 3/5 </Text>
+                        <Progress.Bar progress={0.7} width={200} height={10} animated={true} color={'#57CC99'}/>
+                    </View>
+                </View>
+                <View style={styles.box}>
+                    <Image style={styles.picture} source={require('../assets/Narwhal.png')}/>
                     <View style={styles.info}> 
                         <Text> Cow </Text>
                         <Text> Complete 5 Sleep: 3/5 </Text>
@@ -45,7 +69,8 @@ const styles = StyleSheet.create({
     },
     box: {
         top: 100,
-        margin: 20,
+        marginHorizontal: 20,
+        marginVertical: 5,
         borderColor: "black",
         borderWidth: 3,
         flexDirection: "row",

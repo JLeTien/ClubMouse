@@ -1,4 +1,4 @@
-import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, SnapshotViewIOS } from 'react-native'
+import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, ScrollView} from 'react-native'
 import React,{useState,useEffect} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
@@ -10,7 +10,7 @@ const ProfileScreen = ({ route }) => {
      const { Username = "Name"} = route.params;
      const { Age = "Age"} = route.params;
     return (
-        <SafeAreaView style={styles.background}>
+        <ScrollView style={styles.background}>
             {/* user container */}
             <View style={styles.userContainer}> 
                 <Image style={styles.logo} source={require('../assets/Girl.png')}/>
@@ -53,7 +53,7 @@ const ProfileScreen = ({ route }) => {
                     </View>
                 </View> 
             </View>
-        </SafeAreaView>
+        </ScrollView>
     )
 }
 
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     showcaseContainer: {
         flex: 0.35,
         borderColor: "white",
-        borderWidth: 1, 
+        borderWidth: 1,
         margin: 30,
         marginTop: 20,
         bottom: 90,
@@ -138,6 +138,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         borderColor: "white",
         borderWidth: 1, 
+
     },
     badgesContainer: {
         width: '33.333%',
