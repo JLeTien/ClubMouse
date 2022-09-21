@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
         flex: 0.35,
         borderColor: "white",
         borderWidth: 1, 
-        marginHorizontal: 20,
+        margin: 30,
         marginTop: 20,
         bottom: 90,
     },
