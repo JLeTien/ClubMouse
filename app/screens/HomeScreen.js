@@ -28,7 +28,7 @@ const HomeScreen = () => {
     renderer.setSize(gl.drawingBufferWidth, gl.drawingBufferHeight);
 
     // image for sphere
-    const texture = new TextureLoader().load(require('../assets/Hyoon.jpg'));
+    const texture = new TextureLoader().load(require('../assets/World.png'));
 
     // create sphere
     // define geometry
@@ -50,7 +50,7 @@ const HomeScreen = () => {
       // sphere.rotation.x += 0.01;
 
       // rotate around y axis
-      sphere.rotation.y += 0.01
+      sphere.rotation.y += 0.005
 
       renderer.render(scene, camera);
       gl.endFrameEXP();
