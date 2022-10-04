@@ -72,14 +72,6 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     backgroundColor: '#302852',
   },
-  container2: {
-    flex: 0.3,
-    backgroundColor: 'black',
-    borderTopRightRadius: '60',
-    borderTopLeftRadius: '60',
-    marginTop: 20,
-    height: 30,
-  },
   container3: {
     flex: 1,
     backgroundColor: 'black',
