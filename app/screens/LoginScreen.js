@@ -1,28 +1,48 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Image, Text, Button, Alert, SafeAreaView } from 'react-native';
-import Logo from "../assets/yeji.jpg"
+import React, { useState,useEffect  } from 'react';
+import { StyleSheet, View, Image, Text, Button, Alert, SafeAreaView,TextInput,ScrollView,TouchableOpacity } from 'react-native';
 import CustomInput from '../../CustomInput';
 import CustomButton from '../../CustomButton';
 import { useNavigation } from '@react-navigation/native'
 import NavigationBar from '../navigation/NavigationBar';
+import { Constants } from 'expo-constants';
+import * as SQLite from "expo-sqlite"
 
-const LoginScreen = () => {
-const [Username, setUsername]=useState('');
-const [Password, setPassword]=useState('');
-const [Age, setAge]=useState('');
-const [sucesss, setSuccess]=useState('false');
-const navigation = useNavigation();
-const onSignInPressed = () => {
-  console.warn({Username});
+function openDatabase() {
+  const db = SQLite.openDatabase("db.db");
+  return db;
 }
+
+const db = openDatabase();
+
+const SignUpScreen = () => {
+  const navigation = useNavigation();
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
+
+const onSignInPressed = () => {
+  console.warn("Signed Upppppp LETSSSS GOOO");
+}
+
+
 return (
-    <View style={styles.root}>
-      <Image source={Logo} style={styles.logo} />
-      <CustomInput placeholder="Username" value={Username} setValue={setUsername}/>
-      <CustomInput placeholder="Password" value={Password} setValue={setPassword} secureTextEntry={true}/>
-      <CustomInput placeholder="Age" value={Age} setValue={setAge}/>
-      <CustomButton text="Log In" onPress={() => navigation.navigate("NavigationBar", { screen: "Profile", params: {Username, Age} } )} />
-    </View>
+  <SafeAreaView style={styles.root}>
+    <Text>Login</Text>
+    <SafeAreaView style={styles.container}>
+      <TextInput
+        onChangeText={(username) => setUsername(username)}
+        placeholder="Username"
+        style={styles.input}
+        value={username}
+      />
+      <TextInput
+        onChangeText={(password) => setPassword(password)}
+        placeholder="Password"
+        style={styles.input}
+        value={password}
+      />
+    </SafeAreaView>
+      <CustomButton text="Log In" onPress={onSignInPressed}/>
+    </SafeAreaView>
   )
 }
 
@@ -35,8 +55,8 @@ const styles = StyleSheet.create({
     },
     logo:{
         width: 200,
-        height: 300,
+        height: 200,
     }
 })
 
-export default LoginScreen
+export default SignUpScreen
