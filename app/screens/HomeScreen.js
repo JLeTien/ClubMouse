@@ -1,5 +1,5 @@
-import React, {useState,useEffect} from 'react';
-import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TouchableOpacity} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import * as SQLite from "expo-sqlite"
 import CustomButton from '../../CustomButton';
@@ -22,11 +22,11 @@ const username = username;
 const db = openDatabase();
 const HomeScreen = () => {
 
-  const onContextCreate = async ( gl /*: not sure what should be here */) => {
+  const onContextCreate = async (gl /*: not sure what should be here */) => {
     // three.js implementation
     const scene = new Scene();
-    const camera = new PerspectiveCamera (75, gl.drawingBufferWidth / gl.drawingBufferHeight, 0.1, 1000);
-    gl.canvas = {width: gl.drawingBufferWidth, height: gl.drawingBufferHeight};
+    const camera = new PerspectiveCamera(75, gl.drawingBufferWidth / gl.drawingBufferHeight, 0.1, 1000);
+    gl.canvas = { width: gl.drawingBufferWidth, height: gl.drawingBufferHeight };
 
     // set camera position away from sphere
     camera.position.z = 2;
@@ -41,9 +41,9 @@ const HomeScreen = () => {
     // create sphere
     // define geometry
     const geometry = new SphereGeometry(1, 36, 36);
-    const material = new MeshBasicMaterial({ 
+    const material = new MeshBasicMaterial({
       map: texture
-   });
+    });
 
     const sphere = new Mesh(geometry, material);
 
@@ -71,22 +71,22 @@ const HomeScreen = () => {
   useEffect(() => {
     db.transaction(
       (tx) => {
-                tx.executeSql("select value from users where id = 1", [], (tx, results) =>
+        tx.executeSql("select value from users where id = 1", [], (tx, results) =>
 
-                setUsername(results.rows.item(0).value)
+          setUsername(results.rows.item(0).value)
         );
       },
     );
-   })
+  })
   return (
     <SafeAreaView style={styles.background}>
-      <View style={styles.top}> 
+      <View style={styles.top}>
         <Text style={styles.text} >Good Night {username}</Text>
       </View>
       <View>
-        <GLView 
-        onContextCreate={onContextCreate}
-        style={{width: 400, height: 400}}/>
+        <GLView
+          onContextCreate={onContextCreate}
+          style={{ width: 500, height: 500 }} />
       </View>
       {/* <View syle={styles.middle}>
         <Text style={styles.text}>{time}</Text>
@@ -97,13 +97,13 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   background: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "#302852"
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#302852"
   },
   top: {
-    paddingTop: 20,
+    paddingTop: 0,
     justifyContent: "flex-start",
     alignItems: "flex-end",
     flex: 0.2,
@@ -111,20 +111,20 @@ const styles = StyleSheet.create({
   middle: {
     justifyContent: "flex-start",
     alignItems: "flex-end",
-    paddingBottom:100,
+    paddingBottom: 100,
     flex: 1,
   },
   bottom: {
     flex: 1,
   },
   button: {
-    flexDirection: 'row', 
-        height: 50,
-        width:200,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 50,
-        elevation:3,
+    flexDirection: 'row',
+    height: 50,
+    width: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 50,
+    elevation: 3,
   },
   heading: {
     color: "white",
