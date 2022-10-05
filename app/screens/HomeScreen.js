@@ -43,10 +43,6 @@ const HomeScreen = () => {
 
     // create sphere
     // define geometry
-    const geometry = new SphereGeometry(1, 36, 36);
-    const material = new MeshBasicMaterial({
-      map: texture
-    });
     const worldGeometry = new SphereGeometry(1, 36, 36);
     const cloudGeometry = new SphereGeometry(1, 38, 38);
     const worldMaterial = new MeshBasicMaterial({
