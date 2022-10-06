@@ -1,19 +1,19 @@
 import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, SnapshotViewIOS, ScrollView } from 'react-native'
-import React, {useState} from 'react';
-import {Card, Avatar, Button} from 'react-native-paper';
-import {Agenda, Calendar} from 'react-native-calendars';
+import React, { useState } from 'react';
+import { Card, Avatar, Button } from 'react-native-paper';
+import { Agenda, Calendar } from 'react-native-calendars';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CalendarPicker from 'react-native-calendar-picker';
 
 const CalendarScreen = () => {
-const [selectedStartDate, setSelectedStartDate] = useState(null);
+  const [selectedStartDate, setSelectedStartDate] = useState(null);
 
 
   const onDateChange = (date) => {
     //function to handle the date change
     setSelectedStartDate(date);
   };
- 
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -29,36 +29,36 @@ const [selectedStartDate, setSelectedStartDate] = useState(null);
               'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'
             ]}
           months={[
-            'January','Febraury','March','April','May',
-            'June','July','August','September',
-            'October','November','December',
+            'January', 'Febraury', 'March', 'April', 'May',
+            'June', 'July', 'August', 'September',
+            'October', 'November', 'December',
           ]}
           previousTitle="<"
           nextTitle=">"
           todayBackgroundColor="#e6ffe6"
           selectedDayColor="#66ff33"
           selectedDayTextColor="#000000"
-          textStyle = {{
-              color: 'white',
+          textStyle={{
+            color: 'white',
           }}
           scaleFactor={375}
           onDateChange={onDateChange}
         />
-        <View style= {styles.container2}>
+        <View style={styles.container2}>
           <View style={styles.textStyle}>
             <Text style={styles.textStyle}>
-              Selected Start Date :  
+              Selected Start Date :
               {selectedStartDate ? selectedStartDate.toString() : ''}
             </Text>
           </View>
         </View>
         {/* BOTTOM CONTAINER */}
-        <ScrollView style = {styles.container3}>
+        <ScrollView style={styles.container3}>
           <View style={styles.box}>
-              <Text> Entry 1 </Text>
+            <Text> Entry 1 </Text>
           </View>
           <View style={styles.box}>
-              <Text> Entry 2 </Text>
+            <Text> Entry 2 </Text>
           </View>
         </ScrollView>
       </View>
