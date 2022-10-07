@@ -17,18 +17,18 @@ const db = openDatabase();
 
 const LoginScreen = () => {
   const navigation = useNavigation();
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [forceUpdate, forceUpdateId] = useForceUpdate();
-  useEffect(() => {
-    db.transaction((tx) => {
-      //delete table for clean table without old entry
-      tx.executeSql("DROP TABLE IF EXISTS users;");
-      tx.executeSql(
-        "CREATE table users (id integer primary key not null, value varchar(255), password varchar(255) );"
-      );
-    });
-  }, []);
+  // useEffect(() => {
+  //   db.transaction((tx) => {
+  //     //delete table for clean table without old entry
+  //     tx.executeSql("DROP TABLE IF EXISTS users;");
+  //     tx.executeSql(
+  //       "CREATE table users (id integer primary key not null, value varchar(255), password varchar(255) );"
+  //     );
+  //   });
+  // }, []);
 
   const add = (text) => {
     // is text empty?
@@ -39,24 +39,51 @@ const LoginScreen = () => {
       return false;
     }
 
-    db.transaction(
-      (tx) => {
-        tx.executeSql("insert into users (value,password) values (?,?)",[username,password]);
-        tx.executeSql("select * from users", [], (_, { rows }) =>
-          console.log(JSON.stringify(rows))
-        );
-      },
-      null,
-      forceUpdate
-    );
+    // db.transaction(
+    //   (tx) => {
+    //     tx.executeSql("insert into users (value,password) values (?,?)",[username,password]);
+    //     tx.executeSql("select * from users", [], (_, { rows }) =>
+    //       console.log(JSON.stringify(rows))
+    //     );
+    //   },
+    //   null,
+    //   forceUpdate
+    // );
     return true;
   };
 
  const onSignInPressed = () => {
-  if (add(username)){
-    setUsername(null);
-    navigation.navigate(NavigationBar);};
- }
+  // if (add(username)){
+  //   setUsername(null);
+  //   navigation.navigate(NavigationBar);};
+  var username1 = username;
+  var password1 = password;
+  
+  var InsertAPIURL = "https://deco3801-clubmouse.uqcloud.net/signup.php";   //API to render signup
+
+  var headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  };
+
+  var Data ={
+    username: username1,
+    password: password1
+  };
+
+  fetch(InsertAPIURL,{
+    method:'POST',
+    headers:headers,
+    body: JSON.stringify(Data) //convert data to JSON
+  })
+  .then((response)=>response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
+  .then((response)=>{
+    alert(response[0].Message);       // If data is in JSON => Display alert msg
+  })
+  .catch((error)=>{
+    alert("Error Occured" + error);
+  })
+}
 return (
   <View style={styles.root}>
     <Text>Login</Text>
