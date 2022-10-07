@@ -15,20 +15,20 @@ const Tab = createBottomTabNavigator();
 // This is the set up for the basic components for the navigation bar
 const NavigationBar = () => {
     return (
-        <Tab.Navigator 
+        <Tab.Navigator
             initialRouteName="NavigationBar"
             screenOptions={({ route }) => ({
                 tabBarActiveTintColor: 'white',
                 tabBarInactiveTintColor: 'black',
-                tabBarShowLabel:false,
+                tabBarShowLabel: false,
                 headerShown: false,
                 tabBarIconStyle: {
                     alignContent: 'center',
                     bottom: -15
                 },
-                tabBarStyle:{
+                tabBarStyle: {
                     backgroundColor: '#6577B8',
-                    opacity: 0.9,
+                    opacity: 0.8,
                     borderTopWidth: 0,
                     borderTopLeftRadius: 40,
                     borderTopRightRadius: 40,
@@ -48,26 +48,26 @@ const NavigationBar = () => {
                         Profile: 'user'
                     }
                     return (
-                        <Feather 
-                        name={icons[route.name]} 
-                        color={color} 
-                        size={size}/>
+                        <Feather
+                            name={icons[route.name]}
+                            color={color}
+                            size={size} />
                     );
                 },
             })}>
-            <Tab.Screen 
-                name="Home" 
-                component={HomeScreen}/>
-            <Tab.Screen 
-                name="Calendar" 
-                component={CalendarScreen}/>
-            <Tab.Screen 
-                name="Achievements" 
-                component={AchievementsScreen}/>
-            <Tab.Screen 
-                name="Profile" 
-                component={ProfileScreen} 
-                initialParams={{Username:"defaultuser",Age:"99999"}}/>
+            <Tab.Screen
+                name="Home"
+                component={HomeScreen} />
+            <Tab.Screen
+                name="Calendar"
+                component={CalendarScreen} />
+            <Tab.Screen
+                name="Achievements"
+                component={AchievementsScreen} />
+            <Tab.Screen
+                name="Profile"
+                component={ProfileScreen}
+                initialParams={{ Username: "defaultuser", Age: "99999" }} />
         </Tab.Navigator>
     )
 }
