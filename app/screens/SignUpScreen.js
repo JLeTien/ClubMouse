@@ -20,15 +20,6 @@ const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [forceUpdate, forceUpdateId] = useForceUpdate();
-  // useEffect(() => {
-  //   db.transaction((tx) => {
-  //     //delete table for clean table without old entry
-  //     tx.executeSql("DROP TABLE IF EXISTS users;");
-  //     tx.executeSql(
-  //       "CREATE table users (id integer primary key not null, value varchar(255), password varchar(255) );"
-  //     );
-  //   });
-  // }, []);
 
   const add = (text) => {
     // is text empty?
@@ -38,24 +29,13 @@ const LoginScreen = () => {
     if (password === null || password === "") {
       return false;
     }
-
-    // db.transaction(
-    //   (tx) => {
-    //     tx.executeSql("insert into users (value,password) values (?,?)",[username,password]);
-    //     tx.executeSql("select * from users", [], (_, { rows }) =>
-    //       console.log(JSON.stringify(rows))
-    //     );
-    //   },
-    //   null,
-    //   forceUpdate
-    // );
     return true;
   };
 
  const onSignInPressed = () => {
   // if (add(username)){
   //   setUsername(null);
-  //   navigation.navigate(NavigationBar);};
+  //   };
   var username1 = username;
   var password1 = password;
   
@@ -83,6 +63,7 @@ const LoginScreen = () => {
   .catch((error)=>{
     alert("Error Occured" + error);
   })
+  navigation.navigate(LoginScreen);
 }
 return (
   <View style={styles.root}>
