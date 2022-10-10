@@ -21,21 +21,7 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const [forceUpdate, forceUpdateId] = useForceUpdate();
 
-  const add = (text) => {
-    // is text empty?
-    if (username === null || username === "") {
-      return false;
-    }
-    if (password === null || password === "") {
-      return false;
-    }
-    return true;
-  };
-
  const onSignInPressed = () => {
-  // if (add(username)){
-  //   setUsername(null);
-  //   };
   var username1 = username;
   var password1 = password;
   
