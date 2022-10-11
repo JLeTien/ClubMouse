@@ -17,9 +17,10 @@ const WelcomeScreen = () => {
             </View>
 
             <View style={styles.buttonContainer}>
-                <Button style={styles.button} onPress={() => navigation.navigate(NavigationBar)} title="GET STARTED" color="pink" />
                 <Button onPress={() => navigation.navigate("LoginScreen")} title="Login" />
-                <Button onPress={() => navigation.navigate("SignUpScreen")} title="sign up" />
+            </View>
+            <View style={styles.buttonContainer}>
+                <Button onPress={() => navigation.navigate("SignUpScreen")} title="Signup" />
             </View>
         </SafeAreaView>
     );
@@ -31,18 +32,6 @@ const styles = StyleSheet.create({
         justifyContent: "flex-end",
         alignItems: "center",
         backgroundColor: "#302852"
-    },
-    loginButton: {
-        width: "100%",
-        height: 70,
-        backgroundColor: "white",
-        color: "white"
-    },
-    registerButton: {
-        alignSelf: 'stretch',
-        textAlign: 'center',
-        width: "100%",
-        backgroundColor: "white",
     },
     logo: {
         width: 300,
@@ -66,15 +55,20 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: 15,
         padding: 20,
-        textAlign: "centre"
-    },
-    button: {
-        color: "white",
-        backgroundColor: "white"
+        textAlign: "center"
     },
     buttonContainer: {
         bottom: 50,
-        borderColor: "white"
+        margin: 10,
+        width: 200,
+        flexDirection: "column",
+        borderWidth: 1, 
+        borderColor: "white",
+        backgroundColor: "white", 
+        borderRadius: 40,
+    },
+    buttonText: {
+        color: "black",
     }
 
 })
