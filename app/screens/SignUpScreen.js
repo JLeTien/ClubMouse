@@ -75,6 +75,10 @@ return (
         value={email}
       />
     </View>
+
+    <View style={styles.pictureContainer}>
+      <Image style={styles.logo} source={require('../assets/Girl.png')}/>
+    </View>
       <CustomButton text="Signup" onPress={() => navigation.navigate(NavigationBar)}/>
   </View>
   )
@@ -110,7 +114,15 @@ const styles = StyleSheet.create({
       paddingHorizontal:10,
       marginVertical:5,
       padding:10,
-    }
+    },
+    logo: {
+      width: 150,
+      height: 150,
+      borderRadius: 200/2,
+      borderColor: 'white',
+      borderWidth: 3,
+      justifyContent: "flex-start"
+  },
 })
 
 export default LoginScreen
