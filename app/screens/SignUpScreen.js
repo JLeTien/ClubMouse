@@ -9,11 +9,14 @@ const LoginScreen = () => {
   const navigation = useNavigation();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  
   const [forceUpdate, forceUpdateId] = useForceUpdate();
 
  const onSignInPressed = () => {
   var username1 = username;
   var password1 = password;
+  var email1 = email;
   
   var InsertAPIURL = "https://deco3801-clubmouse.uqcloud.net/signup.php";   //API to render signup
 
@@ -24,7 +27,8 @@ const LoginScreen = () => {
 
   var Data ={
     username: username1,
-    password: password1
+    password: password1,
+    email: email1
   };
 
   fetch(InsertAPIURL,{
@@ -45,7 +49,7 @@ const LoginScreen = () => {
 }
 return (
   <View style={styles.root}>
-    <Text>Login</Text>
+    <Text style={styles.text}> Sign up</Text>
     <View style={styles.container}>
       <TextInput
         onChangeText={(username) => setUsername(username)}
@@ -53,6 +57,8 @@ return (
         style={styles.input}
         value={username}
       />
+    </View>
+    <View style={styles.container}>
       <TextInput
         onChangeText={(password) => setPassword(password)}
         placeholder="Password"
@@ -60,8 +66,17 @@ return (
         value={password}
       />
     </View>
-      <CustomButton text="Log In" onPress={onSignInPressed}/>
+    <View style={styles.container}>
+      <TextInput
+        onChangeText={(email) => setEmail(email)}
+        placeholder="Email"
+        style={styles.input}
+        value={email}
+      />
     </View>
+
+      <CustomButton text="Log In" onPress={onSignInPressed}/>
+  </View>
   )
 }
 
@@ -71,6 +86,11 @@ function useForceUpdate() {
 }
 
 const styles = StyleSheet.create({
+    text: {
+      fontSize: 30,
+      color: "white",
+      bottom: 20,
+    },
     root:{
       flex: 1,
       justifyContent: "center",
