@@ -1,90 +1,12 @@
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import * as Progress from 'react-native-progress'
 import { SafeAreaView } from 'react-native-safe-area-context'
-// import { DropDown } from 'react-native-material-dropdown'
 import Achievement from './components/Achievement'
 const AchievementsScreen = () => {
     const navigation = useNavigation();
 
     return (
-        // <SafeAreaView style={styles.background}>
-        // <ScrollView style={styles.background}>
-        //     <View style={styles.box}>
-        //         <Image style={styles.picture} source={require('../assets/Tree.png')} />
-        //         <View style={styles.info}>
-        //             <Text> Tree </Text>
-        //             <Text> Complete 5 Sleep: 3/5 </Text>
-        //             <Progress.Bar progress={0.7} width={200} height={10} animated={true} color={'#57CC99'} />
-        //         </View>
-        //     </View>
-        //     <View style={styles.box}>
-        //         <Image style={styles.picture} source={require('../assets/AppleTree.png')} />
-        //         <View style={styles.info}>
-        //             <Text> Dog </Text>
-        //             <Text> Complete 5 Sleep: 3/5 </Text>
-        //             <Progress.Bar progress={0.7} width={200} height={10} animated={true} color={'#57CC99'} />
-        //         </View>
-        //     </View>
-        //     <View style={styles.box}>
-        //         <Image style={styles.picture} source={require('../assets/Dog.png')} />
-        //         <View style={styles.info}>
-        //             <Text> Cow </Text>
-        //             <Text> Complete 5 Sleep: 3/5 </Text>
-        //             <Progress.Bar progress={0.7} width={200} height={10} animated={true} color={'#57CC99'} />
-        //         </View>
-        //     </View>
-        //     <View style={styles.box}>
-        //         <Image style={styles.picture} source={require('../assets/Cow.png')} />
-        //         <View style={styles.info}>
-        //             <Text> Cow </Text>
-        //             <Text> Complete 5 Sleep: 3/5 </Text>
-        //             <Progress.Bar progress={0.7} width={200} height={10} animated={true} color={'#57CC99'} />
-        //         </View>
-        //     </View>
-        //     <View style={styles.box}>
-        //         <Image style={styles.picture} source={require('../assets/Eagle.png')} />
-        //         <View style={styles.info}>
-        //             <Text> Cow </Text>
-        //             <Text> Complete 5 Sleep: 3/5 </Text>
-        //             <Progress.Bar progress={0.7} width={200} height={10} animated={true} color={'#57CC99'} />
-        //         </View>
-        //     </View>
-        //     <View style={styles.box}>
-        //         <Image style={styles.picture} source={require('../assets/Narwhal.png')} />
-        //         <View style={styles.info}>
-        //             <Text> Cow </Text>
-        //             <Text> Complete 5 Sleep: 3/5 </Text>
-        //             <Progress.Bar progress={0.7} width={200} height={10} animated={true} color={'#57CC99'} />
-        //         </View>
-        //     </View>
-        // </ScrollView>
-        // </SafeAreaView>
-
-
-        // <SafeAreaView style={styles.background}>
-        //     <View stlye={styles.headingContainer}>
-        //         <Text style={styles.heading}>Challenges</Text>
-        //     </View>
-
-        //     <ScrollView style={styles.container}>
-        //         <View style={styles.entry}>
-        //             <ScrollView>
-        //                 <Text> Entry 1 </Text>
-        //             </ScrollView>
-        //         </View>
-
-        //         <View style={styles.box}>
-        //             <Text> Entry 2 </Text>
-        //         </View>
-
-        //         <View style={styles.box}>
-        //             <Text> Entry 2 </Text>
-        //         </View>
-        //     </ScrollView>
-        // </SafeAreaView >
-
         <SafeAreaView style={styles.background}>
             <View stlye={styles.headingContainer}>
                 <Text style={styles.heading}>Challenges</Text>

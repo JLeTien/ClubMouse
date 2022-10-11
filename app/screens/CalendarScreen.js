@@ -1,7 +1,5 @@
 import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, SnapshotViewIOS, ScrollView } from 'react-native'
 import React, { useState } from 'react';
-import { Card, Avatar, Button } from 'react-native-paper';
-import { Agenda, Calendar } from 'react-native-calendars';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CalendarPicker from 'react-native-calendar-picker';
 

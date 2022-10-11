@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native'
-import * as SQLite from "expo-sqlite"
-import CustomButton from '../../CustomButton';
 import {
   Scene,
   Mesh,
@@ -12,14 +9,7 @@ import {
 } from 'three';
 import ExpoTHREE, { TextureLoader, Renderer } from 'expo-three';
 import { ExpoWebGLRenderingContext, GLView } from 'expo-gl';
-import { StatusBar } from 'expo-status-bar';
-//open the database
-function openDatabase() {
-  const db = SQLite.openDatabase("db.db");
-  return db;
-}
-const username = username;
-const db = openDatabase();
+
 const HomeScreen = () => {
 
   const onContextCreate = async (gl /*: not sure what should be here */) => {
@@ -104,9 +94,6 @@ const HomeScreen = () => {
           onContextCreate={onContextCreate}
           style={{ width: 500, height: 500 }} />
       </View>
-      {/* <View syle={styles.middle}>
-        <Text style={styles.text}>{time}</Text>
-      </View> */}
     </SafeAreaView>
   )
 }

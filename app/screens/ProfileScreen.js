@@ -1,6 +1,5 @@
 import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, ScrollView} from 'react-native'
 import React,{useState,useEffect} from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // 

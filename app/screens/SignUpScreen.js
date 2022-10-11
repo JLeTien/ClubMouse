@@ -1,19 +1,9 @@
 import React, { useState,useEffect  } from 'react';
 import { StyleSheet, View, Image, Text, Button, Alert, SafeAreaView,TextInput,ScrollView,TouchableOpacity } from 'react-native';
-import CustomInput from '../../CustomInput';
 import CustomButton from '../../CustomButton';
 import { useNavigation } from '@react-navigation/native'
-import NavigationBar from '../navigation/NavigationBar';
-import { Constants } from 'expo-constants';
-import * as SQLite from "expo-sqlite"
 
 
-function openDatabase() {
-  const db = SQLite.openDatabase("db.db");
-  return db;
-}
-
-const db = openDatabase();
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -49,6 +39,8 @@ const LoginScreen = () => {
   .catch((error)=>{
     alert("Error Occured" + error);
   })
+
+
   navigation.navigate(LoginScreen);
 }
 return (
