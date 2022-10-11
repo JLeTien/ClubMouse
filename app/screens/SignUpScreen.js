@@ -2,6 +2,7 @@ import React, { useState,useEffect  } from 'react';
 import { StyleSheet, View, Image, Text, Button, Alert, SafeAreaView,TextInput,ScrollView,TouchableOpacity } from 'react-native';
 import CustomButton from '../../CustomButton';
 import { useNavigation } from '@react-navigation/native'
+import NavigationBar from '../navigation/NavigationBar';
 
 
 
@@ -10,7 +11,7 @@ const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  
+
   const [forceUpdate, forceUpdateId] = useForceUpdate();
 
  const onSignInPressed = () => {
@@ -74,8 +75,7 @@ return (
         value={email}
       />
     </View>
-
-      <CustomButton text="Log In" onPress={onSignInPressed}/>
+      <CustomButton text="Signup" onPress={() => navigation.navigate(NavigationBar)}/>
   </View>
   )
 }
