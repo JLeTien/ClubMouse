@@ -1,10 +1,7 @@
 import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, SnapshotViewIOS, ScrollView, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import { Card, Avatar, Button } from 'react-native-paper';
 import { Agenda, Calendar, CalendarList } from 'react-native-calendars';
-=======
->>>>>>> 2b1781bea5154496faefe2c1f0983f7764ff49b2
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CalendarPicker from 'react-native-calendar-picker';
 
@@ -58,7 +55,7 @@ const CalendarScreen = () => {
                 alignItems: 'center',
               }}>
               <Text>{item.name}</Text>
-              <Avatar.text label="S"></Avatar.text>
+              {/* <Avatar.text label="S"></Avatar.text> */}
             </View>
           </Card.Content>
         </Card>
