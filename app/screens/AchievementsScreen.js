@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import * as Progress from 'react-native-progress'
@@ -92,10 +92,10 @@ const AchievementsScreen = () => {
 
             <ScrollView scrollEventThrottle={16}>
                 <View style={styles.row}>
-                    <Text style={{ fontsize: 60, fontWeight: '700', paddingHorizontal: 10, color: 'white', paddingLeft: 30 }}>
+                    <Text style={styles.categoryHeading}>
                         Pets
                     </Text>
-                    <View style={{ height: 170, marginTop: 20, backgroundColor: '#302852' }}>
+                    <View style={{ height: 170, marginTop: 10, backgroundColor: '#302852' }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                             <Achievement imageUri={(require('../assets/Dog.png'))}
                                 name="DOG" desc="Complete 1 sleep on schedule"></Achievement>
@@ -108,10 +108,10 @@ const AchievementsScreen = () => {
                 </View>
 
                 <View style={styles.row}>
-                    <Text style={{ fontsize: 60, fontWeight: '700', paddingHorizontal: 10, color: 'white', paddingLeft: 30 }}>
+                    <Text style={styles.categoryHeading}>
                         Plants
                     </Text>
-                    <View style={{ height: 170, marginTop: 20, backgroundColor: '#302852' }}>
+                    <View style={{ height: 170, marginTop: 10, backgroundColor: '#302852' }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                             <Achievement imageUri={(require('../assets/FlowerBush.png'))} name="BUSH"
                                 desc="Add an entry to Calendar"></Achievement>
@@ -124,10 +124,10 @@ const AchievementsScreen = () => {
                 </View>
 
                 <View style={styles.row}>
-                    <Text style={{ fontsize: 60, fontWeight: '700', paddingHorizontal: 10, color: 'white', paddingLeft: 30 }}>
+                    <Text style={styles.categoryHeading}>
                         Rare
                     </Text>
-                    <View style={{ height: 170, marginTop: 20, backgroundColor: '#302852' }}>
+                    <View style={{ height: 170, marginTop: 10, backgroundColor: '#302852' }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                             <Achievement imageUri={(require('../assets/Robot.png'))} name="ROBOT"
                                 desc="Add an entry to Calendar"></Achievement>
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     row: {
         backgroundColor: "#302852",
         flex: 1,
-        paddingTop: 20,
+        paddingBottom: 20,
     },
     box: {
         top: 100,
@@ -179,6 +179,12 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "center"
     },
+    picture: {
+        flex: 1,
+        width: null,
+        height: null,
+        resizeMode: 'cover'
+    },
     heading: {
         textAlign: "center",
         fontSize: 25,
@@ -186,11 +192,11 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         padding: 20,
     },
-    picture: {
-        flex: 1,
-        width: null,
-        height: null,
-        resizeMode: 'cover'
+    categoryHeading: {
+        fontSize: 18,
+        color: "white",
+        fontWeight: "bold",
+        paddingLeft: 30
     },
     text: {
         color: 'white',

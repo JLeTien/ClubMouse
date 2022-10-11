@@ -17,7 +17,7 @@ const WelcomeScreen = () => {
             </View>
 
             <View style={styles.buttonContainer}>
-                <Button style={styles.button} onPress={() => navigation.navigate(NavigationBar)} title="Get Started" color="pink" />
+                <Button style={styles.button} onPress={() => navigation.navigate(NavigationBar)} title="GET STARTED" color="pink" />
                 <Button onPress={() => navigation.navigate("LoginScreen")} title="Login" />
                 <Button onPress={() => navigation.navigate("SignUpScreen")} title="sign up" />
             </View>
