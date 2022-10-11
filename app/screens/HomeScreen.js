@@ -104,9 +104,6 @@ const HomeScreen = () => {
           onContextCreate={onContextCreate}
           style={{ width: 500, height: 500 }} />
       </View>
-      {/* <View syle={styles.middle}>
-        <Text style={styles.text}>{time}</Text>
-      </View> */}
     </SafeAreaView>
   )
 }
