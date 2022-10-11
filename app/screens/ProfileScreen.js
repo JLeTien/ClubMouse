@@ -10,7 +10,7 @@ const ProfileScreen = ({ route }) => {
      const { Username = "Name"} = route.params;
      const { Age = "Age"} = route.params;
 
-     const [getValue, setGetValue] = useState('');
+     const [getUsername, setGetValue] = useState('');
 
         // Function to get the value from AsyncStorage
         AsyncStorage.getItem('Username').then(
@@ -27,7 +27,7 @@ const ProfileScreen = ({ route }) => {
             <View style={styles.userContainer}> 
                 <Image style={styles.logo} source={require('../assets/Girl.png')}/>
                 <View style={styles.infoContainer}>
-                    <Text style={styles.userText}>{getValue}</Text>
+                    <Text style={styles.userText}>{getUsername}</Text>
                     <Text style={styles.userText}>{Age}</Text>
                     <Text style={styles.userText}>ID: 123123123</Text>
                 </View>

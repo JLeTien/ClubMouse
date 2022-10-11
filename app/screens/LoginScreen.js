@@ -47,7 +47,7 @@ const SignUpScreen = () => {
       alert(response[0].Username); 
       if(response[0].Message== "valid") {
         AsyncStorage.setItem('Username', response[0].Username);
-        navigation.navigate(ProfileScreen);
+        navigation.navigate(NavigationBar);
       }else{
         alert(response[0].Message); 
       }

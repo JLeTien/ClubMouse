@@ -67,7 +67,7 @@ const NavigationBar = () => {
             <Tab.Screen
                 name="Profile"
                 component={ProfileScreen}
-                initialParams={{ Username: "defaultuser", Age: "99999" }} />
+                initialParams={{ Username: "", Age: "" }} />
         </Tab.Navigator>
     )
 }
