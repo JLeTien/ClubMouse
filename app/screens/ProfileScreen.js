@@ -2,20 +2,32 @@ import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, ScrollView
 import React,{useState,useEffect} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // 
 const ProfileScreen = ({ route }) => {
     const navigation = useNavigation();
     
      const { Username = "Name"} = route.params;
      const { Age = "Age"} = route.params;
+
+     const [getValue, setGetValue] = useState('');
+
+        // Function to get the value from AsyncStorage
+        AsyncStorage.getItem('Username').then(
+          (value) =>
+            // AsyncStorage returns a promise
+            // Adding a callback to get the value
+            setGetValue(value),
+          // Setting the value in Text
+        );
+   
     return (
         <ScrollView style={styles.background}>
             {/* user container */}
             <View style={styles.userContainer}> 
                 <Image style={styles.logo} source={require('../assets/Girl.png')}/>
                 <View style={styles.infoContainer}>
-                    <Text style={styles.userText}>{Username}</Text>
+                    <Text style={styles.userText}>{getValue}</Text>
                     <Text style={styles.userText}>{Age}</Text>
                     <Text style={styles.userText}>ID: 123123123</Text>
                 </View>
