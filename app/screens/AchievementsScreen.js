@@ -22,13 +22,13 @@ const AchievementsScreen = () => {
                             <Achievement imageUri={(require('../assets/Dog2.png'))}
                                 name="DOG" desc="Complete 1 sleep on schedule" unlocked="yes"></Achievement>
                             <Achievement imageUri={(require('../assets/Cow.png'))}
-                                name="COW" desc="Complete 3 sleep on schedule" unlocked="yes"></Achievement>
+                                name="COW" desc="Complete 3 sleep on schedule" unlocked="no"></Achievement>
                             <Achievement imageUri={(require('../assets/Eagle.png'))}
-                                name="EAGLE" desc="Complete 10 sleep on schedule" unlocked="yes"></Achievement>
+                                name="EAGLE" desc="Complete 10 sleep on schedule" unlocked="no"></Achievement>
                             <Achievement imageUri={(require('../assets/Dog.png'))}
-                                name="Hyeena" desc="Complete 15 sleep on schedule" unlocked="yes"></Achievement>
+                                name="Hyeena" desc="Complete 15 sleep on schedule" unlocked="no"></Achievement>
                             <Achievement imageUri={(require('../assets/Horse.png'))}
-                                name="HORSE" desc="Complete 20 sleep on schedule" unlocked="yes"></Achievement>
+                                name="HORSE" desc="Complete 20 sleep on schedule" unlocked="no"></Achievement>
                         </ScrollView>
                     </View>
                 </View>
@@ -44,9 +44,9 @@ const AchievementsScreen = () => {
                             <Achievement imageUri={(require('../assets/Pot.png'))} name="BUSH"
                                 desc="Add 5 entry to Calendar" unlocked="yes"></Achievement>
                             <Achievement imageUri={(require('../assets/Tree.png'))} name="TREE"
-                                desc="Add 10 entries to Calendar" unlocked="yes"></Achievement>
+                                desc="Add 10 entries to Calendar" unlocked="no"></Achievement>
                             <Achievement imageUri={(require('../assets/AppleTree.png'))} name="APPLES"
-                                desc="Add 15 entries to Calendar" unlocked="yes"></Achievement>
+                                desc="Add 15 entries to Calendar" unlocked="no"></Achievement>
                         </ScrollView>
                     </View>
                 </View>
@@ -60,7 +60,7 @@ const AchievementsScreen = () => {
                             <Achievement imageUri={(require('../assets/Robot.png'))} name="ROBOT"
                                 desc="Add an entry to Calendar" unlocked="yes"></Achievement>
                             <Achievement imageUri={(require('../assets/Narwhal.png'))} name="NARWHAL"
-                                desc="Add 5 entries to Calendar" unlocked="yes"></Achievement>
+                                desc="Add 5 entries to Calendar" unlocked="no"></Achievement>
                         </ScrollView>
                     </View>
                 </View>

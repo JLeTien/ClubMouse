@@ -8,12 +8,11 @@ class Achievement extends Component {
     render() {
         return (
             <TouchableOpacity>
-                <View style={styles.bigContainer2}>
+                <View style={this.props.unlocked == "yes" ? styles.bigContainer : styles.bigContainer2}>
                     <View style={{ flex: 2 }}>
                         <View style={styles.smallContainer}>
                             <View style={{ flex: 1, padding: 10 }}>
-                                {this.props.unlocked == "yes" ? <Image style={styles.image} source={this.props.imageUri} /> :
-                                    <Image style={styles.image2} source={this.props.imageUri} />}
+                                <Image style={styles.image} source={this.props.imageUri} />
                             </View>
                         </View>
                     </View>
