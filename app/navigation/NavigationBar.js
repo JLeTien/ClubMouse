@@ -19,7 +19,7 @@ const NavigationBar = () => {
             initialRouteName="NavigationBar"
             screenOptions={({ route }) => ({
                 tabBarActiveTintColor: 'white',
-                tabBarInactiveTintColor: 'black',
+                tabBarInactiveTintColor: '#5A5A5A',
                 tabBarShowLabel: false,
                 headerShown: false,
                 tabBarIconStyle: {
@@ -27,18 +27,21 @@ const NavigationBar = () => {
                     bottom: -15
                 },
                 tabBarStyle: {
-                    backgroundColor: '#6577B8',
-                    opacity: 0.8,
+                    backgroundColor: 'black',
+                    // opacity: 0.8,
                     borderTopWidth: 0,
-                    borderTopLeftRadius: 40,
-                    borderTopRightRadius: 40,
-                    borderBottomLeftRadius: 40,
-                    borderBottomRightRadius: 40,
+                    // borderTopLeftRadius: 40,
+                    // borderTopRightRadius: 40,
+                    // borderBottomLeftRadius: 40,
+                    // borderBottomRightRadius: 40,
                     position: 'absolute',
-                    left: 10,
-                    right: 10,
-                    bottom: 10,
+                    // left: 10,
+                    // right: 10,
+                    // bottom: 10,
                     height: 80
+                },
+                tabBarIconStyle: {
+                    marginBottom: 5,
                 },
                 tabBarIcon: ({ color, size }) => {
                     const icons = {
