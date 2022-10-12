@@ -38,32 +38,17 @@ const HomeScreen = () => {
     // image for world
     const worldTexture = new TextureLoader().load(require('../assets/WorldPlane.png'));
 
-    // image for clouds
-    const cloudsTexture = new TextureLoader().load(require('../assets/WorldClouds.png'));
-
     // create sphere
     // define geometry
     const worldGeometry = new SphereGeometry(1, 36, 36);
-    const cloudGeometry = new SphereGeometry(1, 38, 38);
     const worldMaterial = new MeshBasicMaterial({
       map: worldTexture
     });
-    const cloudsMaterial = new MeshBasicMaterial({
-      map: cloudsTexture
-    });
 
-    const clouds = new Mesh(cloudGeometry, cloudsMaterial);
     const world = new Mesh(worldGeometry, worldMaterial);
 
     // add spheres to scene
     scene.add(world);
-    //scene.add(clouds);
-
-    // *** CURRENT ISSUE WITH WORLD *** 
-    // Adding world with map is fine, adding both world and clouds is an issue.
-    // Tried adding a scene of transparent clouds however the shape built is black and not transparent so overides the world
-    // Also weird appearancs of the two spheres overlapping each other, perhaps sizing issue?
-    // Both images for clouds and world are useable
 
     // create render function
     const render = () => {
@@ -74,11 +59,20 @@ const HomeScreen = () => {
 
       // rotate around y axis
       world.rotation.y += 0.005
-      clouds.rotation.y += 0.010
 
       renderer.render(scene, camera);
       gl.endFrameEXP();
     };
+
+    // Sprite
+    const map = new TextureLoader().load(require('../assets/Tree.png'));
+    const material = new THREE.SpriteMaterial( { map: map } );
+    const sprite = new THREE.Sprite( material );
+    sprite.position.set(0, 0, 1);
+    sprite.scale.set(0.25, 0.25, 0.25);
+    
+    // console.log(sprite)
+    scene.add( sprite );
 
     // call render
     render();
