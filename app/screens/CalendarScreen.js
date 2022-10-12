@@ -63,7 +63,6 @@ const CalendarScreen = () => {
       <View stlye={styles.headingContainer}>
         <Text style={styles.heading}>Calendar</Text>
       </View>
-
       <View style={{ flex: 1 }}>
         <Agenda
           // items={{
@@ -83,7 +82,11 @@ const CalendarScreen = () => {
             monthTextColor: "white",
             selectedDotColor: "",
           }}
+          style={{ backgroundColor: "black" }}
         />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button Text="hello" />
       </View>
     </SafeAreaView >
   );
@@ -97,34 +100,6 @@ const styles = StyleSheet.create({
   },
   headingContainer: {
     paddingBottom: 30
-  },
-  container3: {
-    flex: 1,
-    backgroundColor: 'black',
-  },
-  textStyle: {
-    marginTop: 15,
-    color: 'white',
-    textAlign: 'center'
-  },
-  titleStyle: {
-    textAlign: 'center',
-    fontSize: 30,
-    color: 'white',
-    fontWeight: "bold"
-  },
-  calendar: {
-    color: 'white',
-  },
-  entry: {
-    color: 'white',
-  },
-  box: {
-    backgroundColor: '#65AC2D',
-    marginHorizontal: 10,
-    marginVertical: 10,
-    height: 100,
-    borderRadius: 20
   },
   heading: {
     textAlign: "center",
