@@ -11,12 +11,6 @@ const timeToString = (time) => {
 };
 
 const CalendarScreen = () => {
-  // const [selectedStartDate, setSelectedStartDate] = useState(null);
-  // const onDateChange = (date) => {
-  //   //function to handle the date change
-  //   setSelectedStartDate(date);
-  // };
-
   const [items, setItems] = useState({});
 
   const loadItems = (day) => {
@@ -27,12 +21,13 @@ const CalendarScreen = () => {
         if (!items[strTime]) {
           items[strTime] = [];
           const numItems = 1
-          for (let j = 0; j < numItems; j++) {
-            items[strTime].push({
-              name: '',
-              height: 100,
-            });
-          }
+          // for (let j = 0; j < numItems; j++) {
+          //   items[strTime].push({
+          //     name: '',
+          //     height: 100,
+          //     color: "pink"
+          //   });
+          // }
         }
       }
       const newItems = {};
@@ -55,7 +50,7 @@ const CalendarScreen = () => {
                 alignItems: 'center',
               }}>
               <Text>{item.name}</Text>
-              {/* <Avatar.text label="S"></Avatar.text> */}
+              <Avatar.Text label="S" color="white" />
             </View>
           </Card.Content>
         </Card>
@@ -64,54 +59,6 @@ const CalendarScreen = () => {
   };
 
   return (
-    // <SafeAreaView style={styles.container}>
-    //   <View style={styles.container}>
-    //     <Text style={styles.titleStyle}>
-    //       Calendar
-    //     </Text>
-    //     <CalendarPicker style={styles.calendar}
-    //       startFromMonday={true}
-    //       minDate={new Date(2018, 1, 1)}
-    //       maxDate={new Date(2050, 6, 3)}
-    //       weekdays={
-    //         [
-    //           'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'
-    //         ]}
-    //       months={[
-    //         'January', 'Febraury', 'March', 'April', 'May',
-    //         'June', 'July', 'August', 'September',
-    //         'October', 'November', 'December',
-    //       ]}
-    //       previousTitle="<"
-    //       nextTitle=">"
-    //       todayBackgroundColor="#e6ffe6"
-    //       selectedDayColor="#66ff33"
-    //       selectedDayTextColor="#000000"
-    //       textStyle={{
-    //         color: 'white',
-    //       }}
-    //       scaleFactor={375}
-    //       onDateChange={onDateChange}
-    //     />
-    //     <View style={styles.container2}>
-    //       <View style={styles.textStyle}>
-    //         <Text style={styles.textStyle}>
-    //           Selected Start Date :
-    //           {selectedStartDate ? selectedStartDate.toString() : ''}
-    //         </Text>
-    //       </View>
-    //     </View>
-    //     {/* BOTTOM CONTAINER */}
-    //     <ScrollView style={styles.container3}>
-    //       <View style={styles.box}>
-    //         <Text> Entry 1 </Text>
-    //       </View>
-    //       <View style={styles.box}>
-    //         <Text> Entry 2 </Text>
-    //       </View>
-    //     </ScrollView>
-    //   </View>
-    // </SafeAreaView>
     <SafeAreaView style={styles.container}>
       <View stlye={styles.headingContainer}>
         <Text style={styles.heading}>Calendar</Text>
@@ -119,6 +66,9 @@ const CalendarScreen = () => {
 
       <View style={{ flex: 1 }}>
         <Agenda
+          // items={{
+          //   '2022-10-11': [{ name: 'item 1 - any js object', height: 80 }],
+          // }}
           items={items}
           loadItemsForMonth={loadItems}
           renderItem={renderItem}

@@ -11,7 +11,9 @@ class Achievement extends Component {
                 <View style={{ flex: 2 }}>
                     <View style={styles.smallContainer}>
                         <View style={{ flex: 1, padding: 10 }}>
-                            <Image style={styles.image} source={this.props.imageUri} />
+                            {/* <Image style={styles.image} source={this.props.imageUri} /> */}
+                            {this.props.unlocked == "yes" ? <Image style={styles.image} source={this.props.imageUri} /> :
+                                <Image style={styles.image2} source={this.props.imageUri} />}
                         </View>
                     </View>
                 </View>
@@ -51,6 +53,13 @@ const styles = StyleSheet.create({
         width: null,
         height: null,
         resizeMode: 'contain',
+    },
+    image2: {
+        flex: 1,
+        width: null,
+        height: null,
+        resizeMode: 'contain',
+        tintColor: "#2d3436"
     },
     title: {
         textAlign: "center",
