@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
   },
   title:{
     color:"white",
-    fontSize: "30px",
   },
   text:{
     color:"white",

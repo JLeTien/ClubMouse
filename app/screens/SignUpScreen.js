@@ -99,12 +99,10 @@ function useForceUpdate() {
 
 const styles = StyleSheet.create({
     text: {
-      fontSize: 30,
       color: "white",
       bottom: 20,
     },
     title:{
-      fontSize: "30px",
       color:"#FFFFFF",
     },
     root:{

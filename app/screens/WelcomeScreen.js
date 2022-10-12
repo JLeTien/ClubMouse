@@ -16,12 +16,15 @@ const WelcomeScreen = () => {
                 <Image style={styles.logo} source={require('../assets/sleeping.png')} />
             </View>
 
-            <View style={styles.buttonContainer}>
+
+            <Button onPress={() => navigation.navigate("LoginScreen")} title="LOGIN" color="white" />
+            <Button onPress={() => navigation.navigate("SignUpScreen")} title="SIGN UP" color="white" />
+            {/* <View style={styles.buttonContainer}>
                 <Button onPress={() => navigation.navigate("LoginScreen")} title="LOGIN" color="white" />
             </View>
             <View style={styles.buttonContainer}>
                 <Button onPress={() => navigation.navigate("SignUpScreen")} title="SIGN UP" color="white" />
-            </View>
+            </View> */}
         </SafeAreaView>
     );
 }
