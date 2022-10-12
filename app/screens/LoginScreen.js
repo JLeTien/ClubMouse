@@ -72,8 +72,10 @@ const SignUpScreen = () => {
           value={password}
         />
       </View>
-      <CustomButton text="LOGIN" style = {styles.button} onPress={onSignInPressed}/>
     </View>
+    <View style={styles.button}>
+      <Button  onPress={onSignInPressed} title="LOGIN"/>
+      </View>
     </View>
   )
 }
@@ -91,7 +93,6 @@ const styles = StyleSheet.create({
     height:"80%",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor:"#FFFFFF",
     borderRadius: "8px",
     shadowColor: '#171717',
     shadowOffset: {width: -2, height: 4},
@@ -103,7 +104,11 @@ const styles = StyleSheet.create({
       height: 300,
   },
   title:{
+    color:"white",
     fontSize: "30px",
+  },
+  text:{
+    color:"white",
   },
   container: {
     display:"flex",
@@ -122,7 +127,14 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
   },
   button:{
-    backgroundColor:"#302852",
+    bottom: 250,
+    margin: 10,
+    width: 200,
+    flexDirection: "column",
+    borderWidth: 1, 
+    borderColor: "white",
+    backgroundColor: "white", 
+    borderRadius: 40,
   },
   icon:{
     marginRight:"2%",

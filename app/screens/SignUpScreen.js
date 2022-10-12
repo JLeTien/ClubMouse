@@ -50,7 +50,7 @@ const LoginScreen = () => {
 }
 return (
   <View style={styles.root}>
-    <Text style={styles.text}> Sign up</Text>
+    <Text style={styles.title}>SIGN UP</Text>
     <View style={styles.container}>
       <TextInput
         onChangeText={(username) => setUsername(username)}
@@ -76,10 +76,10 @@ return (
       />
     </View>
 
-    <View style={styles.pictureContainer}>
-      <Image style={styles.logo} source={require('../assets/Girl.png')}/>
-    </View>
-      <CustomButton text="Signup" onPress={() => navigation.navigate(NavigationBar)}/>
+
+    <View style={styles.buttonContainer}>
+      <Button  onPress={() => navigation.navigate(NavigationBar)} title="SIGN UP"/>
+      </View>
   </View>
   )
 }
@@ -95,8 +95,12 @@ const styles = StyleSheet.create({
       color: "white",
       bottom: 20,
     },
+    title:{
+      fontSize: "30px",
+      color:"#FFFFFF",
+    },
     root:{
-      flex: 1,
+      flex: 1,  
       justifyContent: "center",
       alignItems: "center",
       backgroundColor:"#302852"
@@ -106,14 +110,20 @@ const styles = StyleSheet.create({
         height: 300,
     },
     container: {
+      display:"flex",
+      flexDirection:"row",
       backgroundColor:"white",
       width:'90%',
       borderRadius:5,
       borderColor:'#e8e8e8',
       borderWidth:1,
       paddingHorizontal:10,
-      marginVertical:5,
+      marginVertical:10,
       padding:10,
+      shadowColor: '#171717',
+      shadowOffset: {width: -2, height: 4},
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
     },
     logo: {
       width: 150,
@@ -123,6 +133,19 @@ const styles = StyleSheet.create({
       borderWidth: 3,
       justifyContent: "flex-start"
   },
+  input:{
+    backgroundColor:"white",
+  },
+  buttonContainer: {
+    bottom: 10,
+    margin: 10,
+    width: 200,
+    flexDirection: "column",
+    borderWidth: 1, 
+    borderColor: "white",
+    backgroundColor: "white", 
+    borderRadius: 40,
+},
 })
 
 export default LoginScreen
