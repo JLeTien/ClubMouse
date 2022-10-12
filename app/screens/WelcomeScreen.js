@@ -17,10 +17,10 @@ const WelcomeScreen = () => {
             </View>
 
             <View style={styles.buttonContainer}>
-                <Button onPress={() => navigation.navigate("LoginScreen")} title="Login" />
+                <Button onPress={() => navigation.navigate("LoginScreen")} title="LOGIN" color="white" />
             </View>
             <View style={styles.buttonContainer}>
-                <Button onPress={() => navigation.navigate("SignUpScreen")} title="Signup" />
+                <Button onPress={() => navigation.navigate("SignUpScreen")} title="SIGN UP" color="white" />
             </View>
         </SafeAreaView>
     );
@@ -58,14 +58,14 @@ const styles = StyleSheet.create({
         textAlign: "center"
     },
     buttonContainer: {
-        bottom: 50,
+        bottom: 30,
         margin: 10,
-        width: 200,
+        width: 350,
         flexDirection: "column",
-        borderWidth: 1, 
-        borderColor: "white",
-        backgroundColor: "white", 
+        backgroundColor: "#6577B8",
         borderRadius: 40,
+        height: 60,
+        justifyContent: "center"
     },
     buttonText: {
         color: "black",

@@ -96,14 +96,23 @@ const HomeScreen = () => {
   })
   return (
     <SafeAreaView style={styles.background}>
-      <View style={styles.top}>
-        <Text style={styles.text} >Good Night {username}</Text>
-      </View>
-      <View>
-        <GLView
-          onContextCreate={onContextCreate}
-          style={{ width: 500, height: 500 }} />
-      </View>
+      <ImageBackground source={require('../assets/Space.jpg')} style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#302852"
+      }}>
+
+        <View style={styles.top}>
+          <Text style={styles.text} >Good Night {username}</Text>
+        </View>
+        <View>
+          <GLView
+            onContextCreate={onContextCreate}
+            style={{ width: 500, height: 500 }} />
+        </View>
+
+      </ImageBackground>
     </SafeAreaView>
   )
 }
