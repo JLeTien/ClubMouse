@@ -10,7 +10,7 @@ import {
   PerspectiveCamera,
   SphereGeometry,
 } from 'three';
-import ExpoTHREE, { TextureLoader, Renderer } from 'expo-three';
+import ExpoTHREE, { TextureLoader, Renderer, THREE } from 'expo-three';
 import { ExpoWebGLRenderingContext, GLView } from 'expo-gl';
 import { StatusBar } from 'expo-status-bar';
 //open the database
@@ -47,8 +47,21 @@ const HomeScreen = () => {
 
     const world = new Mesh(worldGeometry, worldMaterial);
 
-    // add spheres to scene
-    scene.add(world);
+    // add world to scene
+    // scene.add(world);
+
+    // Sprite
+    const map = new TextureLoader().load(require('../assets/Tree.png'));
+    const material = new THREE.SpriteMaterial( { map: map } );
+    const sprite = new THREE.Sprite( material );
+    sprite.position.set(0, 0, 1);
+    sprite.scale.set(0.25, 0.25, 0.25);
+    // scene.add( sprite );
+
+    const group = new THREE.Group();
+    group.add(world);
+    group.add(sprite);
+    scene.add(group)
 
     // create render function
     const render = () => {
@@ -58,21 +71,12 @@ const HomeScreen = () => {
       // sphere.rotation.x += 0.01;
 
       // rotate around y axis
-      world.rotation.y += 0.005
+      // world.rotation.y += 0.005
+      group.rotation.y += 0.005
 
       renderer.render(scene, camera);
       gl.endFrameEXP();
     };
-
-    // Sprite
-    const map = new TextureLoader().load(require('../assets/Tree.png'));
-    const material = new THREE.SpriteMaterial( { map: map } );
-    const sprite = new THREE.Sprite( material );
-    sprite.position.set(0, 0, 1);
-    sprite.scale.set(0.25, 0.25, 0.25);
-    
-    // console.log(sprite)
-    scene.add( sprite );
 
     // call render
     render();
