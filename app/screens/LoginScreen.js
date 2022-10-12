@@ -67,7 +67,7 @@ const SignUpScreen = () => {
         <TextInput
           onChangeText={(password) => setPassword(password)}
           placeholder="Password"
-          style={styles}
+          style={styles.input}
           value={password}
         />
       </View>
@@ -140,6 +140,7 @@ const styles = StyleSheet.create({
       },
   input:{
     backgroundColor:"white",
+    width:"80%",
   }
 })
 

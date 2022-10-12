@@ -138,6 +138,7 @@ const styles = StyleSheet.create({
   },
   input:{
     backgroundColor:"white",
+    width:"80%",
   },
   buttonContainer: {
     bottom: 10,
