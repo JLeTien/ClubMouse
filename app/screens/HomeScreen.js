@@ -52,8 +52,8 @@ const HomeScreen = () => {
 
     // Sprite
     const map = new TextureLoader().load(require('../assets/Tree.png'));
-    const material = new THREE.SpriteMaterial( { map: map } );
-    const sprite = new THREE.Sprite( material );
+    const material = new THREE.SpriteMaterial({ map: map });
+    const sprite = new THREE.Sprite(material);
     sprite.position.set(0, 0, 1);
     sprite.scale.set(0.25, 0.25, 0.25);
     // scene.add( sprite );
@@ -93,25 +93,25 @@ const HomeScreen = () => {
     );
   })
   return (
-    <SafeAreaView style={styles.background}>
-      <ImageBackground source={require('../assets/Space.jpg')} style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#302852"
-      }}>
+    // <SafeAreaView style={styles.background}>
+    <ImageBackground source={require('../assets/Space.jpg')} style={{
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "#302852"
+    }}>
 
-        <View style={styles.top}>
-          <Text style={styles.text} >Good Night {username}</Text>
-        </View>
-        <View>
-          <GLView
-            onContextCreate={onContextCreate}
-            style={{ width: 500, height: 500 }} />
-        </View>
+      <View style={styles.top}>
+        <Text style={styles.text} >Good Night {username}</Text>
+      </View>
+      <View>
+        <GLView
+          onContextCreate={onContextCreate}
+          style={{ width: 500, height: 500 }} />
+      </View>
 
-      </ImageBackground>
-    </SafeAreaView>
+    </ImageBackground>
+    // </SafeAreaView>
   )
 }
 
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#302852"
+    // backgroundColor: "#302852"
   },
   top: {
     paddingTop: 0,
