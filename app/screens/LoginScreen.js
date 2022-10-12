@@ -49,22 +49,33 @@ const SignUpScreen = () => {
 
   return (
     <View style={styles.root}>
-    <Text>Login</Text>
-    <View style={styles.container}>
-      <TextInput
-        onChangeText={(username) => setUsername(username)}
-        placeholder="Username"
-        style={styles.input}
-        value={username}
-      />
-      <TextInput
-        onChangeText={(password) => setPassword(password)}
-        placeholder="Password"
-        style={styles.input}
-        value={password}
-      />
+      <View style={styles.box}>
+      <Text style={styles.title}>Hello!</Text>
+      <Text style={styles.text}>Sign in to your account</Text>
+      
+      <View style={styles.container}>
+      <Image style={styles.icon} source={require('../assets/user.png')}/>
+        <TextInput
+          onChangeText={(username) => setUsername(username)}
+          placeholder="Username"
+          style={styles.input}
+          value={username}
+        />
+        
+      </View>
+      <View style={styles.container}>
+      <Image style={styles.icon} source={require('../assets/lock.png')}/>
+        <TextInput
+          onChangeText={(password) => setPassword(password)}
+          placeholder="Password"
+          style={styles}
+          value={password}
+        />
+      </View>
     </View>
-      <CustomButton text="Log In" onPress={onSignInPressed}/>
+    <View style={styles.button}>
+      <Button  onPress={onSignInPressed} title="LOGIN"/>
+      </View>
     </View>
   )
 }
@@ -76,19 +87,60 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor:"#302852"
   },
+  box:{
+    display: "flex",
+    width:"80%",
+    height:"80%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: "8px",
+    shadowColor: '#171717',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 1.2,
+    shadowRadius: 3,
+  },
   logo:{
       width: 200,
       height: 300,
   },
+  title:{
+    color:"white",
+    fontSize: "30px",
+  },
+  text:{
+    color:"white",
+  },
   container: {
+    display:"flex",
+    flexDirection:"row",
     backgroundColor:"white",
     width:'90%',
     borderRadius:5,
     borderColor:'#e8e8e8',
     borderWidth:1,
     paddingHorizontal:10,
-    marginVertical:5,
+    marginVertical:10,
     padding:10,
+    shadowColor: '#171717',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  button:{
+    bottom: 250,
+    margin: 10,
+    width: 200,
+    flexDirection: "column",
+    borderWidth: 1, 
+    borderColor: "white",
+    backgroundColor: "white", 
+    borderRadius: 40,
+  },
+  icon:{
+    marginRight:"2%",
+      },
+  input:{
+    backgroundColor:"white",
   }
 })
 
