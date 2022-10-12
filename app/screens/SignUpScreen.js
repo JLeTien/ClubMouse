@@ -55,6 +55,7 @@ return (
   <View style={styles.root}>
     <Text style={styles.title}>SIGN UP</Text>
     <View style={styles.container}>
+    <Image style={styles.icon} source={require('../assets/user.png')}/>
       <TextInput
         onChangeText={(username) => setUsername(username)}
         placeholder="Username"
@@ -63,6 +64,8 @@ return (
       />
     </View>
     <View style={styles.container}>
+    <Image style={styles.icon} source={require('../assets/lock.png')}/>
+
       <TextInput
         onChangeText={(password) => setPassword(password)}
         placeholder="Password"
@@ -71,6 +74,8 @@ return (
       />
     </View>
     <View style={styles.container}>
+    <Image style={styles.icon} source={require('../assets/mail.png')}/>
+
       <TextInput
         onChangeText={(email) => setEmail(email)}
         placeholder="Email"
@@ -139,6 +144,10 @@ const styles = StyleSheet.create({
   input:{
     backgroundColor:"white",
     width:"80%",
+  
+  },
+  icon:{
+    marginRight:"2%",
   },
   buttonContainer: {
     bottom: 10,
