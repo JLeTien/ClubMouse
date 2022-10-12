@@ -1,27 +1,33 @@
 import React, { Component } from "react";
 import {
-    View, Text, StyleSheet, Image
+    View, Text, StyleSheet, Image, TouchableHighlight, TouchableOpacity
 
 } from "react-native";
 
 class Achievement extends Component {
     render() {
         return (
-            <View style={styles.bigContainer}>
-                <View style={{ flex: 2 }}>
-                    <View style={styles.smallContainer}>
-                        <View style={{ flex: 1, padding: 10 }}>
-                            {/* <Image style={styles.image} source={this.props.imageUri} /> */}
-                            {this.props.unlocked == "yes" ? <Image style={styles.image} source={this.props.imageUri} /> :
-                                <Image style={styles.image2} source={this.props.imageUri} />}
+            <TouchableOpacity>
+                <View style={styles.bigContainer2}>
+                    <View style={{ flex: 2 }}>
+                        <View style={styles.smallContainer}>
+                            <View style={{ flex: 1, padding: 10 }}>
+                                {this.props.unlocked == "yes" ? <Image style={styles.image} source={this.props.imageUri} /> :
+                                    <Image style={styles.image2} source={this.props.imageUri} />}
+                            </View>
                         </View>
                     </View>
+                    {this.props.unlocked == "yes" ?
+                        <View style={styles.descriptionContainer}>
+                            <Text style={styles.title}>{this.props.name}</Text>
+                            <Text style={styles.desc}>{this.props.desc}</Text>
+                        </View> :
+                        <View style={styles.descriptionContainer}>
+                            <Text style={styles.title}>{this.props.name}</Text>
+                            <Text style={styles.desc}>{this.props.desc}</Text>
+                        </View>}
                 </View>
-                <View style={styles.descriptionContainer}>
-                    <Text style={styles.title}>{this.props.name}</Text>
-                    <Text style={styles.desc}>{this.props.desc}</Text>
-                </View>
-            </View>
+            </TouchableOpacity>
         )
     }
 }
@@ -33,6 +39,15 @@ const styles = StyleSheet.create({
         marginLeft: 20,
         backgroundColor: '#BEF0C3',
         borderRadius: 30,
+    },
+    bigContainer2: {
+        height: 170,
+        width: 120,
+        marginLeft: 20,
+        backgroundColor: 'white',
+        opacity: 0.3,
+        borderRadius: 30,
+        position: ""
     },
     smallContainer: {
         flex: 1,
