@@ -34,7 +34,6 @@ const SignUpScreen = () => {
     .then((response)=>response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
     .then((response)=>{
             // If data is in JSON => Display alert msg
-      alert(response[0].Username); 
       if(response[0].Message== "valid") {
         AsyncStorage.setItem('Username', response[0].Username);
         navigation.navigate(NavigationBar);
@@ -68,7 +67,7 @@ const SignUpScreen = () => {
         <TextInput
           onChangeText={(password) => setPassword(password)}
           placeholder="Password"
-          style={styles}
+          style={styles.input}
           value={password}
         />
       </View>
@@ -141,6 +140,7 @@ const styles = StyleSheet.create({
       },
   input:{
     backgroundColor:"white",
+    width:"80%",
   }
 })
 

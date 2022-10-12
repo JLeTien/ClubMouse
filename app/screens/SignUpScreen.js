@@ -3,6 +3,7 @@ import { StyleSheet, View, Image, Text, Button, Alert, SafeAreaView,TextInput,Sc
 import CustomButton from '../../CustomButton';
 import { useNavigation } from '@react-navigation/native'
 import NavigationBar from '../navigation/NavigationBar';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -39,14 +40,16 @@ const LoginScreen = () => {
   })
   .then((response)=>response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
   .then((response)=>{
-    alert(response[0].Message);       // If data is in JSON => Display alert msg
+    if(response[0].Message== "valid") {
+      AsyncStorage.setItem('Username', response[0].Username);
+      navigation.navigate(NavigationBar);
+    }else{
+      alert(response[0].Message); 
+    }
   })
   .catch((error)=>{
     alert("Error Occured" + error);
   })
-
-
-  navigation.navigate(LoginScreen);
 }
 return (
   <View style={styles.root}>
@@ -78,7 +81,7 @@ return (
 
 
     <View style={styles.buttonContainer}>
-      <Button  onPress={() => navigation.navigate(NavigationBar)} title="SIGN UP"/>
+      <Button  onPress={onSignInPressed} title="SIGN UP"/>
       </View>
   </View>
   )
@@ -125,16 +128,17 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.2,
       shadowRadius: 3,
     },
-    logo: {
-      width: 150,
-      height: 150,
-      borderRadius: 200/2,
-      borderColor: 'white',
-      borderWidth: 3,
-      justifyContent: "flex-start"
+  logo: {
+    width: 150,
+    height: 150,
+    borderRadius: 200/2,
+    borderColor: 'white',
+    borderWidth: 3,
+    justifyContent: "flex-start"
   },
   input:{
     backgroundColor:"white",
+    width:"80%",
   },
   buttonContainer: {
     bottom: 10,
@@ -145,7 +149,7 @@ const styles = StyleSheet.create({
     borderColor: "white",
     backgroundColor: "white", 
     borderRadius: 40,
-},
+  },
 })
 
 export default LoginScreen
