@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
   },
   modalView: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",
