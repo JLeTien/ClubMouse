@@ -1,9 +1,8 @@
-import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, SnapshotViewIOS, ScrollView, TouchableOpacity } from 'react-native'
+import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react';
 import { Card, Avatar, Button } from 'react-native-paper';
-import { Agenda, Calendar, CalendarList } from 'react-native-calendars';
+import { Agenda, } from 'react-native-calendars';
 import { SafeAreaView } from 'react-native-safe-area-context'
-import CalendarPicker from 'react-native-calendar-picker';
 
 const timeToString = (time) => {
   const date = new Date(time);
@@ -20,14 +19,14 @@ const CalendarScreen = () => {
         const strTime = timeToString(time);
         if (!items[strTime]) {
           items[strTime] = [];
-          const numItems = 1;
-          // for (let j = 0; j < numItems; j++) {
-          //   items[strTime].push({
-          //     name: 'items',
-          //     height: 100,
-          //     color: "pink"
-          //   });
-          // }
+          const numItems = 1
+          for (let j = 0; j < numItems; j++) {
+            items[strTime].push({
+              name: '',
+              height: 100,
+              color: "pink"
+            });
+          }
         }
       }
       const newItems = {};
@@ -57,12 +56,17 @@ const CalendarScreen = () => {
     );
   };
 
+
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
+  const handleModal = () => setIsModalVisible(() => !isModalVisible);
+
   return (
     <SafeAreaView style={styles.container}>
       <View stlye={styles.headingContainer}>
         <Text style={styles.heading}>Calendar</Text>
       </View>
-      <View style={{ flex: 1 }}>
+
+      <View style={{ flex: 0.95 }}>
         <Agenda
           items={items}
           loadItemsForMonth={loadItems}
@@ -81,6 +85,10 @@ const CalendarScreen = () => {
           style={{ backgroundColor: "black" }}
         />
       </View>
+
+      <TouchableOpacity style={styles.buttonContainer}>
+        < Text style={styles.plus}>+</Text>
+      </TouchableOpacity>
     </SafeAreaView >
   );
 }
@@ -101,6 +109,22 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     padding: 10,
   },
+  buttonContainer: {
+    bottom: 90,
+    right: 10,
+    margin: 10,
+    width: 60,
+    height: 60,
+    borderRadius: 100,
+    backgroundColor: "#65AC2D",
+    position: "absolute",
+    textAlign: "center"
+  },
+  plus: {
+    fontSize: 45,
+    color: "white",
+    textAlign: "center",
+  }
 
 });
 AppRegistry.registerComponent('IosFonts', () => IosFonts);

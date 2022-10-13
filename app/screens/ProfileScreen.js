@@ -1,6 +1,6 @@
 import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, ScrollView} from 'react-native'
 import React,{useState,useEffect} from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { CurrentRenderContext, useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // 
 const ProfileScreen = ({ route }) => {
@@ -26,23 +26,20 @@ const ProfileScreen = ({ route }) => {
             <View style={styles.userContainer}> 
                 <Image style={styles.logo} source={require('../assets/Girl.png')}/>
                 <View style={styles.infoContainer}>
-                    <Text style={styles.userText}>{getUsername}</Text>
-                    <Text style={styles.userText}>{Age}</Text>
-                    <Text style={styles.userText}>ID: 123123123</Text>
+                    <Text style={styles.userText}>Baek Ye-rin{getUsername}</Text>
+                    {/* <Text style={styles.userText}>{Age}</Text> */}
                 </View>
             </View>
-            {/* level container */}
+            {/* level container
             <View style={styles.levelContainer}>
                 <Text style={styles.levelText}>Level 1</Text>
                 <Image style={styles.xp} source={require('../assets/xpBar.png')}/>
-            </View>
+            </View> */}
 
             {/* stats container */}
             <View style={styles.statsContainer}>
-                <Text style={styles.levelText}>Statistics</Text>
-                <Text style={styles.userText}>Most Consecutive Sleeps: 10</Text>
-                <Text style={styles.userText}>Total Number of Sleeps: 100</Text>
-                <Text style={styles.userText}>Another statisitc: Cool</Text>
+                <Text style={styles.userText}>Longest Streak: 10</Text>
+                <Text style={styles.userText}>Total Sleeps: 100</Text>
             </View>
 
             {/* showcase container */}
@@ -52,15 +49,15 @@ const ProfileScreen = ({ route }) => {
                 <View style={styles.bigBadgesContainer}>
                     {/* badge 1 */}
                     <View style={styles.badgesContainer}>
-                        <Image style={styles.badges} source={require('../assets/Robot.png')}/>
+                        <Image style={styles.badges} source={require('../assets/GoldMedal.png')}/>
                     </View>
                     {/* badge 2 */}
                     <View style={styles.badgesContainer}>
-                        <Image style={styles.badges} source={require('../assets/Narwhal.png')}/>
+                        <Image style={styles.badges} source={require('../assets/GoldMedal.png')}/>
                     </View>
                     {/* badge 3 */}
                     <View style={styles.badgesContainer}>
-                        <Image style={styles.badges} source={require('../assets/Hyoon.jpg')}/>
+                        <Image style={styles.badges} source={require('../assets/GoldMedal.png')}/>
                     </View>
                 </View> 
             </View>
@@ -72,34 +69,33 @@ const styles = StyleSheet.create({
     // Deals with the background
     background: {
         flex: 1,
-        backgroundColor: "#302852"
+        backgroundColor: "#302852",
     },
 
     // User Details
     userContainer: {
+        //borderColor: 'black',
+        //borderWidth: 3,
+        borderRadius: 30,
         margin: 30,
         top: 50,
-        borderColor: "white",
-        borderWidth: 1,
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "space-evenly"
+        backgroundColor: "#BEF0C3",
+        flexDirection: "column",
+        alignItems: "center",
     },
     logo: {
-        width: 150,
-        height: 150,
+        backgroundColor: '#302852',
         borderRadius: 200/2,
-        borderColor: 'white',
-        borderWidth: 3,
-        justifyContent: "flex-start"
+        borderColor: 'black',
+        borderWidth: 2,
     },
     // For text in user container
     infoContainer: {
         flexDirection: "column"
     },
     userText: {
-        fontSize: 20,
-        color: "white",
+        fontSize: 22,
+       // color: "white",
         alignContent: 'flex-end'
     },
     // Level
@@ -120,35 +116,33 @@ const styles = StyleSheet.create({
 
     // Container for stats
     statsContainer: {
-        flex: 0.3,
+        borderRadius: 30,
         margin: 30,
-        borderColor: "white",
+        backgroundColor: '#BEF0C3', 
         borderWidth: 1,
         flexDirection: "row",
         flexWrap: "wrap",
         justifyContent: "space-evenly",
-        bottom: 50
     },
 
     // Showcase of badges
     showcaseContainer: {
-        flex: 0.35,
-        borderColor: "white",
+        backgroundColor: '#BEF0C3', 
+        borderRadius: 30,
+        //borderColor: "white",
         borderWidth: 1,
-        margin: 30,
-        marginTop: 20,
-        bottom: 90,
+        marginLeft: 30,
+        marginRight: 30,
     },
     showcaseText: {
         fontSize: 20,
-        color: "white",
+        color: "black",
         textAlign: 'center'
     },
     bigBadgesContainer: {
+        
         flex: 1,
         flexDirection: 'row',
-        borderColor: "white",
-        borderWidth: 1, 
 
     },
     badgesContainer: {
@@ -156,11 +150,9 @@ const styles = StyleSheet.create({
         borderWidth: 1
     },
     badges: {
-        width: 100,
-        height: 100,
-        borderRadius: 200/2,
-        borderColor: 'white',
-        borderWidth: 3,
+        width: 90,
+        height: 90,
+        left: 2,
         margin: 5,
     },
 
