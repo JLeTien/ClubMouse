@@ -1,17 +1,46 @@
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Achievement from './components/Achievement'
-const AchievementsScreen = () => {
-    const navigation = useNavigation();
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const AchievementsScreen = () => {
+    const [numEntry, setNumEntry] = useState('');
+    const navigation = useNavigation();
+    const getData = () => {
+        var username1 = "Poop";
+        var InsertAPIURL = "https://deco3801-clubmouse.uqcloud.net/achievement.php";   //API to render signup
+        var headers = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+        var Data ={
+          username: username1,
+        };
+      
+        fetch(InsertAPIURL,{
+          method:'POST',
+          headers:headers,
+          body: JSON.stringify(Data) //convert data to JSON
+        })
+        .then((response)=>response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
+        .then((response)=>{
+            setNumEntry(response[0].Message);
+        })
+        .catch((error)=>{
+          alert("Error Occured" + error);
+        })
+      }
+      useEffect(() => {
+        getData();
+    })
     return (
+        
         <SafeAreaView style={styles.background}>
             <View stlye={styles.headingContainer}>
                 <Text style={styles.heading}>Challenges</Text>
             </View>
-
             <ScrollView scrollEventThrottle={16}>
                 <View style={styles.row}>
                     <Text style={styles.categoryHeading}>
@@ -20,11 +49,11 @@ const AchievementsScreen = () => {
                     <View style={{ height: 170, marginTop: 10, backgroundColor: '#302852' }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                             <Achievement imageUri={(require('../assets/Dog2.png'))}
-                                name="DOG" desc="Complete 1 sleep on schedule" unlocked="yes"></Achievement>
+                                name="DOG" desc="Complete 1 sleep on schedule" unlocked="1" requirement= {numEntry}></Achievement>
                             <Achievement imageUri={(require('../assets/Cow.png'))}
-                                name="COW" desc="Complete 3 sleep on schedule" unlocked="no"></Achievement>
+                                name="COW" desc="Complete 3 sleep on schedule" unlocked="3"requirement= {numEntry}></Achievement>
                             <Achievement imageUri={(require('../assets/Eagle.png'))}
-                                name="EAGLE" desc="Complete 10 sleep on schedule" unlocked="no"></Achievement>
+                                name="EAGLE" desc="Complete 10 sleep on schedule" unlocked="10"requirement= {numEntry}></Achievement>
                             <Achievement imageUri={(require('../assets/Dog.png'))}
                                 name="Hyeena" desc="Complete 15 sleep on schedule" unlocked="no"></Achievement>
                             <Achievement imageUri={(require('../assets/Horse.png'))}
