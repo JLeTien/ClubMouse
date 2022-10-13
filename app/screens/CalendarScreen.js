@@ -1,4 +1,4 @@
-import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity } from 'react-native'
+import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity, Pressable } from 'react-native'
 import React, { useState } from 'react';
 import { Card, Avatar, Button } from 'react-native-paper';
 import { Agenda, } from 'react-native-calendars';
@@ -60,9 +60,7 @@ const CalendarScreen = () => {
     );
   };
 
-
-  const [isModalVisible, setIsModalVisible] = React.useState(false);
-  const handleModal = () => setIsModalVisible(() => !isModalVisible);
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -90,9 +88,31 @@ const CalendarScreen = () => {
         />
       </View>
 
-      <TouchableOpacity style={styles.buttonContainer}>
-        < Text style={styles.plus}>+</Text>
+      <TouchableOpacity style={styles.buttonContainer}
+        onPress={() => setModalVisible(true)}>
+        <Text style={styles.plus}>+</Text>
       </TouchableOpacity>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>X</Text>
+            </Pressable>
+            <Text style={styles.modalText}>Hello World!</Text>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView >
   );
 }
@@ -122,14 +142,56 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     backgroundColor: "#65AC2D",
     position: "absolute",
-    textAlign: "center"
+    textAlign: "center",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.5
   },
   plus: {
     fontSize: 45,
     color: "white",
     textAlign: "center",
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "stretch",
+  },
+  modalView: {
+    backgroundColor: "white",
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    flex: 0.87
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  }, buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
   }
-
 });
 AppRegistry.registerComponent('IosFonts', () => IosFonts);
 export default CalendarScreen
