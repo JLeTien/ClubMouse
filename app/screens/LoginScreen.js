@@ -69,6 +69,7 @@ const SignUpScreen = () => {
           placeholder="Password"
           style={styles.input}
           value={password}
+          secureTextEntry
         />
       </View>
     </View>
@@ -92,7 +93,6 @@ const styles = StyleSheet.create({
     height:"80%",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: "8px",
     shadowColor: '#171717',
     shadowOffset: {width: -2, height: 4},
     shadowOpacity: 1.2,

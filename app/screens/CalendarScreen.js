@@ -20,10 +20,10 @@ const CalendarScreen = () => {
         const strTime = timeToString(time);
         if (!items[strTime]) {
           items[strTime] = [];
-          const numItems = 1
+          const numItems = 1;
           // for (let j = 0; j < numItems; j++) {
           //   items[strTime].push({
-          //     name: '',
+          //     name: 'items',
           //     height: 100,
           //     color: "pink"
           //   });
@@ -50,7 +50,6 @@ const CalendarScreen = () => {
                 alignItems: 'center',
               }}>
               <Text>{item.name}</Text>
-              <Avatar.Text label="S" color="white" />
             </View>
           </Card.Content>
         </Card>
@@ -65,9 +64,6 @@ const CalendarScreen = () => {
       </View>
       <View style={{ flex: 1 }}>
         <Agenda
-          // items={{
-          //   '2022-10-11': [{ name: 'item 1 - any js object', height: 80 }],
-          // }}
           items={items}
           loadItemsForMonth={loadItems}
           renderItem={renderItem}
@@ -84,9 +80,6 @@ const CalendarScreen = () => {
           }}
           style={{ backgroundColor: "black" }}
         />
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button Text="hello" />
       </View>
     </SafeAreaView >
   );
