@@ -7,9 +7,20 @@ import {
 class CalendarEntry extends Component {
     render() {
         return (
-            <View>
-
-            </View>
+            <TouchableOpacity style={{ marginRight: 30, marginTop: 30 }}>
+                <Card>
+                    <Card.Content>
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                            }}>
+                            <Text>{item.name}</Text>
+                        </View>
+                    </Card.Content>
+                </Card>
+            </TouchableOpacity>
         )
     }
 }

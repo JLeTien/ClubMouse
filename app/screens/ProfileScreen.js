@@ -1,30 +1,30 @@
-import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, ScrollView} from 'react-native'
-import React,{useState,useEffect} from 'react'
+import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, ScrollView } from 'react-native'
+import React, { useState, useEffect } from 'react'
 import { CurrentRenderContext, useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // 
 const ProfileScreen = ({ route }) => {
     const navigation = useNavigation();
-    
-     const { Username = "Name"} = route.params;
-     const { Age = "Age"} = route.params;
 
-     const [getUsername, setGetValue] = useState('');
+    const { Username = "Name" } = route.params;
+    const { Age = "Age" } = route.params;
 
-        // Function to get the value from AsyncStorage
-        AsyncStorage.getItem('Username').then(
-          (value) =>
+    const [getUsername, setGetValue] = useState('');
+
+    // Function to get the value from AsyncStorage
+    AsyncStorage.getItem('Username').then(
+        (value) =>
             // AsyncStorage returns a promise
             // Adding a callback to get the value
             setGetValue(value),
-          // Setting the value in Text
-        );
-   
+        // Setting the value in Text
+    );
+
     return (
         <ScrollView style={styles.background}>
             {/* user container */}
-            <View style={styles.userContainer}> 
-                <Image style={styles.logo} source={require('../assets/Girl.png')}/>
+            <View style={styles.userContainer}>
+                <Image style={styles.logo} source={require('../assets/Girl.png')} />
                 <View style={styles.infoContainer}>
                     <Text style={styles.userText}>Baek Ye-rin{getUsername}</Text>
                     {/* <Text style={styles.userText}>{Age}</Text> */}
@@ -49,17 +49,17 @@ const ProfileScreen = ({ route }) => {
                 <View style={styles.bigBadgesContainer}>
                     {/* badge 1 */}
                     <View style={styles.badgesContainer}>
-                        <Image style={styles.badges} source={require('../assets/GoldMedal.png')}/>
+                        <Image style={styles.badges} source={require('../assets/GoldMedal.png')} />
                     </View>
                     {/* badge 2 */}
                     <View style={styles.badgesContainer}>
-                        <Image style={styles.badges} source={require('../assets/GoldMedal.png')}/>
+                        <Image style={styles.badges} source={require('../assets/GoldMedal.png')} />
                     </View>
                     {/* badge 3 */}
                     <View style={styles.badgesContainer}>
-                        <Image style={styles.badges} source={require('../assets/GoldMedal.png')}/>
+                        <Image style={styles.badges} source={require('../assets/GoldMedal.png')} />
                     </View>
-                </View> 
+                </View>
             </View>
         </ScrollView>
     )
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     // Deals with the background
     background: {
         flex: 1,
-        backgroundColor: "#302852",
+        backgroundColor: "#2E1F56",
     },
 
     // User Details
@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     logo: {
-        backgroundColor: '#302852',
-        borderRadius: 200/2,
+        backgroundColor: '#2E1F56',
+        borderRadius: 200 / 2,
         borderColor: 'black',
         borderWidth: 2,
     },
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     },
     userText: {
         fontSize: 22,
-       // color: "white",
+        // color: "white",
         alignContent: 'flex-end'
     },
     // Level
@@ -112,13 +112,13 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: "white"
     },
-    
+
 
     // Container for stats
     statsContainer: {
         borderRadius: 30,
         margin: 30,
-        backgroundColor: '#BEF0C3', 
+        backgroundColor: '#BEF0C3',
         borderWidth: 1,
         flexDirection: "row",
         flexWrap: "wrap",
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
 
     // Showcase of badges
     showcaseContainer: {
-        backgroundColor: '#BEF0C3', 
+        backgroundColor: '#BEF0C3',
         borderRadius: 30,
         //borderColor: "white",
         borderWidth: 1,
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     bigBadgesContainer: {
-        
+
         flex: 1,
         flexDirection: 'row',
 

@@ -12,31 +12,31 @@ const AchievementsScreen = () => {
         var username1 = "Poop";
         var InsertAPIURL = "https://deco3801-clubmouse.uqcloud.net/achievement.php";   //API to render signup
         var headers = {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         }
-        var Data ={
-          username: username1,
+        var Data = {
+            username: username1,
         };
-      
-        fetch(InsertAPIURL,{
-          method:'POST',
-          headers:headers,
-          body: JSON.stringify(Data) //convert data to JSON
+
+        fetch(InsertAPIURL, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(Data) //convert data to JSON
         })
-        .then((response)=>response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
-        .then((response)=>{
-            setNumEntry(response[0].Message);
-        })
-        .catch((error)=>{
-          alert("Error Occured" + error);
-        })
-      }
-      useEffect(() => {
+            .then((response) => response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
+            .then((response) => {
+                setNumEntry(response[0].Message);
+            })
+            .catch((error) => {
+                alert("Error Occured" + error);
+            })
+    }
+    useEffect(() => {
         getData();
     })
     return (
-        
+
         <SafeAreaView style={styles.background}>
             <View stlye={styles.headingContainer}>
                 <Text style={styles.heading}>Challenges</Text>
@@ -46,14 +46,14 @@ const AchievementsScreen = () => {
                     <Text style={styles.categoryHeading}>
                         Pets
                     </Text>
-                    <View style={{ height: 170, marginTop: 10, backgroundColor: '#302852' }}>
+                    <View style={{ height: 170, marginTop: 10, backgroundColor: '#2E1F56' }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                             <Achievement imageUri={(require('../assets/Dog2.png'))}
-                                name="DOG" desc="Complete 1 sleep on schedule" unlocked="1" requirement= {numEntry}></Achievement>
+                                name="DOG" desc="Complete 1 sleep on schedule" unlocked="1" requirement={numEntry}></Achievement>
                             <Achievement imageUri={(require('../assets/Cow.png'))}
-                                name="COW" desc="Complete 3 sleep on schedule" unlocked="3"requirement= {numEntry}></Achievement>
+                                name="COW" desc="Complete 3 sleep on schedule" unlocked="3" requirement={numEntry}></Achievement>
                             <Achievement imageUri={(require('../assets/Eagle.png'))}
-                                name="EAGLE" desc="Complete 10 sleep on schedule" unlocked="10"requirement= {numEntry}></Achievement>
+                                name="EAGLE" desc="Complete 10 sleep on schedule" unlocked="10" requirement={numEntry}></Achievement>
                             <Achievement imageUri={(require('../assets/Dog.png'))}
                                 name="Hyeena" desc="Complete 15 sleep on schedule" unlocked="no"></Achievement>
                             <Achievement imageUri={(require('../assets/Horse.png'))}
@@ -66,7 +66,7 @@ const AchievementsScreen = () => {
                     <Text style={styles.categoryHeading}>
                         Plants
                     </Text>
-                    <View style={{ height: 170, marginTop: 10, backgroundColor: '#302852' }}>
+                    <View style={{ height: 170, marginTop: 10, backgroundColor: '#2E1F56' }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                             <Achievement imageUri={(require('../assets/FlowerBush.png'))} name="BUSH"
                                 desc="Add an entry to Calendar" unlocked="yes"></Achievement>
@@ -84,7 +84,7 @@ const AchievementsScreen = () => {
                     <Text style={styles.categoryHeading}>
                         Rare
                     </Text>
-                    <View style={{ height: 170, marginTop: 10, backgroundColor: '#302852' }}>
+                    <View style={{ height: 170, marginTop: 10, backgroundColor: '#2E1F56' }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                             <Achievement imageUri={(require('../assets/Robot.png'))} name="ROBOT"
                                 desc="Add an entry to Calendar" unlocked="yes"></Achievement>
@@ -100,11 +100,11 @@ const AchievementsScreen = () => {
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: "#302852",
+        backgroundColor: "#2E1F56",
         flex: 1
     },
     row: {
-        backgroundColor: "#302852",
+        backgroundColor: "#2E1F56",
         flex: 1,
         paddingBottom: 20,
     },

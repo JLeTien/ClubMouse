@@ -21,16 +21,16 @@ const CalendarScreen = () => {
         if (!items[strTime]) {
           items[strTime] = [];
           const numItems = 1;
-          if (strTime === "2022-10-13") {
-            for (let j = 0; j < numItems; j++) {
-              items[strTime].push({
-                name: '',
-                height: 100,
-                color: "pink"
-              });
-            }
-          }
-          
+          // if (strTime === "2022-10-13") {
+          //   for (let j = 0; j < numItems; j++) {
+          //     items[strTime].push({
+          //       name: '',
+          //       height: 100,
+          //       color: "pink"
+          //     });
+          //   }
+          // }
+
         }
       }
       const newItems = {};
@@ -76,7 +76,7 @@ const CalendarScreen = () => {
           pastScrollRange={50}
           theme={{
             agendaKnobColor: "white",
-            calendarBackground: "#302852",
+            calendarBackground: "#2E1F56",
             selectedDayBackgroundColor: "white",
             selectedDayTextColor: "black",
             todayTextColor: 'black',
@@ -109,10 +109,19 @@ const CalendarScreen = () => {
             >
               <Text style={styles.textStyle}>X</Text>
             </Pressable>
+
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              // CHANGE PRESS TO ADD ENTRY
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>SAVE</Text>
+            </Pressable>
             <Text style={styles.modalText}>Hello World!</Text>
           </View>
         </View>
       </Modal>
+
     </SafeAreaView >
   );
 }
@@ -121,7 +130,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 10,
-    backgroundColor: '#302852',
+    backgroundColor: '#2E1F56',
   },
   headingContainer: {
     paddingBottom: 30
