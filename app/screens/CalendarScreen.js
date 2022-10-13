@@ -17,16 +17,20 @@ const CalendarScreen = () => {
       for (let i = -15; i < 85; i++) {
         const time = day.timestamp + i * 24 * 60 * 60 * 1000;
         const strTime = timeToString(time);
+        //console.log(strTime);
         if (!items[strTime]) {
           items[strTime] = [];
-          const numItems = 1
-          for (let j = 0; j < numItems; j++) {
-            items[strTime].push({
-              name: '',
-              height: 100,
-              color: "pink"
-            });
+          const numItems = 1;
+          if (strTime === "2022-10-13") {
+            for (let j = 0; j < numItems; j++) {
+              items[strTime].push({
+                name: '',
+                height: 100,
+                color: "pink"
+              });
+            }
           }
+          
         }
       }
       const newItems = {};
@@ -34,7 +38,7 @@ const CalendarScreen = () => {
         newItems[key] = items[key];
       });
       setItems(newItems);
-    }, 1000);
+    }, 2000);
   };
 
   const renderItem = (item) => {
