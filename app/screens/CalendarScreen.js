@@ -1,20 +1,35 @@
-import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity, Pressable } from 'react-native'
+import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity, Pressable, TextInput } from 'react-native'
 import React, { useState, useEffect } from 'react';
 import { Card, Avatar, Button } from 'react-native-paper';
 import { Agenda, } from 'react-native-calendars';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CalendarEntry from './components/CalendarEntry'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import moment from 'moment';
 
 const timeToString = (time) => {
   const date = new Date(time);
   return date.toISOString().split('T')[0];
 };
 
-const CalendarScreen = ({route}) => {
+const CalendarScreen = ({ route }) => {
   const [items, setItems] = useState({});
+  const [selectedDate, setSelectedDate] = useState();
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    setSelectedDate(date);
+    hideDatePicker();
+  };
 
   const [username1, setGetValue] = useState('');
 
@@ -48,7 +63,7 @@ const CalendarScreen = ({route}) => {
             });
           }
         }
-      }            
+      }
       const newItems = {};
       Object.keys(items).forEach((key) => {
         newItems[key] = items[key];
@@ -64,12 +79,12 @@ const CalendarScreen = ({route}) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-    var Data ={
+    var Data = {
       username: usernameVar,
     };
-    fetch(InsertAPIURL,{
-      method:'POST',
-      headers:headers,
+    fetch(InsertAPIURL, {
+      method: 'POST',
+      headers: headers,
       body: JSON.stringify(Data) //convert data to JSON
     })
     .then((response)=>response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
@@ -137,21 +152,32 @@ const CalendarScreen = ({route}) => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>X</Text>
-            </Pressable>
+            <View style={styles.pressContainer}>
+              <Pressable
+                style={styles.button} onPress={() => setModalVisible(!modalVisible)}>
+                <Text style={styles.textStyle}>X</Text>
+              </Pressable>
+              <Pressable
+                style={styles.button} onPress={() => setModalVisible(!modalVisible)}>
+                <Text style={styles.textStyle}>SAVE</Text>
+              </Pressable>
+            </View>
 
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              // CHANGE PRESS TO ADD ENTRY
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>SAVE</Text>
-            </Pressable>
-            <Text style={styles.modalText}>Hello World!</Text>
+            <View style={styles.inputBox}>
+              <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 30 }} />
+              <TextInput placeholder="Description" style={{ color: "white", fontSize: 20 }} />
+
+              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Please select date"}`}</Text>
+                <Button title="Show Date Picker" onPress={showDatePicker} />
+                <DateTimePickerModal
+                  isVisible={isDatePickerVisible}
+                  mode="date"
+                  onConfirm={handleConfirm}
+                  onCancel={hideDatePicker}
+                />
+              </View>
+            </View>
           </View>
         </View>
       </Modal>
@@ -203,38 +229,61 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
   },
   modalView: {
-    backgroundColor: "black",
+    backgroundColor: "#BBBEFE",
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",
+    borderTopRightRadius: 40,
+    borderTopLeftRadius: 40,
     shadowOffset: {
-      width: 0,
+      width: 2,
       height: 2
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
     elevation: 5,
-    flex: 0.87
+    flex: 0.5,
+  },
+  pressContainer: {
+  },
+  inputBox: {
+    display: "flex",
+    width: "90%",
+    height: "80%",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
   button: {
     borderRadius: 20,
     padding: 10,
     elevation: 2
-  }, buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
   },
   textStyle: {
-    color: "white",
     fontWeight: "bold",
-    textAlign: "center"
+    textAlign: "center",
+    fontSize: 20,
   },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center"
-  }
+  inputContainer: {
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: "white",
+    width: '90%',
+    borderRadius: 5,
+    borderColor: '#e8e8e8',
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    marginVertical: 10,
+    padding: 10,
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  input: {
+    backgroundColor: "white",
+    width: "80%",
+    fontSize: 60
+  },
 });
 AppRegistry.registerComponent('IosFonts', () => IosFonts);
 export default CalendarScreen
