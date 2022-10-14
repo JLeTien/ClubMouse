@@ -10,16 +10,14 @@ const WelcomeScreen = () => {
         //<SafeAreaView style={styles.background}>
                 
             <ImageBackground source={require('../assets/Space.jpg')} style={{
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "#2E1F56"
-    }}>
+       flex: 1,
+       justifyContent: "center",
+       alignItems: "center",
+       backgroundColor: "#2E1F56"
+     }}>
         
             <View style={styles.logoContainer}>
             <Image style={styles.logo} source={require('../assets/LogoWhite.png')} />
-            
-            
                 <Text style={styles.heading}> Welcome to Plan-it </Text>
                 <Text style={styles.body}> This app allows you to plan your schedule and
                     monitor your sleep for a healthy brain. </Text>
@@ -37,7 +35,7 @@ const WelcomeScreen = () => {
             <View style={styles.buttonContainer}>
                 <Button onPress={() => navigation.navigate("SignUpScreen")} title="SIGN UP" color="white" />
             </View> */}
-        </ImageBackground>
+       </ImageBackground>
     );
 }
 
