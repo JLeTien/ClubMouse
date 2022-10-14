@@ -98,7 +98,7 @@ const HomeScreen = () => {
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "#302852"
+      backgroundColor: "#2E1F56"
     }}>
 
       <View style={styles.top}>
@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    // backgroundColor: "#302852"
   },
   top: {
     paddingTop: 0,

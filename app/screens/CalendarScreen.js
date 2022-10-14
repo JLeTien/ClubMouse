@@ -36,6 +36,7 @@ const CalendarScreen = ({route}) => {
         if (!items[strTime]) {
           items[strTime] = [];
           const numItems = 1;
+<<<<<<< HEAD
           if (strTime === "2022-10-13") {
             items[strTime].push({
               name: 'This is for me',
@@ -43,6 +44,18 @@ const CalendarScreen = ({route}) => {
               color: "pink"
             });
           }
+=======
+          // if (strTime === "2022-10-13") {
+          //   for (let j = 0; j < numItems; j++) {
+          //     items[strTime].push({
+          //       name: '',
+          //       height: 100,
+          //       color: "pink"
+          //     });
+          //   }
+          // }
+
+>>>>>>> 320401397f7328c0884d4d50ce7615395a36cb8f
         }
       }            
       const newItems = {};
@@ -104,7 +117,7 @@ const CalendarScreen = ({route}) => {
           pastScrollRange={50}
           theme={{
             agendaKnobColor: "white",
-            calendarBackground: "#302852",
+            calendarBackground: "#2E1F56",
             selectedDayBackgroundColor: "white",
             selectedDayTextColor: "black",
             todayTextColor: 'black',
@@ -137,10 +150,19 @@ const CalendarScreen = ({route}) => {
             >
               <Text style={styles.textStyle}>X</Text>
             </Pressable>
+
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              // CHANGE PRESS TO ADD ENTRY
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>SAVE</Text>
+            </Pressable>
             <Text style={styles.modalText}>Hello World!</Text>
           </View>
         </View>
       </Modal>
+
     </SafeAreaView >
   );
 }
@@ -149,7 +171,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 10,
-    backgroundColor: '#302852',
+    backgroundColor: '#2E1F56',
   },
   headingContainer: {
     paddingBottom: 30
@@ -188,7 +210,7 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
   },
   modalView: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",

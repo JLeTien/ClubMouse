@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#302852"
+    backgroundColor: "#2E1F56"
   },
   box: {
     display: "flex",
