@@ -18,6 +18,10 @@ const CalendarScreen = ({route}) => {
 
   const [username1, setGetValue] = useState('');
 
+  const [time, setTime] = useState([]);
+  const [date, setDate] = useState([]);
+  const [task, setTask] = useState([]);
+
         // Function to get the value from AsyncStorage
         AsyncStorage.getItem('Username').then(
           (value) =>
@@ -71,7 +75,9 @@ const CalendarScreen = ({route}) => {
     .then((response)=>response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
     .then((response)=>{
       if (response[0].Message != "Nothing") {
-        console.log(response);
+        // setDate(response[0].Date);
+        // setTime(response[0].Time);
+        // setTask(response[0].Task);
       }
     })
     .catch((error)=>{
@@ -80,7 +86,7 @@ const CalendarScreen = ({route}) => {
   }
   useEffect(() => {
     getData();
-  })
+  }, [])
 
   const renderItem = (item) => {
     return (
