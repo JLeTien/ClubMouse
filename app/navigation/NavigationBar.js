@@ -11,9 +11,11 @@ import HomeScreen from '../screens/HomeScreen';
 import AchievementsScreen from '../screens/AchievementsScreen';
 
 const Tab = createBottomTabNavigator();
+import { useRoute } from '@react-navigation/native';
 
 // This is the set up for the basic components for the navigation bar
 const NavigationBar = () => {
+    
     return (
         <Tab.Navigator
             initialRouteName="NavigationBar"
@@ -69,8 +71,7 @@ const NavigationBar = () => {
                 component={AchievementsScreen} />
             <Tab.Screen
                 name="Profile"
-                component={ProfileScreen}
-                initialParams={{ Username: "", Age: "" }} />
+                component={ProfileScreen}/>
         </Tab.Navigator>
     )
 }

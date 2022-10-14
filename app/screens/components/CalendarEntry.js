@@ -1,15 +1,26 @@
 import React, { Component } from "react";
-import {
-    View, Text, StyleSheet, Image
+import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity, Pressable } from 'react-native'
+import { Card, Avatar, Button } from 'react-native-paper';
 
-} from "react-native";
+
 
 class CalendarEntry extends Component {
     render() {
         return (
-            <View>
-
+        <TouchableOpacity style={{ marginRight: 30, marginTop: 30 }}>
+        <Card>
+          <Card.Content>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <Text>{this.props.name}</Text>
             </View>
+          </Card.Content>
+        </Card>
+      </TouchableOpacity>
         )
     }
 }

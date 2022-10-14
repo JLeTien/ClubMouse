@@ -1,62 +1,90 @@
 import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity, Pressable } from 'react-native'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, Avatar, Button } from 'react-native-paper';
 import { Agenda, } from 'react-native-calendars';
 import { SafeAreaView } from 'react-native-safe-area-context'
+import CalendarEntry from './components/CalendarEntry'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 const timeToString = (time) => {
   const date = new Date(time);
   return date.toISOString().split('T')[0];
 };
 
-const CalendarScreen = () => {
+const CalendarScreen = ({route}) => {
   const [items, setItems] = useState({});
+
+  const [username1, setGetValue] = useState('');
+
+        // Function to get the value from AsyncStorage
+        AsyncStorage.getItem('Username').then(
+          (value) =>
+            // AsyncStorage returns a promise
+            // Adding a callback to get the value
+            setGetValue(value),
+          // Setting the value in Text
+        );
+  
 
   const loadItems = (day) => {
     setTimeout(() => {
-      for (let i = -15; i < 85; i++) {
+      for (let i = 0; i < 85; i++) {
         const time = day.timestamp + i * 24 * 60 * 60 * 1000;
         const strTime = timeToString(time);
-        //console.log(strTime);
         if (!items[strTime]) {
           items[strTime] = [];
           const numItems = 1;
           if (strTime === "2022-10-13") {
-            for (let j = 0; j < numItems; j++) {
-              items[strTime].push({
-                name: '',
-                height: 100,
-                color: "pink"
-              });
-            }
+            items[strTime].push({
+              name: 'This is for me',
+              height: 100,
+              color: "pink"
+            });
           }
-          
         }
-      }
+      }            
       const newItems = {};
       Object.keys(items).forEach((key) => {
         newItems[key] = items[key];
       });
       setItems(newItems);
-    }, 2000);
+    }, 100);
   };
+
+  const getData = () => {
+    var usernameVar = username1;
+    var InsertAPIURL = "https://deco3801-clubmouse.uqcloud.net/getevent.php";   //API to render signup
+    var headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+    var Data ={
+      username: usernameVar,
+    };
+    fetch(InsertAPIURL,{
+      method:'POST',
+      headers:headers,
+      body: JSON.stringify(Data) //convert data to JSON
+    })
+    .then((response)=>response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
+    .then((response)=>{
+      if (response[0].Message != "Nothing") {
+        console.log(response);
+      }
+    })
+    .catch((error)=>{
+      alert("Error Occured " + error);
+    })
+  }
+  useEffect(() => {
+    getData();
+  })
 
   const renderItem = (item) => {
     return (
-      <TouchableOpacity style={{ marginRight: 30, marginTop: 30 }}>
-        <Card>
-          <Card.Content>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}>
-              <Text>{item.name}</Text>
-            </View>
-          </Card.Content>
-        </Card>
-      </TouchableOpacity>
+      <CalendarEntry name={item.name}></CalendarEntry>
     );
   };
 
