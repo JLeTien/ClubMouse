@@ -22,11 +22,12 @@ const ProfileScreen = ({ route }) => {
 
     return (
         <ScrollView style={styles.background}>
+            <Text style={styles.heading}>Profile{getUsername}</Text>
             {/* user container */}
             <View style={styles.userContainer}>
                 <Image style={styles.logo} source={require('../assets/Girl.png')} />
                 <View style={styles.infoContainer}>
-                    <Text style={styles.userText}>Baek Ye-rin{getUsername}</Text>
+                    <Text style={styles.name}>Baek Ye-rin{getUsername}</Text>
                     {/* <Text style={styles.userText}>{Age}</Text> */}
                 </View>
             </View>
@@ -77,21 +78,35 @@ const styles = StyleSheet.create({
         backgroundColor: "#2E1F56",
     },
 
+    heading: {
+        textAlign: "center",
+        fontSize: 25,
+        color: "white",
+        fontWeight: "bold",
+        paddingTop: 50,
+    },
+
+    name: {
+        fontSize: 25,
+        color: "#2E1F56",
+        fontWeight: "bold",
+        color: "white",
+    },
+
     // User Details
     userContainer: {
-        //borderColor: 'black',
-        //borderWidth: 3,
         borderRadius: 30,
         margin: 30,
-        top: 50,
-        backgroundColor: "#BEF0C3",
+        marginTop: 10,
+        paddingTop: 10,
+        backgroundColor: "#4a338a",
         flexDirection: "column",
         alignItems: "center",
     },
     logo: {
         backgroundColor: '#2E1F56',
         borderRadius: 200 / 2,
-        borderColor: 'black',
+        borderColor: '#2E1F56',
         borderWidth: 2,
     },
     // For text in user container
@@ -100,19 +115,19 @@ const styles = StyleSheet.create({
     },
     userText: {
         fontSize: 20,
-        // color: "white",
+        color: "white",
         alignContent: 'flex-end'
     },
     badgeTitle: {
         borderBottomWidth: 1,
+        color: "white",
         fontSize: 20,
-        // color: "white",
         alignContent: 'flex-end'
     },
     badgeText: {
         fontSize: 16,
         left: 5,
-        // color: "white",
+        color: "white",
         alignContent: 'flex-end'
     },
     // Level
@@ -135,7 +150,7 @@ const styles = StyleSheet.create({
     statsContainer: {
         borderRadius: 30,
         margin: 30,
-        backgroundColor: '#BEF0C3',
+        backgroundColor: '#4a338a',
         borderWidth: 1,
         flexDirection: "row",
         flexWrap: "wrap",
@@ -144,7 +159,7 @@ const styles = StyleSheet.create({
 
     // Showcase of badges
     showcaseContainer: {
-        backgroundColor: '#BEF0C3',
+        backgroundColor: '#4a338a',
         borderRadius: 30,
         //borderColor: "white",
         borderWidth: 1,
@@ -153,7 +168,7 @@ const styles = StyleSheet.create({
     },
     showcaseText: {
         fontSize: 20,
-        color: "black",
+        color: "white",
         textAlign: 'center'
     },
     bigBadgesContainer: {

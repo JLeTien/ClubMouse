@@ -10,10 +10,11 @@ const WelcomeScreen = () => {
         <SafeAreaView
             style={styles.background}>
             <View style={styles.logoContainer}>
+            <Image style={styles.logo} source={require('../assets/Logo.png')} />
+            <Image style={styles.logo} source={require('../assets/Saturn.png')} />
                 <Text style={styles.heading}> Welcome to Plan-it </Text>
                 <Text style={styles.body}> This app allows you to plan your schedule and
                     monitor your sleep for a healthy brain. </Text>
-                <Image style={styles.logo} source={require('../assets/sleeping.png')} />
             </View>
 
 
@@ -37,17 +38,16 @@ const styles = StyleSheet.create({
         backgroundColor: "#2E1F56"
     },
     logo: {
-        width: 300,
-        height: 300,
+        width: 100,
+        height: 100,
     },
     logoContainer: {
         position: 'absolute',
-        top: 200,
+        top: 30,
         alignItems: "center",
         borderColor: "white",
         flex: 0.7,
-        paddingLeft: 30,
-        paddingRight: 30,
+        padding: 30,
     },
     heading: {
         color: "white",
