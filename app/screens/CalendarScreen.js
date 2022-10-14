@@ -1,22 +1,20 @@
 import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity, Pressable, TextInput } from 'react-native'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, Avatar, Button } from 'react-native-paper';
 import { Agenda, } from 'react-native-calendars';
 import { SafeAreaView } from 'react-native-safe-area-context'
-import DatePicker from 'react-native-date-picker'
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import CalendarEntry from './components/CalendarEntry'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import moment from 'moment';
 
 const timeToString = (time) => {
   const date = new Date(time);
   return date.toISOString().split('T')[0];
 };
 
-const CalendarScreen = () => {
+const CalendarScreen = ({ route }) => {
   const [items, setItems] = useState({});
-
-  const [date, setDate] = useState(new Date())
-  const [open, setOpen] = useState(false)
-
   const [selectedDate, setSelectedDate] = useState();
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
@@ -33,25 +31,32 @@ const CalendarScreen = () => {
     hideDatePicker();
   };
 
+  const [username1, setGetValue] = useState('');
+
+  // Function to get the value from AsyncStorage
+  AsyncStorage.getItem('Username').then(
+    (value) =>
+      // AsyncStorage returns a promise
+      // Adding a callback to get the value
+      setGetValue(value),
+    // Setting the value in Text
+  );
+
   const loadItems = (day) => {
     setTimeout(() => {
-      for (let i = -15; i < 85; i++) {
+      for (let i = 0; i < 85; i++) {
         const time = day.timestamp + i * 24 * 60 * 60 * 1000;
         const strTime = timeToString(time);
-        //console.log(strTime);
         if (!items[strTime]) {
           items[strTime] = [];
           const numItems = 1;
-          // if (strTime === "2022-10-13") {
-          //   for (let j = 0; j < numItems; j++) {
-          //     items[strTime].push({
-          //       name: '',
-          //       height: 100,
-          //       color: "pink"
-          //     });
-          //   }
-          // }
-
+          if (strTime === "2022-10-13") {
+            items[strTime].push({
+              name: 'This is for me',
+              height: 100,
+              color: "pink"
+            });
+          }
         }
       }
       const newItems = {};
@@ -59,25 +64,41 @@ const CalendarScreen = () => {
         newItems[key] = items[key];
       });
       setItems(newItems);
-    }, 2000);
+    }, 100);
   };
+
+  const getData = () => {
+    var usernameVar = username1;
+    var InsertAPIURL = "https://deco3801-clubmouse.uqcloud.net/getevent.php";   //API to render signup
+    var headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+    var Data = {
+      username: usernameVar,
+    };
+    fetch(InsertAPIURL, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(Data) //convert data to JSON
+    })
+      .then((response) => response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
+      .then((response) => {
+        if (response[0].Message != "Nothing") {
+          console.log(response);
+        }
+      })
+      .catch((error) => {
+        alert("Error Occured " + error);
+      })
+  }
+  useEffect(() => {
+    getData();
+  })
 
   const renderItem = (item) => {
     return (
-      <TouchableOpacity style={{ marginRight: 30, marginTop: 30 }}>
-        <Card>
-          <Card.Content>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}>
-              <Text>{item.name}</Text>
-            </View>
-          </Card.Content>
-        </Card>
-      </TouchableOpacity>
+      <CalendarEntry name={item.name}></CalendarEntry>
     );
   };
 
@@ -126,11 +147,11 @@ const CalendarScreen = () => {
           <View style={styles.modalView}>
             <View style={styles.pressContainer}>
               <Pressable
-                style={[styles.button, styles.buttonClose]} onPress={() => setModalVisible(!modalVisible)}>
+                style={styles.button} onPress={() => setModalVisible(!modalVisible)}>
                 <Text style={styles.textStyle}>X</Text>
               </Pressable>
               <Pressable
-                style={[styles.button, styles.buttonClose]} onPress={() => setModalVisible(!modalVisible)}>
+                style={styles.button} onPress={() => setModalVisible(!modalVisible)}>
                 <Text style={styles.textStyle}>SAVE</Text>
               </Pressable>
             </View>
@@ -139,14 +160,16 @@ const CalendarScreen = () => {
               <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 30 }} />
               <TextInput placeholder="Description" style={{ color: "white", fontSize: 20 }} />
 
-              <Text>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Please select date"}`}</Text>
-              <Button title="Show Date Picker" onPress={showDatePicker} />
-              <DateTimePickerModal
-                isVisible={isDatePickerVisible}
-                mode="date"
-                onConfirm={handleConfirm}
-                onCancel={hideDatePicker}
-              />
+              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Please select date"}`}</Text>
+                <Button title="Show Date Picker" onPress={showDatePicker} />
+                <DateTimePickerModal
+                  isVisible={isDatePickerVisible}
+                  mode="date"
+                  onConfirm={handleConfirm}
+                  onCancel={hideDatePicker}
+                />
+              </View>
             </View>
           </View>
         </View>
@@ -203,8 +226,8 @@ const styles = StyleSheet.create({
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",
-    borderTopRightRadius: 60,
-    borderTopLeftRadius: 60,
+    borderTopRightRadius: 40,
+    borderTopLeftRadius: 40,
     shadowOffset: {
       width: 2,
       height: 2
@@ -212,7 +235,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 10,
     elevation: 5,
-    flex: 0.87,
+    flex: 0.5,
   },
   pressContainer: {
   },
@@ -231,6 +254,7 @@ const styles = StyleSheet.create({
   textStyle: {
     fontWeight: "bold",
     textAlign: "center",
+    fontSize: 20,
   },
   inputContainer: {
     display: "flex",

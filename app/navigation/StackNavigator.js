@@ -16,9 +16,9 @@ const StackNavigator = () => {
             <Stack.Screen name="LoginScreen" component = {LoginScreen} />
             <Stack.Screen name="SignUpScreen" component = {SignUpScreen} />
             <Stack.Screen name="ProfileScreen" component = {ProfileScreen} initialParams={{Username:"defaultuser",Age:"99999"}}/>
-            <Stack.Screen name="NavigationBar" 
+            <Stack.Screen name="NavigationBar"  
             component = {NavigationBar}
-            options={{ headerShown: false}} />
+            options={{ headerShown: false}}/>
         </Stack.Group>
     </Stack.Navigator>
   )

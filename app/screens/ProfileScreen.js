@@ -44,20 +44,25 @@ const ProfileScreen = ({ route }) => {
 
             {/* showcase container */}
             <View style={styles.showcaseContainer}>
-                <Text style={styles.showcaseText}>Badges Showcase</Text>
                 {/* container to hold the badges */}
                 <View style={styles.bigBadgesContainer}>
                     {/* badge 1 */}
                     <View style={styles.badgesContainer}>
+                        <Text style={styles.badgeTitle}>Sleeps</Text>
                         <Image style={styles.badges} source={require('../assets/GoldMedal.png')} />
+                        <Text style={styles.badgeText}>Log 100 sleeps</Text>
                     </View>
                     {/* badge 2 */}
                     <View style={styles.badgesContainer}>
-                        <Image style={styles.badges} source={require('../assets/GoldMedal.png')} />
+                    <Text style={styles.badgeTitle}>Spawns</Text>
+                        <Image style={styles.badges} source={require('../assets/SilverMedal.png')} />
+                        <Text style={styles.badgeText}>Spawn 30 mobs</Text>
                     </View>
                     {/* badge 3 */}
                     <View style={styles.badgesContainer}>
-                        <Image style={styles.badges} source={require('../assets/GoldMedal.png')} />
+                    <Text style={styles.badgeTitle}>Streaks</Text>
+                        <Image style={styles.badges} source={require('../assets/BronzeMedal.png')} />
+                        <Text style={styles.badgeText}>Log 10 sleeps in a row</Text>
                     </View>
                 </View>
             </View>
@@ -94,7 +99,19 @@ const styles = StyleSheet.create({
         flexDirection: "column"
     },
     userText: {
-        fontSize: 22,
+        fontSize: 20,
+        // color: "white",
+        alignContent: 'flex-end'
+    },
+    badgeTitle: {
+        borderBottomWidth: 1,
+        fontSize: 20,
+        // color: "white",
+        alignContent: 'flex-end'
+    },
+    badgeText: {
+        fontSize: 16,
+        left: 5,
         // color: "white",
         alignContent: 'flex-end'
     },
