@@ -1,8 +1,10 @@
-import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity, Pressable } from 'react-native'
+import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity, Pressable, TextInput } from 'react-native'
 import React, { useState } from 'react';
 import { Card, Avatar, Button } from 'react-native-paper';
 import { Agenda, } from 'react-native-calendars';
 import { SafeAreaView } from 'react-native-safe-area-context'
+import DatePicker from 'react-native-date-picker'
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 const timeToString = (time) => {
   const date = new Date(time);
@@ -11,6 +13,25 @@ const timeToString = (time) => {
 
 const CalendarScreen = () => {
   const [items, setItems] = useState({});
+
+  const [date, setDate] = useState(new Date())
+  const [open, setOpen] = useState(false)
+
+  const [selectedDate, setSelectedDate] = useState();
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    setSelectedDate(date);
+    hideDatePicker();
+  };
 
   const loadItems = (day) => {
     setTimeout(() => {
@@ -103,21 +124,30 @@ const CalendarScreen = () => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>X</Text>
-            </Pressable>
+            <View style={styles.pressContainer}>
+              <Pressable
+                style={[styles.button, styles.buttonClose]} onPress={() => setModalVisible(!modalVisible)}>
+                <Text style={styles.textStyle}>X</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonClose]} onPress={() => setModalVisible(!modalVisible)}>
+                <Text style={styles.textStyle}>SAVE</Text>
+              </Pressable>
+            </View>
 
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              // CHANGE PRESS TO ADD ENTRY
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>SAVE</Text>
-            </Pressable>
-            <Text style={styles.modalText}>Hello World!</Text>
+            <View style={styles.inputBox}>
+              <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 30 }} />
+              <TextInput placeholder="Description" style={{ color: "white", fontSize: 20 }} />
+
+              <Text>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Please select date"}`}</Text>
+              <Button title="Show Date Picker" onPress={showDatePicker} />
+              <DateTimePickerModal
+                isVisible={isDatePickerVisible}
+                mode="date"
+                onConfirm={handleConfirm}
+                onCancel={hideDatePicker}
+              />
+            </View>
           </View>
         </View>
       </Modal>
@@ -169,38 +199,60 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
   },
   modalView: {
-    backgroundColor: "black",
+    backgroundColor: "#BBBEFE",
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",
+    borderTopRightRadius: 60,
+    borderTopLeftRadius: 60,
     shadowOffset: {
-      width: 0,
+      width: 2,
       height: 2
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
     elevation: 5,
-    flex: 0.87
+    flex: 0.87,
+  },
+  pressContainer: {
+  },
+  inputBox: {
+    display: "flex",
+    width: "90%",
+    height: "80%",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
   button: {
     borderRadius: 20,
     padding: 10,
     elevation: 2
-  }, buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
   },
   textStyle: {
-    color: "white",
     fontWeight: "bold",
-    textAlign: "center"
+    textAlign: "center",
   },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center"
-  }
+  inputContainer: {
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: "white",
+    width: '90%',
+    borderRadius: 5,
+    borderColor: '#e8e8e8',
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    marginVertical: 10,
+    padding: 10,
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  input: {
+    backgroundColor: "white",
+    width: "80%",
+    fontSize: 60
+  },
 });
 AppRegistry.registerComponent('IosFonts', () => IosFonts);
 export default CalendarScreen
