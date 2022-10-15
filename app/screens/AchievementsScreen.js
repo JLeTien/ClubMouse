@@ -49,6 +49,8 @@ const AchievementsScreen = () => {
 
     const [modalVisible, setModalVisible] = useState(true);
 
+    global.addSprite = false;
+
     return (
         <SafeAreaView style={styles.background}>
             <View stlye={styles.headingContainer}>
@@ -133,7 +135,7 @@ const AchievementsScreen = () => {
                     </View>
                     {/* Container for the button */}
                     <View style={styles.buttonContainer}>
-                        <Button title="Continue" onPress={() => setModalVisible(!modalVisible)} color="white"/>
+                        <Button title="Continue" onPress={() => (setModalVisible(!modalVisible), global.addSprite = true)} color="white"/>
                     </View>
                 </View>
             </Modal>

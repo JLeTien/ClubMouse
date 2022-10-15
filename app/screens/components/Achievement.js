@@ -6,9 +6,6 @@ import {
 
 class Achievement extends Component {
     render() {
-
-        
-
         return (
             <TouchableOpacity>
                 <View style={(parseInt(this.props.requirement) >= parseInt(this.props.unlocked)) ? styles.bigContainer : styles.bigContainer2}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import * as SQLite from "expo-sqlite"
@@ -16,7 +16,8 @@ import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HomeScreen = () => {
-  const onContextCreate = async (gl /*: not sure what should be here */) => {
+
+  const onContextCreate = ( gl ) => {
     // three.js implementation
     const scene = new Scene();
     const camera = new PerspectiveCamera(75, gl.drawingBufferWidth / gl.drawingBufferHeight, 0.1, 1000);
@@ -77,7 +78,12 @@ const HomeScreen = () => {
       // rotate around y axis
       world.rotation.y += 0.005
       // group.rotation.y += 0 .005
-      // addSprite();
+
+      if (global.addSprite) {
+        console.log("we made it");
+        addSprite();
+        global.addSprite = false;
+      }
 
       renderer.render(scene, camera);
       gl.endFrameEXP();
@@ -86,6 +92,7 @@ const HomeScreen = () => {
     // call render
     render();
   };
+
   const [username, setGetValue] = useState('');
   AsyncStorage.getItem('Username').then(
     (value) =>
