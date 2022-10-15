@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import * as SQLite from "expo-sqlite"
@@ -16,7 +16,8 @@ import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HomeScreen = () => {
-  const onContextCreate = async (gl /*: not sure what should be here */) => {
+
+  const onContextCreate = ( gl ) => {
     // three.js implementation
     const scene = new Scene();
     const camera = new PerspectiveCamera(75, gl.drawingBufferWidth / gl.drawingBufferHeight, 0.1, 1000);
@@ -44,32 +45,23 @@ const HomeScreen = () => {
     // add world to scene
     scene.add(world);
 
-    // random y location
-    yPos = randomPlacement();
-    yPoss = randomPlacement();
+    // Sprite
+    // addSprite();
 
     // Sprite
-    const mapTree = new TextureLoader().load(require('../assets/Tree.png'));
-    const materialTree = new THREE.SpriteMaterial({ map: mapTree });
-    const tree = new THREE.Sprite(materialTree);
-    tree.position.set(0, yPos, 1);
-    tree.scale.set(0.25, 0.25, 0.25);
-    scene.add(tree);
-    world.add(tree)
+    function addSprite() {
 
-    // Sprite 2
-    const mapDog = new TextureLoader().load(require('../assets/Dog2.png'));
-    const materialDog = new THREE.SpriteMaterial({ map: mapDog });
-    const dog = new THREE.Sprite(materialDog);
-    dog.position.set(0, yPoss, 1);
-    dog.scale.set(0.25, 0.25, 0.25);
-    scene.add(dog);
-    world.add(dog)
+      // random y location
+      yPos = randomPlacement();
 
-    // const group = new THREE.Group();
-    // group.add(world);
-    // group.add(sprite);
-    // scene.add(group)
+      const map = new TextureLoader().load(require('../assets/Dog2.png'));
+      const material = new THREE.SpriteMaterial({ map: map });
+      const sprite = new THREE.Sprite(material);
+      sprite.position.set(0, yPos, 1);
+      sprite.scale.set(0.25, 0.25, 0.25);
+      scene.add(sprite);
+      world.add(sprite)
+    }
 
     function randomPlacement() {
       randInt = Math.floor(Math.random() * 6);
@@ -87,6 +79,12 @@ const HomeScreen = () => {
       world.rotation.y += 0.005
       // group.rotation.y += 0 .005
 
+      if (global.addSprite) {
+        console.log("we made it");
+        addSprite();
+        global.addSprite = false;
+      }
+
       renderer.render(scene, camera);
       gl.endFrameEXP();
     };
@@ -94,6 +92,7 @@ const HomeScreen = () => {
     // call render
     render();
   };
+
   const [username, setGetValue] = useState('');
   AsyncStorage.getItem('Username').then(
     (value) =>

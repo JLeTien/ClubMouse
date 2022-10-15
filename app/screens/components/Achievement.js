@@ -6,7 +6,6 @@ import {
 
 class Achievement extends Component {
     render() {
-
         return (
             <TouchableOpacity>
                 <View style={(parseInt(this.props.requirement) >= parseInt(this.props.unlocked)) ? styles.bigContainer : styles.bigContainer2}>
@@ -17,15 +16,15 @@ class Achievement extends Component {
                             </View>
                         </View>
                     </View>
-                    {this.props.unlocked == "yes" ?
+                    {/* {this.props.unlocked == "yes" ? */}
                         <View style={styles.descriptionContainer}>
                             <Text style={styles.title}>{this.props.name}</Text>
                             <Text style={styles.desc}>{this.props.desc}</Text>
-                        </View> :
-                        <View style={styles.descriptionContainer}>
+                        </View> 
+                        {/* <View style={styles.descriptionContainer}>
                             <Text style={styles.title}>{this.props.name}</Text>
                             <Text style={styles.desc}>{this.props.desc}</Text>
-                        </View>}
+                        </View>} */}
                 </View>
             </TouchableOpacity>
         )
