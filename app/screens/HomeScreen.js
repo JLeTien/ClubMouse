@@ -48,20 +48,39 @@ const HomeScreen = () => {
     const world = new Mesh(worldGeometry, worldMaterial);
 
     // add world to scene
-    // scene.add(world);
+    scene.add(world);
+
+    // random y location
+    yPos = randomPlacement();
+    yPoss = randomPlacement();
 
     // Sprite
-    const map = new TextureLoader().load(require('../assets/Tree.png'));
-    const material = new THREE.SpriteMaterial({ map: map });
-    const sprite = new THREE.Sprite(material);
-    sprite.position.set(0, 0, 1);
-    sprite.scale.set(0.25, 0.25, 0.25);
-    // scene.add( sprite );
+    const mapTree = new TextureLoader().load(require('../assets/Tree.png'));
+    const materialTree = new THREE.SpriteMaterial({ map: mapTree });
+    const tree = new THREE.Sprite(materialTree);
+    tree.position.set(0, yPos, 1);
+    tree.scale.set(0.25, 0.25, 0.25);
+    scene.add(tree);
+    world.add(tree)
 
-    const group = new THREE.Group();
-    group.add(world);
-    group.add(sprite);
-    scene.add(group)
+    // Sprite 2
+    const mapDog = new TextureLoader().load(require('../assets/Dog2.png'));
+    const materialDog = new THREE.SpriteMaterial({ map: mapDog });
+    const dog = new THREE.Sprite(materialDog);
+    dog.position.set(0, yPoss, 1);
+    dog.scale.set(0.25, 0.25, 0.25);
+    scene.add(dog);
+    world.add(dog)
+
+    // const group = new THREE.Group();
+    // group.add(world);
+    // group.add(sprite);
+    // scene.add(group)
+
+    function randomPlacement() {
+      randInt = Math.floor(Math.random() * 6);
+      return (randInt / 10);
+    }
 
     // create render function
     const render = () => {
@@ -71,8 +90,8 @@ const HomeScreen = () => {
       // sphere.rotation.x += 0.01;
 
       // rotate around y axis
-      // world.rotation.y += 0.005
-      group.rotation.y += 0.005
+      world.rotation.y += 0.005
+      // group.rotation.y += 0 .005
 
       renderer.render(scene, camera);
       gl.endFrameEXP();

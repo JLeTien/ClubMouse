@@ -32,8 +32,6 @@ const WelcomeScreen = () => {
         }}>
 
             <View style={styles.logoContainer}>
-                <Image style={styles.logo} source={require('../assets/Logo.png')} />
-                <Image style={styles.logo} source={require('../assets/Saturn.png')} />
                 <Image style={styles.logo} source={require('../assets/LogoWhite.png')} />
                 <Text style={styles.heading}> Welcome to Plan-it </Text>
                 <Text style={styles.body}> This app allows you to plan your schedule and
