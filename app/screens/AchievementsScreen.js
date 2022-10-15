@@ -6,10 +6,20 @@ import Achievement from './components/Achievement'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AchievementsScreen = () => {
+    const [numSleep, setNumSleep] = useState('');
     const [numEntry, setNumEntry] = useState('');
     const navigation = useNavigation();
+
+    const [username, setGetValue] = useState('');
+  AsyncStorage.getItem('Username').then(
+    (value) =>
+        // AsyncStorage returns a promise
+        // Adding a callback to get the value
+        setGetValue(value),
+    // Setting the value in Text
+);
     const getData = () => {
-        var username1 = "Poop";
+        var username1 = username;
         var InsertAPIURL = "https://deco3801-clubmouse.uqcloud.net/achievement.php";   //API to render signup
         var headers = {
             'Accept': 'application/json',
@@ -27,6 +37,7 @@ const AchievementsScreen = () => {
             .then((response) => response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
             .then((response) => {
                 setNumEntry(response[0].Message);
+                setNumSleep(response[0].numSleepCompleted);
             })
             .catch((error) => {
                 alert("Error Occured" + error);
@@ -49,15 +60,15 @@ const AchievementsScreen = () => {
                     <View style={{ height: 170, marginTop: 10, backgroundColor: '#2E1F56' }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                             <Achievement imageUri={(require('../assets/Dog2.png'))}
-                                name="DOG" desc="Complete 1 sleep on schedule" unlocked="1" requirement={numEntry}></Achievement>
-                            <Achievement imageUri={(require('../assets/Cow.png'))}
-                                name="COW" desc="Complete 3 sleep on schedule" unlocked="3" requirement={numEntry}></Achievement>
+                                name="DOG" desc="Complete 1 sleep on schedule" unlocked="1" requirement={numSleep}></Achievement>
+                            <Achievement imageUri={(require('../assets/Cat.png'))}
+                                name="CAT" desc="Complete 3 sleep on schedule" unlocked="3" requirement={numSleep}></Achievement>
                             <Achievement imageUri={(require('../assets/Eagle.png'))}
-                                name="EAGLE" desc="Complete 10 sleep on schedule" unlocked="10" requirement={numEntry}></Achievement>
-                            <Achievement imageUri={(require('../assets/Dog.png'))}
-                                name="Hyeena" desc="Complete 15 sleep on schedule" unlocked="no"></Achievement>
+                                name="EAGLE" desc="Complete 10 sleep on schedule" unlocked="10" requirement={numSleep}></Achievement>
+                            <Achievement imageUri={(require('../assets/Monkey.png'))}
+                                name="MONKEY" desc="Complete 15 sleep on schedule" unlocked="15"  requirement={numSleep}></Achievement>
                             <Achievement imageUri={(require('../assets/Horse.png'))}
-                                name="HORSE" desc="Complete 20 sleep on schedule" unlocked="no"></Achievement>
+                                name="HORSE" desc="Complete 20 sleep on schedule" unlocked="20"  requirement={numSleep}></Achievement>
                         </ScrollView>
                     </View>
                 </View>
@@ -68,14 +79,16 @@ const AchievementsScreen = () => {
                     </Text>
                     <View style={{ height: 170, marginTop: 10, backgroundColor: '#2E1F56' }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                        <Achievement imageUri={(require('../assets/Flowers.png'))} name="FLOWERS"
+                                desc="Add an entry to Calendar" unlocked="1"  requirement={numEntry}></Achievement>
                             <Achievement imageUri={(require('../assets/FlowerBush.png'))} name="BUSH"
-                                desc="Add an entry to Calendar" unlocked="yes"></Achievement>
-                            <Achievement imageUri={(require('../assets/Pot.png'))} name="BUSH"
-                                desc="Add 5 entry to Calendar" unlocked="yes"></Achievement>
+                                desc="Add an entry to Calendar" unlocked="3"  requirement={numEntry}></Achievement>
+                            <Achievement imageUri={(require('../assets/Pot.png'))} name="POTTED PLANT"
+                                desc="Add 5 entry to Calendar" unlocked="5"  requirement={numEntry}></Achievement>
                             <Achievement imageUri={(require('../assets/Tree.png'))} name="TREE"
-                                desc="Add 10 entries to Calendar" unlocked="no"></Achievement>
-                            <Achievement imageUri={(require('../assets/AppleTree.png'))} name="APPLES"
-                                desc="Add 15 entries to Calendar" unlocked="no"></Achievement>
+                                desc="Add 10 entries to Calendar" unlocked="10"  requirement={numEntry}></Achievement>
+                            <Achievement imageUri={(require('../assets/AppleTree.png'))} name="APPLE TREE"
+                                desc="Add 15 entries to Calendar" unlocked="15"  requirement={numEntry}></Achievement>
                         </ScrollView>
                     </View>
                 </View>

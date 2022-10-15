@@ -6,8 +6,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const ProfileScreen = ({ route }) => {
     const navigation = useNavigation();
 
-    const { Username = "Name" } = route.params;
-    const { Age = "Age" } = route.params;
 
     const [getUsername, setGetValue] = useState('');
 
@@ -22,12 +20,12 @@ const ProfileScreen = ({ route }) => {
 
     return (
         <ScrollView style={styles.background}>
-            <Text style={styles.heading}>Profile{getUsername}</Text>
+            <Text style={styles.heading}>{getUsername}</Text>
             {/* user container */}
             <View style={styles.userContainer}>
                 <Image style={styles.logo} source={require('../assets/Girl.png')} />
                 <View style={styles.infoContainer}>
-                    <Text style={styles.name}>Baek Ye-rin{getUsername}</Text>
+                    <Text style={styles.name}>{getUsername}</Text>
                     {/* <Text style={styles.userText}>{Age}</Text> */}
                 </View>
             </View>

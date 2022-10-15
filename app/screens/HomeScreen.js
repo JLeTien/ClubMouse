@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useCallback } from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import * as SQLite from "expo-sqlite"
@@ -13,15 +13,9 @@ import {
 import ExpoTHREE, { TextureLoader, Renderer, THREE } from 'expo-three';
 import { ExpoWebGLRenderingContext, GLView } from 'expo-gl';
 import { StatusBar } from 'expo-status-bar';
-//open the database
-function openDatabase() {
-  const db = SQLite.openDatabase("db.db");
-  return db;
-}
-const username = username;
-const db = openDatabase();
-const HomeScreen = () => {
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const HomeScreen = () => {
   const onContextCreate = async (gl /*: not sure what should be here */) => {
     // three.js implementation
     const scene = new Scene();
@@ -48,20 +42,39 @@ const HomeScreen = () => {
     const world = new Mesh(worldGeometry, worldMaterial);
 
     // add world to scene
-    // scene.add(world);
+    scene.add(world);
+
+    // random y location
+    yPos = randomPlacement();
+    yPoss = randomPlacement();
 
     // Sprite
-    const map = new TextureLoader().load(require('../assets/Tree.png'));
-    const material = new THREE.SpriteMaterial({ map: map });
-    const sprite = new THREE.Sprite(material);
-    sprite.position.set(0, 0, 1);
-    sprite.scale.set(0.25, 0.25, 0.25);
-    // scene.add( sprite );
+    const mapTree = new TextureLoader().load(require('../assets/Tree.png'));
+    const materialTree = new THREE.SpriteMaterial({ map: mapTree });
+    const tree = new THREE.Sprite(materialTree);
+    tree.position.set(0, yPos, 1);
+    tree.scale.set(0.25, 0.25, 0.25);
+    scene.add(tree);
+    world.add(tree)
 
-    const group = new THREE.Group();
-    group.add(world);
-    group.add(sprite);
-    scene.add(group)
+    // Sprite 2
+    const mapDog = new TextureLoader().load(require('../assets/Dog2.png'));
+    const materialDog = new THREE.SpriteMaterial({ map: mapDog });
+    const dog = new THREE.Sprite(materialDog);
+    dog.position.set(0, yPoss, 1);
+    dog.scale.set(0.25, 0.25, 0.25);
+    scene.add(dog);
+    world.add(dog)
+
+    // const group = new THREE.Group();
+    // group.add(world);
+    // group.add(sprite);
+    // scene.add(group)
+
+    function randomPlacement() {
+      randInt = Math.floor(Math.random() * 6);
+      return (randInt / 10);
+    }
 
     // create render function
     const render = () => {
@@ -71,8 +84,8 @@ const HomeScreen = () => {
       // sphere.rotation.x += 0.01;
 
       // rotate around y axis
-      // world.rotation.y += 0.005
-      group.rotation.y += 0.005
+      world.rotation.y += 0.005
+      // group.rotation.y += 0 .005
 
       renderer.render(scene, camera);
       gl.endFrameEXP();
@@ -81,17 +94,37 @@ const HomeScreen = () => {
     // call render
     render();
   };
-  const [username, setUsername] = useState('');
-  useEffect(() => {
-    db.transaction(
-      (tx) => {
-        tx.executeSql("select value from users where id = 1", [], (tx, results) =>
+  const [username, setGetValue] = useState('');
+  AsyncStorage.getItem('Username').then(
+    (value) =>
+        // AsyncStorage returns a promise
+        // Adding a callback to get the value
+        setGetValue(value),
+    // Setting the value in Text
+);
 
-          setUsername(results.rows.item(0).value)
-        );
-      },
-    );
-  })
+  const [title, setTitle] = useState("Welcome");
+  const [time, setTime] = useState(null);
+  React.useEffect(() => {
+    
+    const timer = setInterval(() => {
+      var hours = new Date().getHours();
+      setTime(new Date().toLocaleString());
+      if(hours> 18 && hours <24 ){
+        setTitle("Good Evening");
+      }else if (hours> 1 && hours <10){
+        setTitle("Good Morning");
+      }else if (hours> 10 && hours <18){
+        setTitle("Good Afternoon");
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  
   return (
     // <SafeAreaView style={styles.background}>
     <ImageBackground source={require('../assets/Space.jpg')} style={{
@@ -101,8 +134,9 @@ const HomeScreen = () => {
       backgroundColor: "#2E1F56"
     }}>
 
-      <View style={styles.top}>
-        <Text style={styles.text} >Good Night {username}</Text>
+    <View style={styles.top}>
+      <Text style={styles.text}>{time}</Text> 
+      <Text style={styles.text}>{title} {username}</Text> 
       </View>
       <View>
         <GLView
