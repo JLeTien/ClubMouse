@@ -7,6 +7,7 @@ import CalendarEntry from './components/CalendarEntry'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import moment from 'moment';
+import { Feather } from '@expo/vector-icons';
 
 const timeToString = (time) => {
   const date = new Date(time);
@@ -16,20 +17,26 @@ const timeToString = (time) => {
 const CalendarScreen = ({ route }) => {
   const [items, setItems] = useState({});
   const [selectedDate, setSelectedDate] = useState();
+  const [selectedStart, setSelectedStart] = useState();
+  const [selectedEnd, setSelectedEnd] = useState();
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [isStartPickerVisible, setStartPickerVisibility] = useState(false);
+  const [isEndPickerVisible, setEndPickerVisibility] = useState(false);
 
-  const showDatePicker = () => {
-    setDatePickerVisibility(true);
-  };
+  // DATE PICKER
+  const showDatePicker = () => { setDatePickerVisibility(true); };
+  const hideDatePicker = () => { setDatePickerVisibility(false); };
+  const handleConfirm = (date) => { setSelectedDate(date); hideDatePicker(); };
 
-  const hideDatePicker = () => {
-    setDatePickerVisibility(false);
-  };
+  // START TIME
+  const showStartPicker = () => { setStartPickerVisibility(true); };
+  const hideStartPicker = () => { setStartPickerVisibility(false); };
+  const handleStartConfirm = (time) => { setSelectedStart(time); hideStartPicker(); };
 
-  const handleConfirm = (date) => {
-    setSelectedDate(date);
-    hideDatePicker();
-  };
+  // END TIME
+  const showEndPicker = () => { setEndPickerVisibility(true); };
+  const hideEndPicker = () => { setEndPickerVisibility(false); };
+  const handleEndConfirm = (time) => { setSelectedEnd(time); hideEndPicker(); };
 
   const [username1, setGetValue] = useState('');
 
@@ -167,20 +174,20 @@ const CalendarScreen = ({ route }) => {
               <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 30 }} />
               <TextInput placeholder="Description" style={{ color: "white", fontSize: 20 }} />
 
-              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Please select date"}`}</Text>
-                <Button title="Show Date Picker" onPress={showDatePicker} />
-                <DateTimePickerModal
-                  display={Platform.OS === 'ios' ? 'inline' : 'default'}
-                  isVisible={isDatePickerVisible}
-                  mode="date"
-                  onConfirm={handleConfirm}
-                  onCancel={hideDatePicker}
-                // date={date}
-                // minimumDate={minimumDate}
-                />
-              </View>
-
+              <Text>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Select date"}`}</Text>
+              <Button title="Show Date Picker" onPress={showDatePicker} />
+              <DateTimePickerModal
+                // display={Platform.OS === 'ios' ? 'inline' : 'default'}
+                isVisible={isDatePickerVisible} mode="date" onConfirm={handleConfirm} onCancel={hideDatePicker}
+              />
+              <Button title="Show Date Picker" onPress={showStartPicker} />
+              <DateTimePickerModal
+                isVisible={isStartPickerVisible} mode="time" onConfirm={handleStartConfirm} onCancel={hideStartPicker}
+              />
+              <Button title="Show Date Picker" onPress={showEndPicker} />
+              <DateTimePickerModal
+                isVisible={isEndPickerVisible} mode="time" onConfirm={handleEndConfirm} onCancel={hideEndPicker}
+              />
             </View>
           </View>
         </View>
@@ -249,6 +256,7 @@ const styles = StyleSheet.create({
     flex: 0.5,
   },
   pressContainer: {
+    alignItems: "stretch"
   },
   inputBox: {
     display: "flex",
@@ -282,11 +290,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
-  },
-  input: {
-    backgroundColor: "white",
-    width: "80%",
-    fontSize: 60
   },
 });
 AppRegistry.registerComponent('IosFonts', () => IosFonts);
