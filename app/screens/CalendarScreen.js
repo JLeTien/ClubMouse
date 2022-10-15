@@ -164,12 +164,16 @@ const CalendarScreen = ({ route }) => {
                 <Text>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Please select date"}`}</Text>
                 <Button title="Show Date Picker" onPress={showDatePicker} />
                 <DateTimePickerModal
-                  isVisible={isDatePickerVisible}
+                  display={Platform.OS === 'ios' ? 'inline' : 'default'}
+                  isVisible={true}
                   mode="date"
                   onConfirm={handleConfirm}
                   onCancel={hideDatePicker}
+                // date={date}
+                // minimumDate={minimumDate}
                 />
               </View>
+
             </View>
           </View>
         </View>

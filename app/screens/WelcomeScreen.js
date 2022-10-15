@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import NavigationBar from '../navigation/NavigationBar';
+import moment from 'moment';
 
 const WelcomeScreen = () => {
     const navigation = useNavigation();
+    const [selectedDate, setSelectedDate] = useState();
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
+
+    const handleConfirm = (date) => {
+        setSelectedDate(date);
+        hideDatePicker();
+    };
     return (
         <SafeAreaView
             style={styles.background}>
             <View style={styles.logoContainer}>
-            <Image style={styles.logo} source={require('../assets/Logo.png')} />
-            <Image style={styles.logo} source={require('../assets/Saturn.png')} />
+                <Image style={styles.logo} source={require('../assets/Logo.png')} />
+                <Image style={styles.logo} source={require('../assets/Saturn.png')} />
                 <Text style={styles.heading}> Welcome to Plan-it </Text>
                 <Text style={styles.body}> This app allows you to plan your schedule and
                     monitor your sleep for a healthy brain. </Text>
