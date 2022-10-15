@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Feather } from '@expo/vector-icons';
 
 // Screens
 import ProfileScreen from '../screens/ProfileScreen';
@@ -15,7 +14,7 @@ import { useRoute } from '@react-navigation/native';
 
 // This is the set up for the basic components for the navigation bar
 const NavigationBar = () => {
-    
+
     return (
         <Tab.Navigator
             initialRouteName="NavigationBar"
@@ -72,7 +71,7 @@ const NavigationBar = () => {
             <Tab.Screen
                 name="Profile"
                 component={ProfileScreen}
-                initialParams={{ Username: "", Age: "" }}/>
+                initialParams={{ Username: "", Age: "" }} />
         </Tab.Navigator>
     )
 }
