@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useCallback } from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import * as SQLite from "expo-sqlite"
@@ -13,15 +13,9 @@ import {
 import ExpoTHREE, { TextureLoader, Renderer, THREE } from 'expo-three';
 import { ExpoWebGLRenderingContext, GLView } from 'expo-gl';
 import { StatusBar } from 'expo-status-bar';
-//open the database
-function openDatabase() {
-  const db = SQLite.openDatabase("db.db");
-  return db;
-}
-const username = username;
-const db = openDatabase();
-const HomeScreen = () => {
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const HomeScreen = () => {
   const onContextCreate = async (gl /*: not sure what should be here */) => {
     // three.js implementation
     const scene = new Scene();
@@ -81,17 +75,37 @@ const HomeScreen = () => {
     // call render
     render();
   };
-  const [username, setUsername] = useState('');
-  useEffect(() => {
-    db.transaction(
-      (tx) => {
-        tx.executeSql("select value from users where id = 1", [], (tx, results) =>
+  const [username, setGetValue] = useState('');
+  AsyncStorage.getItem('Username').then(
+    (value) =>
+        // AsyncStorage returns a promise
+        // Adding a callback to get the value
+        setGetValue(value),
+    // Setting the value in Text
+);
 
-          setUsername(results.rows.item(0).value)
-        );
-      },
-    );
-  })
+  const [title, setTitle] = useState("Welcome");
+  const [time, setTime] = useState(null);
+  React.useEffect(() => {
+    
+    const timer = setInterval(() => {
+      var hours = new Date().getHours();
+      setTime(new Date().toLocaleString());
+      if(hours> 18 && hours <24 ){
+        setTitle("Good Evening");
+      }else if (hours> 1 && hours <10){
+        setTitle("Good Morning");
+      }else if (hours> 10 && hours <18){
+        setTitle("Good Afternoon");
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  
   return (
     // <SafeAreaView style={styles.background}>
     <ImageBackground source={require('../assets/Space.jpg')} style={{
@@ -101,8 +115,9 @@ const HomeScreen = () => {
       backgroundColor: "#2E1F56"
     }}>
 
-      <View style={styles.top}>
-        <Text style={styles.text} >Good Night {username}</Text>
+    <View style={styles.top}>
+      <Text style={styles.text}>{time}</Text> 
+      <Text style={styles.text}>{title} {username}</Text> 
       </View>
       <View>
         <GLView
