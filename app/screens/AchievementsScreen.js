@@ -79,8 +79,10 @@ const AchievementsScreen = () => {
                     </Text>
                     <View style={{ height: 170, marginTop: 10, backgroundColor: '#2E1F56' }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                            <Achievement imageUri={(require('../assets/FlowerBush.png'))} name="BUSH"
+                        <Achievement imageUri={(require('../assets/Flowers.png'))} name="FLOWERS"
                                 desc="Add an entry to Calendar" unlocked="1"  requirement={numEntry}></Achievement>
+                            <Achievement imageUri={(require('../assets/FlowerBush.png'))} name="BUSH"
+                                desc="Add an entry to Calendar" unlocked="3"  requirement={numEntry}></Achievement>
                             <Achievement imageUri={(require('../assets/Pot.png'))} name="POTTED PLANT"
                                 desc="Add 5 entry to Calendar" unlocked="5"  requirement={numEntry}></Achievement>
                             <Achievement imageUri={(require('../assets/Tree.png'))} name="TREE"
