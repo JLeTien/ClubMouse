@@ -14,7 +14,7 @@ const timeToString = (time) => {
   return date.toISOString().split('T')[0];
 };
 
-const CalendarScreen = ({ route }) => {
+const CalendarScreen = () => {
   const [items, setItems] = useState({});
   const [selectedDate, setSelectedDate] = useState();
   const [selectedStart, setSelectedStart] = useState();
@@ -40,36 +40,38 @@ const CalendarScreen = ({ route }) => {
 
   const [username1, setGetValue] = useState('');
 
-  const [time, setTime] = useState([]);
+  const [timeDatabase, setTime] = useState([]);
   const [date, setDate] = useState([]);
   const [task, setTask] = useState([]);
 
-  // Function to get the value from AsyncStorage
-  AsyncStorage.getItem('Username').then(
-    (value) =>
-      // AsyncStorage returns a promise
-      // Adding a callback to get the value
-      setGetValue(value),
-    // Setting the value in Text
-  );
-
-
+        // Function to get the value from AsyncStorage
+        AsyncStorage.getItem('Username').then(
+          (value) =>
+        //     // AsyncStorage returns a promise
+        //     // Adding a callback to get the value
+            setGetValue(value),
+        //   // Setting the value in Text
+        );
+  //AsyncStorage.clear();
+  
   const loadItems = (day) => {
+    for (var member in items) delete items[member];
     setTimeout(() => {
-      for (let i = 0; i < 85; i++) {
+      for (let i = 0; i < 5; i++) {
         const time = day.timestamp + i * 24 * 60 * 60 * 1000;
         const strTime = timeToString(time);
         if (!items[strTime]) {
           items[strTime] = [];
-          const numItems = 1;
-          if (strTime === "2022-10-13") {
-            items[strTime].push({
-              name: 'This is for me',
-              height: 100,
-              color: "pink"
-            });
-          }
         }
+          for(var index = 0; index < date.length; index++) {        
+            if (strTime === date[index]) {
+              items[strTime].push({
+                name: timeDatabase[index] + ": " + task[index],
+                height: 100,
+                color: "pink"
+              });
+            }
+          }
       }
       const newItems = {};
       Object.keys(items).forEach((key) => {
@@ -77,6 +79,7 @@ const CalendarScreen = ({ route }) => {
       });
       setItems(newItems);
     }, 100);
+    
   };
 
   const getData = () => {
@@ -86,30 +89,29 @@ const CalendarScreen = ({ route }) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     }
-    var Data = {
+    var Data ={
       username: usernameVar,
     };
-    fetch(InsertAPIURL, {
-      method: 'POST',
-      headers: headers,
+    fetch(InsertAPIURL,{
+      method:'POST',
+      headers:headers,
       body: JSON.stringify(Data) //convert data to JSON
     })
-      .then((response) => response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
-      .then((response) => {
-        if (response[0].Message != "Nothing") {
-          // setDate(response[0].Date);
-          // setTime(response[0].Time);
-          // setTask(response[0].Task);
-        }
-      })
-      .catch((error) => {
-        alert("Error Occured " + error);
-      })
+    .then((response)=>response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
+    .then((response)=>{
+      if (response[0].Message != "Nothing") {
+        setDate(response[0].Date);
+        setTime(response[0].Time);
+        setTask(response[0].Task);
+      }
+    })
+    .catch((error)=>{
+      alert("Error Occured " + error);
+    })
   }
   useEffect(() => {
     getData();
-  }, [])
-
+  })
   const renderItem = (item) => {
     return (
       <CalendarEntry name={item.name}></CalendarEntry>
