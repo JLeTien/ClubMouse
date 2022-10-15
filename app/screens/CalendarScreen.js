@@ -63,7 +63,7 @@ const CalendarScreen = () => {
         if (!items[strTime]) {
           items[strTime] = [];
         }
-          for(index = 0; index < date.length; index++) {        
+          for(var index = 0; index < date.length; index++) {        
             if (strTime === date[index]) {
               items[strTime].push({
                 name: timeDatabase[index] + ": " + task[index],
