@@ -40,7 +40,8 @@ const CalendarScreen = () => {
 
   const [username1, setGetValue] = useState('');
 
-  const [timeDatabase, setTime] = useState([]);
+  const [timeStart, setTimeStart] = useState([]);
+  const [timeEnd, setTimeEnd] = useState([]);
   const [date, setDate] = useState([]);
   const [task, setTask] = useState([]);
 
@@ -57,7 +58,7 @@ const CalendarScreen = () => {
   const loadItems = (day) => {
     for (var member in items) delete items[member];
     setTimeout(() => {
-      for (let i = -30; i < 30; i++) {
+      for (let i = -7; i < 7; i++) {
         const time = day.timestamp + i * 24 * 60 * 60 * 1000;
         const strTime = timeToString(time);
         if (!items[strTime]) {
@@ -66,7 +67,7 @@ const CalendarScreen = () => {
           for(var index = 0; index < date.length; index++) {        
             if (strTime === date[index]) {
               items[strTime].push({
-                name: timeDatabase[index] + ": " + task[index],
+                name: timeStart[index] + " - " + timeEnd[index] + ": " + task[index],
                 height: 100,
                 color: "pink"
               });
@@ -102,7 +103,8 @@ const CalendarScreen = () => {
     .then((response)=>{
       if (response[0].Message != "Nothing") {
         setDate(response[0].Date);
-        setTime(response[0].Time);
+        setTimeStart(response[0].TimeStart);
+        setTimeEnd(response[0].TimeEnd);
         setTask(response[0].Task);
       }
     })
@@ -113,7 +115,7 @@ const CalendarScreen = () => {
 
   useEffect(() => {
     getData();
-  }, [items])
+  }, [items]);
 
   const renderItem = (item) => {
     return (
@@ -144,6 +146,7 @@ const CalendarScreen = () => {
             dayTextColor: "#BEF0C3",
             monthTextColor: "white",
             selectedDotColor: "",
+            refreshing: true
           }}
           style={{ backgroundColor: "black" }}
         />
