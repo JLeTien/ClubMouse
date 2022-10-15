@@ -51,19 +51,19 @@ const ProfileScreen = ({ route }) => {
                     <View style={styles.badgesContainer}>
                         <Text style={styles.badgeTitle}>Sleeps</Text>
                         <Image style={styles.badges} source={require('../assets/GoldMedal.png')} />
-                        <Text style={styles.badgeText}>Log 100 sleeps</Text>
+                        <Text style={styles.badgeText}>Log 100/100 sleeps</Text>
                     </View>
                     {/* badge 2 */}
                     <View style={styles.badgesContainer}>
                     <Text style={styles.badgeTitle}>Spawns</Text>
                         <Image style={styles.badges} source={require('../assets/SilverMedal.png')} />
-                        <Text style={styles.badgeText}>Spawn 30 mobs</Text>
+                        <Text style={styles.badgeText}>Spawn 7/20 mobs</Text>
                     </View>
                     {/* badge 3 */}
                     <View style={styles.badgesContainer}>
                     <Text style={styles.badgeTitle}>Streaks</Text>
                         <Image style={styles.badges} source={require('../assets/BronzeMedal.png')} />
-                        <Text style={styles.badgeText}>Log 10 sleeps in a row</Text>
+                        <Text style={styles.badgeText}>Log 7/10 sleeps in a row</Text>
                     </View>
                 </View>
             </View>
@@ -151,6 +151,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         margin: 30,
         backgroundColor: '#4a338a',
+        marginTop: 0,
         borderWidth: 1,
         flexDirection: "row",
         flexWrap: "wrap",
@@ -161,8 +162,8 @@ const styles = StyleSheet.create({
     showcaseContainer: {
         backgroundColor: '#4a338a',
         borderRadius: 30,
-        //borderColor: "white",
-        borderWidth: 1,
+        borderColor: "white",
+        borderWidth: 0,
         marginLeft: 30,
         marginRight: 30,
     },
@@ -172,14 +173,13 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     bigBadgesContainer: {
-
         flex: 1,
         flexDirection: 'row',
 
     },
     badgesContainer: {
         width: '33.333%',
-        borderWidth: 1
+       
     },
     badges: {
         width: 90,

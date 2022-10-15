@@ -33,6 +33,10 @@ const CalendarScreen = ({ route }) => {
 
   const [username1, setGetValue] = useState('');
 
+  const [time, setTime] = useState([]);
+  const [date, setDate] = useState([]);
+  const [task, setTask] = useState([]);
+
   // Function to get the value from AsyncStorage
   AsyncStorage.getItem('Username').then(
     (value) =>
@@ -41,6 +45,7 @@ const CalendarScreen = ({ route }) => {
       setGetValue(value),
     // Setting the value in Text
   );
+
 
   const loadItems = (day) => {
     setTimeout(() => {
@@ -85,7 +90,9 @@ const CalendarScreen = ({ route }) => {
       .then((response) => response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
       .then((response) => {
         if (response[0].Message != "Nothing") {
-          console.log(response);
+          // setDate(response[0].Date);
+          // setTime(response[0].Time);
+          // setTask(response[0].Task);
         }
       })
       .catch((error) => {
@@ -94,7 +101,7 @@ const CalendarScreen = ({ route }) => {
   }
   useEffect(() => {
     getData();
-  })
+  }, [])
 
   const renderItem = (item) => {
     return (
@@ -165,7 +172,7 @@ const CalendarScreen = ({ route }) => {
                 <Button title="Show Date Picker" onPress={showDatePicker} />
                 <DateTimePickerModal
                   display={Platform.OS === 'ios' ? 'inline' : 'default'}
-                  isVisible={true}
+                  isVisible={isDatePickerVisible}
                   mode="date"
                   onConfirm={handleConfirm}
                   onCancel={hideDatePicker}
