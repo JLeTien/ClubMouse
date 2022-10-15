@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Modal, Button } from 'react-native'
 import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -46,8 +46,12 @@ const AchievementsScreen = () => {
     useEffect(() => {
         getData();
     })
-    return (
 
+    // const [modalVisible, setModalVisible] = useState(false);
+
+    // if 
+
+    return (
         <SafeAreaView style={styles.background}>
             <View stlye={styles.headingContainer}>
                 <Text style={styles.heading}>Challenges</Text>
@@ -107,6 +111,27 @@ const AchievementsScreen = () => {
                     </View>
                 </View>
             </ScrollView>
+
+            
+
+            {/* <Modal
+                animationType="fade"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                Alert.alert("Modal has been closed.");
+                setModalVisible(!modalVisible);
+                }}>
+                <View style={styles.modalView}>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.text}>Congratulations, you have completed an achievement</Text>
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <Button title="Continue" onPress={() => setModalVisible(!modalVisible)} color="white"/>
+                    </View>
+                </View>
+            </Modal> */}
+
         </SafeAreaView >
     )
 }

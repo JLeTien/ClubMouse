@@ -6,9 +6,10 @@ import {
 
 class Achievement extends Component {
     render() {
+
         return (
             <TouchableOpacity>
-                <View style={this.props.unlocked == this.props.requirement ? styles.bigContainer : styles.bigContainer2}>
+                <View style={(parseInt(this.props.requirement) >= parseInt(this.props.unlocked)) ? styles.bigContainer : styles.bigContainer2}>
                     <View style={{ flex: 2 }}>
                         <View style={styles.smallContainer}>
                             <View style={{ flex: 1, padding: 10 }}>
