@@ -35,13 +35,13 @@ const SignUpScreen = () => {
       .then(async (response) => {
         // If data is in JSON => Display alert msg
         if (response[0].Message == "valid") {
-        try {
-          await AsyncStorage.setItem('Username',response[0].Username);
-        } catch(e) {
-          alert('Failed to save username');
-        }
-        setUsername(response[0].Username);
-        navigation.navigate("NavigationBar");
+          try {
+            await AsyncStorage.setItem('Username', response[0].Username);
+          } catch (e) {
+            alert('Failed to save username');
+          }
+          setUsername(response[0].Username);
+          navigation.navigate("NavigationBar");
         } else {
           alert(response[0].Message);
         }

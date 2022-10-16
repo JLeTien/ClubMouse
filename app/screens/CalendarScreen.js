@@ -220,23 +220,23 @@ const CalendarScreen = () => {
             </View>
 
             <View style={styles.inputBox}>
-              <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 30 }} 
-              onChangeText = {(selected) => setSelectedTask(selected)}
-              value = {selectedTask}/>
+              <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 30 }}
+                onChangeText={(selected) => setSelectedTask(selected)}
+                value={selectedTask} />
               <TextInput placeholder="Description" style={{ color: "white", fontSize: 20 }} />
 
-              <Text>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Select date"}`}</Text>
+              <Text style={styles.textStyle}>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Select date"}`}</Text>
               <Button title="Show Date Picker" onPress={showDatePicker} />
               <DateTimePickerModal
                 // display={Platform.OS === 'ios' ? 'inline' : 'default'}
                 isVisible={isDatePickerVisible} mode="date" onConfirm={handleConfirm} onCancel={hideDatePicker}
               />
-              <Text>{`Time:  ${selectedStart ? moment(selectedStart).format("h:mm") : "Select start"}`}</Text>
+              <Text style={{ fontsize: 10 }}>{`${selectedStart ? moment(selectedStart).format("h:mm a") : "Start Time"}`}</Text>
               <Button title="Show Date Picker" onPress={showStartPicker} />
               <DateTimePickerModal
                 isVisible={isStartPickerVisible} mode="time" onConfirm={handleStartConfirm} onCancel={hideStartPicker}
               />
-              <Text>{`Time:  ${selectedEnd ? moment(selectedEnd).format("h:mm") : "Select end"}`}</Text>
+              <Text style={styles.textStyle}>{`${selectedEnd ? moment(selectedEnd).format("h:mm a") : "End Time"}`}</Text>
               <Button title="Show Date Picker" onPress={showEndPicker} />
               <DateTimePickerModal
                 isVisible={isEndPickerVisible} mode="time" onConfirm={handleEndConfirm} onCancel={hideEndPicker}
@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 10,
     elevation: 5,
-    flex: 0.5,
+    flex: 0.4,
   },
   pressContainer: {
     alignItems: "stretch"
