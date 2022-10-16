@@ -19,6 +19,7 @@ const CalendarScreen = () => {
   const [selectedDate, setSelectedDate] = useState();
   const [selectedStart, setSelectedStart] = useState();
   const [selectedEnd, setSelectedEnd] = useState();
+  const [selectedTask, setSelectedTask] = useState();
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [isStartPickerVisible, setStartPickerVisibility] = useState(false);
   const [isEndPickerVisible, setEndPickerVisibility] = useState(false);
@@ -219,7 +220,9 @@ const CalendarScreen = () => {
             </View>
 
             <View style={styles.inputBox}>
-              <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 30 }} />
+              <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 30 }} 
+              onChangeText = {(selected) => setSelectedTask(selected)}
+              value = {selectedTask}/>
               <TextInput placeholder="Description" style={{ color: "white", fontSize: 20 }} />
 
               <Text>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Select date"}`}</Text>
