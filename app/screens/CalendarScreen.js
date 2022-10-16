@@ -117,6 +117,46 @@ const CalendarScreen = () => {
     getData();
   }, [items]);
 
+  const onSavePressed = () => {
+    setModalVisible(!modalVisible);
+    var usernameVar = username1;
+    var timeend1 = selectedEnd;
+    var timestart1 = selectedStart;
+    var date1 = selectedDate;
+
+    var InsertAPIURL = "https://deco3801-clubmouse.uqcloud.net/addevent.php";   //API to render signup
+
+    var headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
+
+    var Data = {
+      username: usernameVar,
+      timeend: timeend1,
+      timestart: timestart1,
+      date: date1
+    };
+
+    fetch(InsertAPIURL, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(Data) //convert data to JSON
+    })
+      .then((response) => response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
+      .then((response) => {
+        if (response[0].Message === 'Success') {
+          alert("Your event has been saved!");
+        } else {
+          alert(response[0].Message);
+        }
+        
+      })
+      .catch((error) => {
+        alert("Error Occured" + error);
+      })
+  }
+
   const renderItem = (item) => {
     return (
       <CalendarEntry name={item.name}></CalendarEntry>
@@ -173,7 +213,7 @@ const CalendarScreen = () => {
                 <Text style={styles.textStyle}>X</Text>
               </Pressable>
               <Pressable
-                style={styles.button} onPress={() => setModalVisible(!modalVisible)}>
+                style={styles.button} onPress={() => onSavePressed()}>
                 <Text style={styles.textStyle}>SAVE</Text>
               </Pressable>
             </View>
