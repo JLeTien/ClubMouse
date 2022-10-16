@@ -40,7 +40,8 @@ const CalendarScreen = () => {
 
   const [username1, setGetValue] = useState('');
 
-  const [timeDatabase, setTime] = useState([]);
+  const [timeStart, setTimeStart] = useState([]);
+  const [timeEnd, setTimeEnd] = useState([]);
   const [date, setDate] = useState([]);
   const [task, setTask] = useState([]);
 
@@ -62,14 +63,15 @@ const CalendarScreen = () => {
         const strTime = timeToString(time);
         if (!items[strTime]) {
           items[strTime] = [];
-        }
-        for (var index = 0; index < date.length; index++) {
-          if (strTime === date[index]) {
-            items[strTime].push({
-              name: timeDatabase[index] + ": " + task[index],
-              height: 100,
-              color: "pink"
-            });
+
+          for (var index = 0; index < date.length; index++) {
+            if (strTime === date[index]) {
+              items[strTime].push({
+                name: timeStart[index] + " - " + timeEnd[index] + ": " + task[index],
+                height: 100,
+                color: "pink"
+              });
+            }
           }
         }
       }
@@ -101,7 +103,8 @@ const CalendarScreen = () => {
       .then((response) => {
         if (response[0].Message != "Nothing") {
           setDate(response[0].Date);
-          setTime(response[0].Time);
+          setTimeStart(response[0].TimeStart);
+          setTimeEnd(response[0].TimeEnd);
           setTask(response[0].Task);
         }
       })
@@ -112,7 +115,47 @@ const CalendarScreen = () => {
 
   useEffect(() => {
     getData();
-  }, [items])
+  }, [items]);
+
+  const onSavePressed = () => {
+    setModalVisible(!modalVisible);
+    var usernameVar = username1;
+    var timeend1 = selectedEnd;
+    var timestart1 = selectedStart;
+    var date1 = selectedDate;
+
+    var InsertAPIURL = "https://deco3801-clubmouse.uqcloud.net/addevent.php";   //API to render signup
+
+    var headers = {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    };
+
+    var Data = {
+      username: usernameVar,
+      timeend: timeend1,
+      timestart: timestart1,
+      date: date1
+    };
+
+    fetch(InsertAPIURL, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(Data) //convert data to JSON
+    })
+      .then((response) => response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
+      .then((response) => {
+        if (response[0].Message === 'Success') {
+          alert("Your event has been saved!");
+        } else {
+          alert(response[0].Message);
+        }
+
+      })
+      .catch((error) => {
+        alert("Error Occured" + error);
+      })
+  }
 
   const renderItem = (item) => {
     return (
@@ -143,6 +186,7 @@ const CalendarScreen = () => {
             dayTextColor: "#BEF0C3",
             monthTextColor: "white",
             selectedDotColor: "",
+            refreshing: true
           }}
           style={{ backgroundColor: "black" }}
         />
@@ -169,7 +213,7 @@ const CalendarScreen = () => {
                 <Text style={styles.textStyle}>X</Text>
               </Pressable>
               <Pressable
-                style={styles.button} onPress={() => setModalVisible(!modalVisible)}>
+                style={styles.button} onPress={() => onSavePressed()}>
                 <Text style={styles.textStyle}>SAVE</Text>
               </Pressable>
             </View>

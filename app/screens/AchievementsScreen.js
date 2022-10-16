@@ -47,9 +47,9 @@ const AchievementsScreen = () => {
         getData();
     })
 
-    // const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(true);
 
-    // if 
+    global.addSprite = false;
 
     return (
         <SafeAreaView style={styles.background}>
@@ -112,9 +112,8 @@ const AchievementsScreen = () => {
                 </View>
             </ScrollView>
 
-            
-
-            {/* <Modal
+            {/* The pop up screen */}
+            <Modal
                 animationType="fade"
                 transparent={true}
                 visible={modalVisible}
@@ -122,16 +121,24 @@ const AchievementsScreen = () => {
                 Alert.alert("Modal has been closed.");
                 setModalVisible(!modalVisible);
                 }}>
+                {/* The container for the pop up screen */}
                 <View style={styles.modalView}>
-                    <View style={styles.textContainer}>
-                        <Text style={styles.text}>Congratulations, you have completed an achievement</Text>
+                    {/* Container for the image */}
+                    <View style={styles.smallContainer}>
+                        <View style={{ flex: 1, padding: 10 }}>
+                            <Image style={styles.image} source={(require('../assets/Cat.png'))} />
+                        </View>
                     </View>
+                    {/* Container for the text */}
+                    <View style={styles.textContainer}>
+                        <Text style={styles.textMessage}>Congratulations, you have completed an achievement</Text>
+                    </View>
+                    {/* Container for the button */}
                     <View style={styles.buttonContainer}>
-                        <Button title="Continue" onPress={() => setModalVisible(!modalVisible)} color="white"/>
+                        <Button title="Continue" onPress={() => (setModalVisible(!modalVisible), global.addSprite = true)} color="white"/>
                     </View>
                 </View>
-            </Modal> */}
-
+            </Modal>
         </SafeAreaView >
     )
 }
@@ -196,7 +203,50 @@ const styles = StyleSheet.create({
     text: {
         color: 'white',
         fontsize: 30
-    }
+    },
+    modalView: {
+        backgroundColor: '#BEF0C3',
+        padding: 35,
+        borderRadius: 40,
+        borderWidth: 2,
+        borderColor: 'black',
+        flex: 0.40,
+        top: '27.5%',
+        width: '70%',
+        left: '15%',
+    },
+    smallContainer: {
+        height: 150,
+        width: 150,
+        backgroundColor: '#57CC99',
+        borderRadius: 30,
+        marginLeft: '12.5%',
+        marginTop: 5,
+    },
+    image: {
+        flex: 1,
+        width: null,
+        height: null,
+        resizeMode: 'contain',
+    },
+    textContainer: {
+        top: '12.5%',
+        marginLeft: '5%',
+    },
+    textMessage: {
+        color: 'black',
+        fontSize: 15,
+        // fontWeight: 'bold',
+    },
+    buttonContainer: {
+        top: '20%',
+        padding: 5,
+        flexDirection: "column",
+        borderWidth: 1,
+        borderColor: "black",
+        backgroundColor: "black",
+        borderRadius: 40,
+    },
 })
 
 export default AchievementsScreen
