@@ -27,7 +27,7 @@ const CalendarScreen = () => {
   // DATE PICKER
   const showDatePicker = () => { setDatePickerVisibility(true); };
   const hideDatePicker = () => { setDatePickerVisibility(false); };
-  const handleConfirm = (date) => { setSelectedDate(date); hideDatePicker(); };
+  const handleConfirm = (date) => { setSelectedDate(moment(date).format('YYYY-MM-DD')); hideDatePicker(); };
 
   // START TIME
   const showStartPicker = () => { setStartPickerVisibility(true); };
@@ -140,7 +140,7 @@ const CalendarScreen = () => {
       date: date1,
       task: task1
     };
-
+    console.log(Data);
     fetch(InsertAPIURL, {
       method: 'POST',
       headers: headers,
@@ -233,7 +233,7 @@ const CalendarScreen = () => {
                 // display={Platform.OS === 'ios' ? 'inline' : 'default'}
                 isVisible={isDatePickerVisible} mode="date" onConfirm={handleConfirm} onCancel={hideDatePicker}
               />
-              <Text style={{ fontsize: 10 }}>{`${selectedStart ? moment(selectedStart).format("h:mm a") : "Start Time"}`}</Text>
+              <Text style={styles.textStyle}>{`${selectedStart ? moment(selectedStart).format("h:mm a") : "Start Time"}`}</Text>
               <Button title="Show Date Picker" onPress={showStartPicker} />
               <DateTimePickerModal
                 isVisible={isStartPickerVisible} mode="time" onConfirm={handleStartConfirm} onCancel={hideStartPicker}

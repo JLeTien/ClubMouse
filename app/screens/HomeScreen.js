@@ -16,8 +16,10 @@ import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HomeScreen = () => {
-
-  const onContextCreate = ( gl ) => {
+  // React.useEffect(() => {
+  //   onContextCreate();
+  // }, [global.addSprite]);
+  const onContextCreate = (gl) => {
     // three.js implementation
     const scene = new Scene();
     const camera = new PerspectiveCamera(75, gl.drawingBufferWidth / gl.drawingBufferHeight, 0.1, 1000);
@@ -49,15 +51,16 @@ const HomeScreen = () => {
     // addSprite();
 
     // Sprite
-    function addSprite() {
+    function addSprite(image) {
 
       // random y location
       yPos = randomPlacement();
+      xPos = randomPlacementX();
 
-      const map = new TextureLoader().load(require('../assets/Dog2.png'));
+      const map = new TextureLoader().load(image);
       const material = new THREE.SpriteMaterial({ map: map });
       const sprite = new THREE.Sprite(material);
-      sprite.position.set(0, yPos, 1);
+      sprite.position.set(xPos, yPos, 1);
       sprite.scale.set(0.25, 0.25, 0.25);
       scene.add(sprite);
       world.add(sprite)
@@ -67,6 +70,24 @@ const HomeScreen = () => {
       randInt = Math.floor(Math.random() * 6);
       return (randInt / 10);
     }
+
+    function randomPlacementX() {
+      randInt = Math.floor(Math.random() * 11);
+      console.log(((randInt / 10) - 0.5))
+      return ((randInt / 10) - 0.5);
+    }
+
+    if (global.addSprite) {
+      console.log("we made it");
+      addSprite();
+      global.addSprite = false;
+    }
+
+    addSprite(require('../assets/Cat.png'));
+    addSprite(require('../assets/Dog2.png'));
+    addSprite(require('../assets/Flowers.png'));
+    addSprite(require('../assets/FlowerBush.png'));
+    addSprite(require('../assets/Pot.png'));
 
     // create render function
     const render = () => {
@@ -79,11 +100,6 @@ const HomeScreen = () => {
       world.rotation.y += 0.005
       // group.rotation.y += 0 .005
 
-      if (global.addSprite) {
-        console.log("we made it");
-        addSprite();
-        global.addSprite = false;
-      }
 
       renderer.render(scene, camera);
       gl.endFrameEXP();
@@ -96,24 +112,24 @@ const HomeScreen = () => {
   const [username, setGetValue] = useState('');
   AsyncStorage.getItem('Username').then(
     (value) =>
-        // AsyncStorage returns a promise
-        // Adding a callback to get the value
-        setGetValue(value),
+      // AsyncStorage returns a promise
+      // Adding a callback to get the value
+      setGetValue(value),
     // Setting the value in Text
-);
+  );
 
   const [title, setTitle] = useState("Welcome");
   const [time, setTime] = useState(null);
   React.useEffect(() => {
-    
+
     const timer = setInterval(() => {
       var hours = new Date().getHours();
       setTime(new Date().toLocaleString());
-      if(hours> 18 && hours <24 ){
+      if (hours > 18 && hours < 24) {
         setTitle("Good Evening");
-      }else if (hours> 1 && hours <10){
+      } else if (hours > 1 && hours < 10) {
         setTitle("Good Morning");
-      }else if (hours> 10 && hours <18){
+      } else if (hours > 10 && hours < 18) {
         setTitle("Good Afternoon");
       }
     }, 1000);
@@ -123,7 +139,7 @@ const HomeScreen = () => {
     };
   }, []);
 
-  
+
   return (
     // <SafeAreaView style={styles.background}>
     <ImageBackground source={require('../assets/Space.jpg')} style={{
@@ -133,9 +149,9 @@ const HomeScreen = () => {
       backgroundColor: "#2E1F56"
     }}>
 
-    <View style={styles.top}>
-      <Text style={styles.text}>{time}</Text> 
-      <Text style={styles.text}>{title} {username}</Text> 
+      <View style={styles.top}>
+        <Text style={styles.text}>{time}</Text>
+        <Text style={styles.text}>{title} {username}</Text>
       </View>
       <View>
         <GLView
