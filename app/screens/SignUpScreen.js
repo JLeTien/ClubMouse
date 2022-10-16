@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TextInput, ScrollView, TouchableOpacity } from 'react-native';
-import CustomButton from '../../CustomButton';
+import { StyleSheet, View, Image, Text, Button, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import NavigationBar from '../navigation/NavigationBar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -84,7 +81,6 @@ const LoginScreen = () => {
         />
       </View>
 
-
       <View style={styles.buttonContainer}>
         <Button onPress={onSignInPressed} title="SIGN UP" />
       </View>
@@ -98,22 +94,15 @@ function useForceUpdate() {
 }
 
 const styles = StyleSheet.create({
-  text: {
-    color: "white",
-    bottom: 20,
-  },
   title: {
     color: "#FFFFFF",
+    fontWeight: "bold"
   },
   root: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#2E1F56"
-  },
-  logo: {
-    width: 200,
-    height: 300,
   },
   container: {
     display: "flex",
@@ -130,14 +119,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
-  },
-  logo: {
-    width: 150,
-    height: 150,
-    borderRadius: 200 / 2,
-    borderColor: 'white',
-    borderWidth: 3,
-    justifyContent: "flex-start"
   },
   input: {
     backgroundColor: "white",
