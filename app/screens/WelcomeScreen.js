@@ -41,15 +41,15 @@ const WelcomeScreen = () => {
             <Image style={styles.saturn} source={require('../assets/Saturn.png')} />
             <Image style={styles.purpleplanet} source={require('../assets/PurplePlanet.png')} />
 
-            <Button style={styles.button} onPress={() => navigation.navigate("LoginScreen")} title="LOGIN" color="white" />
-            <Button style={styles.button} onPress={() => navigation.navigate("SignUpScreen")} title="SIGN UP" color="white" />
+            {/* <Button style={styles.button} onPress={() => navigation.navigate("LoginScreen")} title="LOGIN" color="white" />
+            <Button style={styles.button} onPress={() => navigation.navigate("SignUpScreen")} title="SIGN UP" color="white" /> */}
 
-            {/* <View style={styles.buttonContainer}>
+            <View style={styles.buttonContainer}>
                 <Button onPress={() => navigation.navigate("LoginScreen")} title="LOGIN" color="white" />
             </View>
             <View style={styles.buttonContainer}>
                 <Button onPress={() => navigation.navigate("SignUpScreen")} title="SIGN UP" color="white" />
-            </View> */}
+            </View>
         </ImageBackground>
     );
 }
@@ -100,13 +100,13 @@ const styles = StyleSheet.create({
         textAlign: "center"
     },
     buttonContainer: {
-        bottom: 30,
+        bottom: 0,
         margin: 10,
-        width: 350,
+        width: 300,
         flexDirection: "column",
         backgroundColor: "#6577B8",
         borderRadius: 40,
-        height: 60,
+        height: 50,
         justifyContent: "center"
     },
     buttonText: {

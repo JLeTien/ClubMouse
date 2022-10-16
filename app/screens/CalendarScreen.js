@@ -1,13 +1,12 @@
 import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity, Pressable, TextInput } from 'react-native'
 import React, { useState, useEffect } from 'react';
-import { Card, Avatar, Button } from 'react-native-paper';
+import { Avatar, Button } from 'react-native-paper';
 import { Agenda, } from 'react-native-calendars';
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CalendarEntry from './components/CalendarEntry'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import moment from 'moment';
-import { Feather } from '@expo/vector-icons';
 
 const timeToString = (time) => {
   const date = new Date(time);
@@ -68,9 +67,9 @@ const CalendarScreen = () => {
           for (var index = 0; index < date.length; index++) {
             if (strTime === date[index]) {
               items[strTime].push({
-                name: timeStart[index] + " - " + timeEnd[index] + ": " + task[index],
+                name: task[index] + ":" + timeStart[index] + " - " + timeEnd[index] + ": ",
                 height: 100,
-                color: "pink"
+                color: "pink",
               });
             }
           }
@@ -211,21 +210,21 @@ const CalendarScreen = () => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <View style={styles.pressContainer}>
-              <Pressable
-                style={styles.button} onPress={() => setModalVisible(!modalVisible)}>
+              <TouchableOpacity style={styles.button}
+                onPress={() => setModalVisible(!modalVisible)}>
                 <Text style={styles.textStyle}>X</Text>
-              </Pressable>
-              <Pressable
-                style={styles.button} onPress={() => onSavePressed()}>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.button}
+                onPress={() => onSavePressed()}>
                 <Text style={styles.textStyle}>SAVE</Text>
-              </Pressable>
+              </TouchableOpacity>
             </View>
 
             <View style={styles.inputBox}>
               <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 30 }}
                 onChangeText={(selected) => setSelectedTask(selected)}
                 value={selectedTask} />
-              <TextInput placeholder="Description" style={{ color: "white", fontSize: 20 }} />
 
               <Text style={styles.textStyle}>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Select date"}`}</Text>
               <Button title="Show Date Picker" onPress={showDatePicker} />
@@ -295,7 +294,7 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
   },
   modalView: {
-    backgroundColor: "#BBBEFE",
+    backgroundColor: "black",
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",
@@ -311,7 +310,8 @@ const styles = StyleSheet.create({
     flex: 0.4,
   },
   pressContainer: {
-    alignItems: "stretch"
+    flexDirection: 'row',
+    alignContent: "stretch"
   },
   inputBox: {
     display: "flex",
@@ -329,22 +329,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     fontSize: 20,
-  },
-  inputContainer: {
-    display: "flex",
-    flexDirection: "row",
-    backgroundColor: "white",
-    width: '90%',
-    borderRadius: 5,
-    borderColor: '#e8e8e8',
-    borderWidth: 1,
-    paddingHorizontal: 10,
-    marginVertical: 10,
-    padding: 10,
-    shadowColor: '#171717',
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    color: "#BBBEFE"
   },
 });
 AppRegistry.registerComponent('IosFonts', () => IosFonts);

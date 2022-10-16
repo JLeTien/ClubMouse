@@ -1183,61 +1183,12 @@
     "slash" "^3.0.0"
     "xcode" "^3.0.1"
     "xml2js" "0.4.23"
-<<<<<<< HEAD
-=======
-
-"@expo/config-plugins@4.1.5":
-  "integrity" "sha512-RVvU40RtZt12HavuDAe+LDIq9lHj7sheOfMEHdmpJ/uTA8pgvkbc56XF6JHQD+yRr6+uhhb+JnAasGq49dsQbw=="
-  "resolved" "https://registry.npmjs.org/@expo/config-plugins/-/config-plugins-4.1.5.tgz"
-  "version" "4.1.5"
-  dependencies:
-    "@expo/config-types" "^45.0.0"
-    "@expo/json-file" "8.2.36"
-    "@expo/plist" "0.0.18"
-    "@expo/sdk-runtime-versions" "^1.0.0"
-    "@react-native/normalize-color" "^2.0.0"
-    "chalk" "^4.1.2"
-    "debug" "^4.3.1"
-    "find-up" "~5.0.0"
-    "getenv" "^1.0.0"
-    "glob" "7.1.6"
-    "resolve-from" "^5.0.0"
-    "semver" "^7.3.5"
-    "slash" "^3.0.0"
-    "xcode" "^3.0.1"
-    "xml2js" "0.4.23"
-
-"@expo/config-types@^45.0.0":
-  "integrity" "sha512-/QGhhLWyaGautgEyU50UJr5YqKJix5t77ePTwreOVAhmZH+ff3nrrtYTTnccx+qF08ZNQmfAyYMCD3rQfzpiJA=="
-  "resolved" "https://registry.npmjs.org/@expo/config-types/-/config-types-45.0.0.tgz"
-  "version" "45.0.0"
->>>>>>> f0359dd21d322e7f939a8c93a1e8cbfce75eee96
 
 "@expo/config-types@^46.0.0", "@expo/config-types@^46.0.1":
   "integrity" "sha512-PXkmOgNwRyBfgVT1HmFZhfh3Qm7WKKyV6mk3/5HJ/LzPh1t+Zs2JrWX8U2YncTLV1QzV7nV8tnkyvszzqnZEzQ=="
   "resolved" "https://registry.npmjs.org/@expo/config-types/-/config-types-46.0.2.tgz"
   "version" "46.0.2"
 
-<<<<<<< HEAD
-=======
-"@expo/config@^6.0.6":
-  "integrity" "sha512-nMQaZl69r6CMJFhCj0xcGJN9bIi4Uws0k9K6q6rGFPFNarS0z0aexeyNLv93/J+hsTJVn0GEYtGz5Y/R8boXxw=="
-  "resolved" "https://registry.npmjs.org/@expo/config/-/config-6.0.26.tgz"
-  "version" "6.0.26"
-  dependencies:
-    "@babel/code-frame" "~7.10.4"
-    "@expo/config-plugins" "4.1.5"
-    "@expo/config-types" "^45.0.0"
-    "@expo/json-file" "8.2.36"
-    "getenv" "^1.0.0"
-    "glob" "7.1.6"
-    "require-from-string" "^2.0.2"
-    "resolve-from" "^5.0.0"
-    "semver" "7.3.2"
-    "slugify" "^1.3.4"
-    "sucrase" "^3.20.0"
-
->>>>>>> f0359dd21d322e7f939a8c93a1e8cbfce75eee96
 "@expo/config@~7.0.0", "@expo/config@~7.0.1", "@expo/config@7.0.1":
   "integrity" "sha512-4lu0wr45XXJ2MXiLAm2+fmOyy/jjqF3NuDm92fO6nuulRzEEvTP4w3vsibJ690rT81ohtvhpruKhkRs0wSjKWA=="
   "resolved" "https://registry.npmjs.org/@expo/config/-/config-7.0.1.tgz"
@@ -1738,17 +1689,10 @@
     "prompts" "^2.4.0"
     "semver" "^6.3.0"
 
-<<<<<<< HEAD
-"@react-native-community/datetimepicker@^6.5.0", "@react-native-community/datetimepicker@>=3.0.0":
-  "integrity" "sha512-s0gxsz/l3Ln2+dZV+4RZI94+A+JO8ywrjC17cGK8ozM+VLXHAUARgGLGc+vqNJkxzZzGUqnkO6/kypQGoK7t/A=="
-  "resolved" "https://registry.npmjs.org/@react-native-community/datetimepicker/-/datetimepicker-6.5.0.tgz"
-  "version" "6.5.0"
-=======
 "@react-native-community/datetimepicker@^3.5.2", "@react-native-community/datetimepicker@>=3.0.0":
   "integrity" "sha512-TWRuAtr/DnrEcRewqvXMLea2oB+YF+SbtuYLHguALLxNJQLl/RFB7aTNZeF+OoH75zKFqtXECXV1/uxQUpA+sg=="
   "resolved" "https://registry.npmjs.org/@react-native-community/datetimepicker/-/datetimepicker-3.5.2.tgz"
   "version" "3.5.2"
->>>>>>> f0359dd21d322e7f939a8c93a1e8cbfce75eee96
   dependencies:
     "invariant" "^2.2.4"
 
@@ -3293,17 +3237,6 @@
     "path-browserify" "^1.0.0"
     "url-parse" "^1.5.9"
 
-<<<<<<< HEAD
-"expo-constants@^13.2.4", "expo-constants@~13.2.2", "expo-constants@~13.2.4":
-=======
-"expo-constants@^12.2.0":
-  "integrity" "sha512-RVUOq4WUeejoNftai21Dm5RG0LKiEcWRC1Y+E8WiVtLz97MBlLv8k0Bjv1SD4LByH3frrkNsHBGfBAPLkGSGUQ=="
-  "resolved" "https://registry.npmjs.org/expo-constants/-/expo-constants-12.2.0.tgz"
-  "version" "12.2.0"
-  dependencies:
-    "@expo/config" "^6.0.6"
-    "uuid" "^3.3.2"
-
 "expo-constants@~13.2.2":
   "integrity" "sha512-Zobau8EuTk2GgafwkfGnWM6CmSLB7X8qnQXVuXe0nd3v92hfQUmRWGhJwH88uxXj3LrfqctM6PaJ8taG1vxfBw=="
   "resolved" "https://registry.npmjs.org/expo-constants/-/expo-constants-13.2.4.tgz"
@@ -3313,7 +3246,6 @@
     "uuid" "^3.3.2"
 
 "expo-constants@~13.2.4":
->>>>>>> f0359dd21d322e7f939a8c93a1e8cbfce75eee96
   "integrity" "sha512-Zobau8EuTk2GgafwkfGnWM6CmSLB7X8qnQXVuXe0nd3v92hfQUmRWGhJwH88uxXj3LrfqctM6PaJ8taG1vxfBw=="
   "resolved" "https://registry.npmjs.org/expo-constants/-/expo-constants-13.2.4.tgz"
   "version" "13.2.4"
@@ -3358,41 +3290,6 @@
   dependencies:
     "expo-gl-cpp" "~11.4.0"
     "invariant" "^2.2.4"
-<<<<<<< HEAD
-
-"expo-json-utils@~0.3.0":
-  "integrity" "sha512-ceo0pWFJqRAsNjZWX3rVDhy+NDzmrBNFOdvW+HE4EHqlt+OEUu9INIYKO8fU+g3ifI0VcKqHfvvj5wKsSpvPBw=="
-  "resolved" "https://registry.npmjs.org/expo-json-utils/-/expo-json-utils-0.3.0.tgz"
-  "version" "0.3.0"
-
-"expo-keep-awake@~10.2.0":
-  "integrity" "sha512-kIRtO4Hmrvxh4E45IPWG/NiUZsuRe1AQwBT09pq+kx8nm6tUS4B9TeL6+1NFy+qVBLbGKDqoQD5Ez7XYTFtBeQ=="
-  "resolved" "https://registry.npmjs.org/expo-keep-awake/-/expo-keep-awake-10.2.0.tgz"
-  "version" "10.2.0"
-
-"expo-manifests@~0.3.0":
-  "integrity" "sha512-zv2a4pzhbvxVjrTO4XEiP5THt4RwtxyJjfixFhDNfHtDQR7fS4h9sZSGX9ind+IS5SQJQ2ykfVAi8xnwP6zHaw=="
-  "resolved" "https://registry.npmjs.org/expo-manifests/-/expo-manifests-0.3.1.tgz"
-  "version" "0.3.1"
-  dependencies:
-    "expo-json-utils" "~0.3.0"
-
-"expo-modules-autolinking@>=0.8.1", "expo-modules-autolinking@0.10.3":
-  "integrity" "sha512-av9ln2zwUt303g98raX7sDmESgL3SXs1sbbtIjh1rL7R0676XIUacIKgbydR0/4tMbOShWx14Z9fozpk9xIAJA=="
-  "resolved" "https://registry.npmjs.org/expo-modules-autolinking/-/expo-modules-autolinking-0.10.3.tgz"
-  "version" "0.10.3"
-  dependencies:
-    "chalk" "^4.1.0"
-    "commander" "^7.2.0"
-    "fast-glob" "^3.2.5"
-    "find-up" "^5.0.0"
-    "fs-extra" "^9.1.0"
-
-"expo-modules-core@*":
-  "integrity" "sha512-lTH6MYULX99JK3zN4bhjRD3I9Y1CGx0RAhpZ6gCTO8GQ/DNw4xZRUwburKL9dJeZM5G1xJOcGoBkTfeMjUVe+g=="
-  "resolved" "https://registry.npmjs.org/expo-modules-core/-/expo-modules-core-0.11.7.tgz"
-  "version" "0.11.7"
-=======
 
 "expo-json-utils@~0.3.0":
   "integrity" "sha512-ceo0pWFJqRAsNjZWX3rVDhy+NDzmrBNFOdvW+HE4EHqlt+OEUu9INIYKO8fU+g3ifI0VcKqHfvvj5wKsSpvPBw=="
@@ -3434,22 +3331,10 @@
   "integrity" "sha512-KmTHtaL21M1AzKOmu3YM5K8ddCbbr6wgooG4uCb+o+7zZXe+BPP4jAPs5LLez1Et34OQcyjopxUpJ8r43HImvQ=="
   "resolved" "https://registry.npmjs.org/expo-modules-core/-/expo-modules-core-0.11.5.tgz"
   "version" "0.11.5"
->>>>>>> f0359dd21d322e7f939a8c93a1e8cbfce75eee96
   dependencies:
     "compare-versions" "^3.4.0"
     "invariant" "^2.2.4"
 
-<<<<<<< HEAD
-"expo-modules-core@0.11.5":
-  "integrity" "sha512-KmTHtaL21M1AzKOmu3YM5K8ddCbbr6wgooG4uCb+o+7zZXe+BPP4jAPs5LLez1Et34OQcyjopxUpJ8r43HImvQ=="
-  "resolved" "https://registry.npmjs.org/expo-modules-core/-/expo-modules-core-0.11.5.tgz"
-  "version" "0.11.5"
-  dependencies:
-    "compare-versions" "^3.4.0"
-    "invariant" "^2.2.4"
-
-=======
->>>>>>> f0359dd21d322e7f939a8c93a1e8cbfce75eee96
 "expo-sqlite@^10.3.0":
   "integrity" "sha512-i9jyOfDw472Ueqnhl4LvspSpBVRzeuGjPWFwDYnaBgNOV3HLeK9Q6P5ixV2/on5RenfL4jsxOQtgeZAXke9/UQ=="
   "resolved" "https://registry.npmjs.org/expo-sqlite/-/expo-sqlite-10.3.0.tgz"
@@ -5250,17 +5135,10 @@
   "resolved" "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
   "version" "1.0.4"
 
-<<<<<<< HEAD
-"moment@^2.24.0", "moment@^2.29.4", "moment@>=2.0.0":
-  "integrity" "sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w=="
-  "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.4.tgz"
-  "version" "2.29.4"
-=======
 "moment@^2.24.0", "moment@^2.29.1", "moment@>=2.0.0":
   "integrity" "sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ=="
   "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.1.tgz"
   "version" "2.29.1"
->>>>>>> f0359dd21d322e7f939a8c93a1e8cbfce75eee96
 
 "ms@^2.1.1", "ms@2.1.2":
   "integrity" "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="
@@ -5977,17 +5855,10 @@
   "resolved" "https://registry.npmjs.org/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz"
   "version" "1.3.1"
 
-<<<<<<< HEAD
-"react-native-modal-datetime-picker@^14.0.0":
-  "integrity" "sha512-orI0BMgX9uooSZWYIILmMaZXqi8Ebr0vqsLUFL03zORpv9NvkBlLMQ8dZVdDxWUc1Lbx/N5DJskC16AOypPy8Q=="
-  "resolved" "https://registry.npmjs.org/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-14.0.0.tgz"
-  "version" "14.0.0"
-=======
 "react-native-modal-datetime-picker@^13.0.0":
   "integrity" "sha512-Ltxr5bUXiaRTfDmRQkc3gIVKmRmPo6lW8rQYw+lyMhgveNIeTdGMkC8SY2vI5SLw+tT/3An2W7+6hta61LTb5A=="
   "resolved" "https://registry.npmjs.org/react-native-modal-datetime-picker/-/react-native-modal-datetime-picker-13.0.0.tgz"
   "version" "13.0.0"
->>>>>>> f0359dd21d322e7f939a8c93a1e8cbfce75eee96
   dependencies:
     "prop-types" "^15.7.2"
 

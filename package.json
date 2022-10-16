@@ -15,7 +15,6 @@
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/native-stack": "^6.9.0",
     "expo": "~46.0.10",
-    "expo-constants": "^12.2.0",
     "expo-file-system": "^14.1.0",
     "expo-gl": "^11.4.0",
     "expo-sqlite": "^10.3.0",
