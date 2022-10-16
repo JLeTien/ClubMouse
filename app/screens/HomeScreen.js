@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native'
+import { ImageBackground, StyleSheet, View, Text, } from 'react-native';
 import * as SQLite from "expo-sqlite"
-import CustomButton from '../../CustomButton';
 import {
   Scene,
   Mesh,
@@ -12,7 +10,6 @@ import {
 } from 'three';
 import ExpoTHREE, { TextureLoader, Renderer, THREE } from 'expo-three';
 import { ExpoWebGLRenderingContext, GLView } from 'expo-gl';
-import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HomeScreen = () => {
@@ -126,11 +123,13 @@ const HomeScreen = () => {
       var hours = new Date().getHours();
       setTime(new Date().toLocaleString());
       if (hours > 18 && hours < 24) {
-        setTitle("Good Evening");
+        setTitle("Good Night");
       } else if (hours > 1 && hours < 10) {
         setTitle("Good Morning");
-      } else if (hours > 10 && hours < 18) {
+      } else if (hours > 10 && hours < 13) {
         setTitle("Good Afternoon");
+      } else if (hours > 13 && hours < 18) {
+        setTitle("Good Evening");
       }
     }, 1000);
 
@@ -141,7 +140,6 @@ const HomeScreen = () => {
 
 
   return (
-    // <SafeAreaView style={styles.background}>
     <ImageBackground source={require('../assets/Space.jpg')} style={{
       flex: 1,
       justifyContent: "center",
@@ -149,58 +147,29 @@ const HomeScreen = () => {
       backgroundColor: "#2E1F56"
     }}>
 
-      <View style={styles.top}>
+      <View style={styles.root}>
         <Text style={styles.text}>{time}</Text>
-        <Text style={styles.text}>{title} {username}</Text>
-      </View>
-      <View>
-        <GLView
-          onContextCreate={onContextCreate}
-          style={{ width: 500, height: 500 }} />
+        <Text style={styles.text}>{title} {username}!</Text>
       </View>
 
+      <GLView
+        onContextCreate={onContextCreate}
+        style={{ width: 500, height: 500 }} />
     </ImageBackground>
-    // </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  top: {
-    paddingTop: 0,
+  root: {
     justifyContent: "flex-start",
     alignItems: "flex-end",
     flex: 0.2,
   },
-  middle: {
-    justifyContent: "flex-start",
-    alignItems: "flex-end",
-    paddingBottom: 100,
-    flex: 1,
-  },
-  bottom: {
-    flex: 1,
-  },
-  button: {
-    flexDirection: 'row',
-    height: 50,
-    width: 200,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 50,
-    elevation: 3,
-  },
-  heading: {
-    color: "white",
-    fontSize: 40,
-  },
   text: {
     color: "white",
     fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center"
   }
 })
 

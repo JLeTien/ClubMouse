@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { ImageBackground, StyleSheet, View, Image, Text, Button, Alert, SafeAreaView } from 'react-native';
+import { ImageBackground, StyleSheet, View, Image, Text, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
-import NavigationBar from '../navigation/NavigationBar';
-import moment from 'moment';
 
 const WelcomeScreen = () => {
     const navigation = useNavigation();
@@ -22,8 +20,6 @@ const WelcomeScreen = () => {
         hideDatePicker();
     };
     return (
-        //<SafeAreaView style={styles.background}>
-
         <ImageBackground source={require('../assets/Space.jpg')} style={{
             flex: 1,
             justifyContent: "center",
@@ -41,9 +37,6 @@ const WelcomeScreen = () => {
             <Image style={styles.saturn} source={require('../assets/Saturn.png')} />
             <Image style={styles.purpleplanet} source={require('../assets/PurplePlanet.png')} />
 
-            {/* <Button style={styles.button} onPress={() => navigation.navigate("LoginScreen")} title="LOGIN" color="white" />
-            <Button style={styles.button} onPress={() => navigation.navigate("SignUpScreen")} title="SIGN UP" color="white" /> */}
-
             <View style={styles.buttonContainer}>
                 <Button onPress={() => navigation.navigate("LoginScreen")} title="LOGIN" color="white" />
             </View>
@@ -55,12 +48,6 @@ const WelcomeScreen = () => {
 }
 
 const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        justifyContent: "flex-end",
-        alignItems: "center",
-        backgroundColor: "#2E1F56"
-    },
     logo: {
         width: innerWidth,
         height: innerHeight / 3,
@@ -85,9 +72,6 @@ const styles = StyleSheet.create({
         flex: 0.7,
         padding: 30,
     },
-    button: {
-        top: 100,
-    },
     heading: {
         color: "white",
         fontWeight: "bold",
@@ -109,10 +93,6 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: "center"
     },
-    buttonText: {
-        color: "black",
-    }
-
 })
 
 export default WelcomeScreen;

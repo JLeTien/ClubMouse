@@ -1,4 +1,4 @@
-import { AppRegistry, View, Text, ImageBackground, StyleSheet, Image, ScrollView } from 'react-native'
+import { AppRegistry, View, Text, StyleSheet, Image, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { CurrentRenderContext, useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -53,13 +53,13 @@ const ProfileScreen = ({ route }) => {
                     </View>
                     {/* badge 2 */}
                     <View style={styles.badgesContainer}>
-                    <Text style={styles.badgeTitle}>Spawns</Text>
+                        <Text style={styles.badgeTitle}>Spawns</Text>
                         <Image style={styles.badges} source={require('../assets/SilverMedal.png')} />
                         <Text style={styles.badgeText}>Spawn 7/20 mobs</Text>
                     </View>
                     {/* badge 3 */}
                     <View style={styles.badgesContainer}>
-                    <Text style={styles.badgeTitle}>Streaks</Text>
+                        <Text style={styles.badgeTitle}>Streaks</Text>
                         <Image style={styles.badges} source={require('../assets/BronzeMedal.png')} />
                         <Text style={styles.badgeText}>Log 7/10 sleeps in a row</Text>
                     </View>
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     },
     badgesContainer: {
         width: '33.333%',
-       
+
     },
     badges: {
         width: 90,

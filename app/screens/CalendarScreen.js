@@ -311,7 +311,6 @@ const styles = StyleSheet.create({
   },
   pressContainer: {
     flexDirection: 'row',
-    alignContent: "stretch"
   },
   inputBox: {
     display: "flex",

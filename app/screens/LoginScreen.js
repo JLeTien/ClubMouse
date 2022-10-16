@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, Text, Button, Alert, SafeAreaView, TextInput, ScrollView, TouchableOpacity } from 'react-native';
-import CustomButton from '../../CustomButton';
+import { StyleSheet, View, Image, Text, Button, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
-import NavigationBar from '../navigation/NavigationBar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignUpScreen = () => {
@@ -54,7 +52,7 @@ const SignUpScreen = () => {
   return (
     <View style={styles.root}>
       <View style={styles.box}>
-        <Text style={styles.title}>Hello!</Text>
+        <Text style={styles.text}>Hello!</Text>
         <Text style={styles.text}>Sign in to your account</Text>
 
         <View style={styles.container}>
@@ -102,13 +100,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 1.2,
     shadowRadius: 3,
-  },
-  logo: {
-    width: 200,
-    height: 300,
-  },
-  title: {
-    color: "white",
   },
   text: {
     color: "white",
