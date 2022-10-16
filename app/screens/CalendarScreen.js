@@ -57,21 +57,21 @@ const CalendarScreen = () => {
   const loadItems = (day) => {
     for (var member in items) delete items[member];
     setTimeout(() => {
-      for (let i = 0; i < 5; i++) {
+      for (let i = -7; i < 7; i++) {
         const time = day.timestamp + i * 24 * 60 * 60 * 1000;
         const strTime = timeToString(time);
         if (!items[strTime]) {
           items[strTime] = [];
         }
-        // for (var index = 0; index < date.length; index++) {
-        //   if (strTime === date[index]) {
-        //     items[strTime].push({
-        //       name: timeDatabase[index] + ": " + task[index],
-        //       height: 100,
-        //       color: "pink"
-        //     });
-        //   }
-        // }
+        for (var index = 0; index < date.length; index++) {
+          if (strTime === date[index]) {
+            items[strTime].push({
+              name: timeDatabase[index] + ": " + task[index],
+              height: 100,
+              color: "pink"
+            });
+          }
+        }
       }
       const newItems = {};
       Object.keys(items).forEach((key) => {
@@ -109,9 +109,11 @@ const CalendarScreen = () => {
         alert("Error Occured " + error);
       })
   }
+
   useEffect(() => {
     getData();
-  })
+  }, [items])
+
   const renderItem = (item) => {
     return (
       <CalendarEntry name={item.name}></CalendarEntry>
@@ -182,12 +184,12 @@ const CalendarScreen = () => {
                 // display={Platform.OS === 'ios' ? 'inline' : 'default'}
                 isVisible={isDatePickerVisible} mode="date" onConfirm={handleConfirm} onCancel={hideDatePicker}
               />
-              <Text>{`Date:  ${selectedStart ? moment(selectedStart).format("h:mm") : "Select start"}`}</Text>
+              <Text>{`Time:  ${selectedStart ? moment(selectedStart).format("h:mm") : "Select start"}`}</Text>
               <Button title="Show Date Picker" onPress={showStartPicker} />
               <DateTimePickerModal
                 isVisible={isStartPickerVisible} mode="time" onConfirm={handleStartConfirm} onCancel={hideStartPicker}
               />
-              <Text>{`Date:  ${selectedEnd ? moment(selectedEnd).format("h:mm") : "Select end"}`}</Text>
+              <Text>{`Time:  ${selectedEnd ? moment(selectedEnd).format("h:mm") : "Select end"}`}</Text>
               <Button title="Show Date Picker" onPress={showEndPicker} />
               <DateTimePickerModal
                 isVisible={isEndPickerVisible} mode="time" onConfirm={handleEndConfirm} onCancel={hideEndPicker}
