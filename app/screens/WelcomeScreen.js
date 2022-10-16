@@ -53,18 +53,21 @@ const styles = StyleSheet.create({
         height: innerHeight / 3,
     },
     saturn: {
-        top: innerHeight / 2,
+        zIndex: 1,
+        top: innerHeight / 3,
         right: innerWidth / 2.5,
         width: innerWidth / 2,
         height: innerHeight / 4,
     },
     purpleplanet: {
-        top: innerHeight / 10,
+        zIndex: 1,
+        bottom: innerHeight / 15,
         left: innerWidth / 3,
         width: innerWidth / 1.5,
         height: innerHeight / 4,
     },
     logoContainer: {
+        zIndex: 2,
         position: 'absolute',
         top: 30,
         alignItems: "center",
@@ -78,6 +81,7 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
     body: {
+        fontWeight: "bold",
         color: "white",
         fontSize: 15,
         padding: 20,
