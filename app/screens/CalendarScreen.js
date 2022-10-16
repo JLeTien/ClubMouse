@@ -124,6 +124,7 @@ const CalendarScreen = () => {
     var timeend1 = selectedEnd;
     var timestart1 = selectedStart;
     var date1 = selectedDate;
+    var task1 = selectedTask;
 
     var InsertAPIURL = "https://deco3801-clubmouse.uqcloud.net/addevent.php";   //API to render signup
 
@@ -136,7 +137,8 @@ const CalendarScreen = () => {
       username: usernameVar,
       timeend: timeend1,
       timestart: timestart1,
-      date: date1
+      date: date1,
+      task: task1
     };
 
     fetch(InsertAPIURL, {
