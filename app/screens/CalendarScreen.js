@@ -67,9 +67,8 @@ const CalendarScreen = () => {
           for (var index = 0; index < date.length; index++) {
             if (strTime === date[index]) {
               items[strTime].push({
-                name: task[index] + ":" + timeStart[index] + " - " + timeEnd[index] + ": ",
+                name: task[index] + "\n" + timeStart[index] + " - " + timeEnd[index],
                 height: 100,
-                color: "pink",
               });
             }
           }
@@ -161,7 +160,7 @@ const CalendarScreen = () => {
 
   const renderItem = (item) => {
     return (
-      <CalendarEntry name={item.name}></CalendarEntry>
+      <CalendarEntry name={item.name} />
     );
   };
 
@@ -210,19 +209,19 @@ const CalendarScreen = () => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <View style={styles.pressContainer}>
-              <TouchableOpacity style={styles.button}
+              <TouchableOpacity style={styles.buttonX}
                 onPress={() => setModalVisible(!modalVisible)}>
-                <Text style={styles.textStyle}>X</Text>
+                <Text style={styles.buttonText}>X</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.button}
+              <TouchableOpacity style={styles.buttonSave}
                 onPress={() => onSavePressed()}>
-                <Text style={styles.textStyle}>SAVE</Text>
+                <Text style={styles.buttonText}>SAVE</Text>
               </TouchableOpacity>
             </View>
 
             <View style={styles.inputBox}>
-              <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 30 }}
+              <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 40, paddingBottom: 20, fontWeight: "bold" }}
                 onChangeText={(selected) => setSelectedTask(selected)}
                 value={selectedTask} />
 
@@ -232,12 +231,12 @@ const CalendarScreen = () => {
                 // display={Platform.OS === 'ios' ? 'inline' : 'default'}
                 isVisible={isDatePickerVisible} mode="date" onConfirm={handleConfirm} onCancel={hideDatePicker}
               />
-              <Text style={styles.textStyle}>{`${selectedStart ? moment(selectedStart).format("h:mm a") : "Start Time"}`}</Text>
+              <Text style={styles.textStyle}>{`Start: ${selectedStart ? moment(selectedStart).format("h:mm a") : "Select Start"}`}</Text>
               <Button title="Show Date Picker" onPress={showStartPicker} />
               <DateTimePickerModal
                 isVisible={isStartPickerVisible} mode="time" onConfirm={handleStartConfirm} onCancel={hideStartPicker}
               />
-              <Text style={styles.textStyle}>{`${selectedEnd ? moment(selectedEnd).format("h:mm a") : "End Time"}`}</Text>
+              <Text style={styles.textStyle}>{`End: ${selectedEnd ? moment(selectedEnd).format("h:mm a") : "Select End"}`}</Text>
               <Button title="Show Date Picker" onPress={showEndPicker} />
               <DateTimePickerModal
                 isVisible={isEndPickerVisible} mode="time" onConfirm={handleEndConfirm} onCancel={hideEndPicker}
@@ -311,6 +310,7 @@ const styles = StyleSheet.create({
   },
   pressContainer: {
     flexDirection: 'row',
+    width: '100%',
   },
   inputBox: {
     display: "flex",
@@ -319,16 +319,29 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
   },
-  button: {
-    borderRadius: 20,
+  buttonSave: {
+    borderRadius: 10,
     padding: 10,
-    elevation: 2
+    elevation: 2,
+    marginLeft: '75%',
+    backgroundColor: "#65AC2D"
+  },
+  buttonX: {
+    padding: 10,
+    elevation: 2,
   },
   textStyle: {
     fontWeight: "bold",
     textAlign: "center",
     fontSize: 20,
-    color: "#BBBEFE"
+    color: "#BBBEFE",
+    paddingBottom: 10
+  },
+  buttonText: {
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 15,
+    color: "white"
   },
 });
 AppRegistry.registerComponent('IosFonts', () => IosFonts);
