@@ -41,9 +41,6 @@ const WelcomeScreen = () => {
             <Image style={styles.saturn} source={require('../assets/Saturn.png')} />
             <Image style={styles.purpleplanet} source={require('../assets/PurplePlanet.png')} />
 
-            {/* <Button style={styles.button} onPress={() => navigation.navigate("LoginScreen")} title="LOGIN" color="white" />
-            <Button style={styles.button} onPress={() => navigation.navigate("SignUpScreen")} title="SIGN UP" color="white" /> */}
-
             <View style={styles.buttonContainer}>
                 <Button onPress={() => navigation.navigate("LoginScreen")} title="LOGIN" color="white" />
             </View>
@@ -66,18 +63,21 @@ const styles = StyleSheet.create({
         height: innerHeight / 3,
     },
     saturn: {
-        top: innerHeight / 2,
+        zIndex: 1,
+        top: innerHeight / 3,
         right: innerWidth / 2.5,
         width: innerWidth / 2,
         height: innerHeight / 4,
     },
     purpleplanet: {
-        top: innerHeight / 10,
+        zIndex: 1,
+        bottom: innerHeight / 15,
         left: innerWidth / 3,
         width: innerWidth / 1.5,
         height: innerHeight / 4,
     },
     logoContainer: {
+        zIndex: 2,
         position: 'absolute',
         top: 30,
         alignItems: "center",
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
     body: {
+        fontWeight: "bold",
         color: "white",
         fontSize: 15,
         padding: 20,
