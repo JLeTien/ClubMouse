@@ -52,6 +52,7 @@ const SignUpScreen = () => {
   return (
     <View style={styles.root}>
       <View style={styles.box}>
+      <Image style={styles.logo} source={require('../assets/LogoWhite.png')} />
         <Text style={styles.text}>Hello!</Text>
         <Text style={styles.text}>Sign in to your account</Text>
 
@@ -84,6 +85,10 @@ const SignUpScreen = () => {
 }
 
 const styles = StyleSheet.create({
+  logo: {
+    width: innerWidth,
+    height: innerHeight / 3,
+},
   root: {
     flex: 1,
     justifyContent: "center",
@@ -121,7 +126,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
   },
   button: {
-    bottom: 250,
+    bottom: 80,
     margin: 10,
     width: 200,
     flexDirection: "column",
