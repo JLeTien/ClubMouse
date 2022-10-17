@@ -50,6 +50,7 @@ const LoginScreen = () => {
   }
   return (
     <View style={styles.root}>
+      <Image style={styles.logo} source={require('../assets/LogoWhite.png')} />
       <Text style={styles.title}>SIGN UP</Text>
       <View style={styles.container}>
         <Image style={styles.icon} source={require('../assets/user.png')} />
@@ -98,6 +99,10 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontWeight: "bold"
   },
+  logo: {
+    width: innerWidth,
+    height: innerHeight / 3,
+},
   root: {
     flex: 1,
     justifyContent: "center",
