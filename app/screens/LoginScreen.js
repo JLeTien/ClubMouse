@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, Text, Button, TextInput } from 'react-native';
+import { ImageBackground, StyleSheet, View, Image, Text, Button, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -50,50 +50,65 @@ const SignUpScreen = () => {
   }
 
   return (
-    <View style={styles.root}>
-      <View style={styles.box}>
-      <Image style={styles.logo} source={require('../assets/LogoWhite.png')} />
-        <Text style={styles.text}>Hello!</Text>
-        <Text style={styles.text}>Sign in to your account</Text>
+    <ImageBackground source={require('../assets/Space.jpg')} style={{
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "black"
+    }}>
+      <View style={styles.root}>
+        <View style={styles.box}>
+        <Image style={styles.logo} source={require('../assets/LogoWhite.png')} />
 
-        <View style={styles.container}>
-          <Image style={styles.icon} source={require('../assets/user.png')} />
-          <TextInput
-            onChangeText={(username) => setUsername(username)}
-            placeholder="Username"
-            style={styles.input}
-            value={username}
-          />
-
+          <View style={styles.container}>
+            <TextInput
+              onChangeText={(username) => setUsername(username)}
+              placeholderTextColor = "grey"
+              placeholder="Username"
+              selectionColor="green"
+              style={styles.input}
+              value={username}
+            />
+            <Image style={styles.icon} source={require('../assets/user.png')} />
+          </View>
+          
+          <View style={styles.container}>
+            <TextInput
+              onChangeText={(password) => setPassword(password)}
+              placeholderTextColor = "grey"
+              placeholder="Password"
+              selectionColor="green"
+              style={styles.input}
+              value={password}
+              secureTextEntry
+            />
+            <Image style={styles.icon} source={require('../assets/lock.png')} />
+          </View>
         </View>
-        <View style={styles.container}>
-          <Image style={styles.icon} source={require('../assets/lock.png')} />
-          <TextInput
-            onChangeText={(password) => setPassword(password)}
-            placeholder="Password"
-            style={styles.input}
-            value={password}
-            secureTextEntry
-          />
+        <View style={styles.button}>
+          <Button 
+            onPress={onSignInPressed} 
+            color="white"
+            title="Login" />
         </View>
       </View>
-      <View style={styles.button}>
-        <Button onPress={onSignInPressed} title="LOGIN" />
-      </View>
-    </View>
+      <Text style = {styles.text}>Forgot your Password</Text>
+    </ImageBackground>
   )
 }
 
 const styles = StyleSheet.create({
   logo: {
-    width: innerWidth,
-    height: innerHeight / 3,
+    width: innerWidth/1.25,
+    height: innerHeight/5,
+    justifyContent: "center",
+    alignItems: "center",
+    bottom: 100
 },
   root: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2E1F56"
   },
   box: {
     display: "flex",
@@ -108,15 +123,21 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
+    textDecorationLine: "underline",
+    justifyContent: "center",
+    alignItems: "center",
+    bottom: 230,
+    fontSize: 14,
+    fontFamily: 'HelveticaNeue-Light'
   },
   container: {
     display: "flex",
     flexDirection: "row",
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     width: '90%',
     borderRadius: 5,
-    borderColor: '#e8e8e8',
-    borderWidth: 1,
+    borderColor: "grey",
+    borderBottomWidth: 2,
     paddingHorizontal: 10,
     marginVertical: 10,
     padding: 10,
@@ -124,23 +145,33 @@ const styles = StyleSheet.create({
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
+    bottom: 80
   },
   button: {
-    bottom: 80,
+    bottom: 200,
     margin: 10,
-    width: 200,
+    width: 325,
     flexDirection: "column",
     borderWidth: 1,
-    borderColor: "white",
-    backgroundColor: "white",
-    borderRadius: 40,
+    borderColor: "black",
+    backgroundColor: "rgba(52, 52, 52, 0.8)",
+    borderRadius: 20,
+    padding: 10,
+    fontFamily: "HelveticaNeue-Light",
+    fontSize: 10
   },
   icon: {
-    marginRight: "2%",
+    width: innerWidth/16,
+    height: innerHeight/32,
+    top: 10,
   },
   input: {
-    backgroundColor: "white",
-    width: "80%",
+    backgroundColor: "transparent",
+    width: "100%",
+    padding: 10,
+    fontSize: 25,
+    fontFamily: "HelveticaNeue-Light",
+    color: "white"
   }
 })
 

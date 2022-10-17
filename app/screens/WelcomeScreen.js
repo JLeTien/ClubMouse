@@ -28,7 +28,7 @@ const WelcomeScreen = () => {
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "#2E1F56"
+            backgroundColor: "black"
         }}>
 
             <View style={styles.logoContainer}>
