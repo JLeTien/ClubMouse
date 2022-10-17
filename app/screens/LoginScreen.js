@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     width: "100%",
     padding: 10,
-    fontSize: 25,
+    fontSize: 18,
     fontFamily: "HelveticaNeue-Light",
     color: "white"
   }

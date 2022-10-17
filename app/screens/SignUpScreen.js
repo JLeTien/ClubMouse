@@ -61,8 +61,10 @@ const LoginScreen = () => {
           <TextInput
             onChangeText={(username) => setUsername(username)}
             placeholder="Username"
+            placeholderTextColor = "grey"
             style={styles.input}
             value={username}
+            selectionColor="green"
           />
           <Image style={styles.icon} source={require('../assets/user.png')} />
         </View>
@@ -70,8 +72,11 @@ const LoginScreen = () => {
           <TextInput
             onChangeText={(password) => setPassword(password)}
             placeholder="Password"
+            placeholderTextColor = "grey"
             style={styles.input}
             value={password}
+            selectionColor="green"
+            secureTextEntry
           />
           <Image style={styles.icon} source={require('../assets/lock.png')} />
         </View>
@@ -79,8 +84,10 @@ const LoginScreen = () => {
           <TextInput
             onChangeText={(email) => setEmail(email)}
             placeholder="Email"
+            placeholderTextColor = "grey"
             style={styles.input}
             value={email}
+            selectionColor="green"
           />
           <Image style={styles.icon} source={require('../assets/mail.png')} />
         </View>
@@ -140,13 +147,13 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     backgroundColor: "transparent",
-    width: '90%',
+    width: 325,
     borderRadius: 5,
     borderColor: "grey",
     borderBottomWidth: 2,
     paddingHorizontal: 10,
     marginVertical: 10,
-    padding: 10,
+    padding: 5,
     shadowColor: '#171717',
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
@@ -171,9 +178,9 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: "transparent",
-    width: "100%",
+    width: "90%",
     padding: 10,
-    fontSize: 25,
+    fontSize: 18,
     fontFamily: "HelveticaNeue-Light",
     color: "white"
   }
