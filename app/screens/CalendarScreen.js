@@ -225,19 +225,23 @@ const CalendarScreen = () => {
                 onChangeText={(selected) => setSelectedTask(selected)}
                 value={selectedTask} />
 
-              <Text style={styles.textStyle}>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Select date"}`}</Text>
-              <Button title="Show Date Picker" onPress={showDatePicker} />
+              <TouchableOpacity styles={{ paddingBottom: 20 }} onPress={showDatePicker}>
+                <Text style={styles.textStyle}>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Select date"}`}</Text>
+              </TouchableOpacity>
               <DateTimePickerModal
-                // display={Platform.OS === 'ios' ? 'inline' : 'default'}
                 isVisible={isDatePickerVisible} mode="date" onConfirm={handleConfirm} onCancel={hideDatePicker}
               />
-              <Text style={styles.textStyle}>{`Start: ${selectedStart ? moment(selectedStart).format("h:mm a") : "Select Start"}`}</Text>
-              <Button title="Show Date Picker" onPress={showStartPicker} />
+
+              <TouchableOpacity styles={{ paddingBottom: 20 }} onPress={showStartPicker}>
+                <Text style={styles.textStyle}>{`Start: ${selectedStart ? moment(selectedStart).format("h:mm a") : "Select Start"}`}</Text>
+              </TouchableOpacity>
               <DateTimePickerModal
                 isVisible={isStartPickerVisible} mode="time" onConfirm={handleStartConfirm} onCancel={hideStartPicker}
               />
-              <Text style={styles.textStyle}>{`End: ${selectedEnd ? moment(selectedEnd).format("h:mm a") : "Select End"}`}</Text>
-              <Button title="Show Date Picker" onPress={showEndPicker} />
+
+              <TouchableOpacity styles={{ paddingBottom: 20 }} onPress={showEndPicker}>
+                <Text style={styles.textStyle}>{`End: ${selectedEnd ? moment(selectedEnd).format("h:mm a") : "Select End"}`}</Text>
+              </TouchableOpacity>
               <DateTimePickerModal
                 isVisible={isEndPickerVisible} mode="time" onConfirm={handleEndConfirm} onCancel={hideEndPicker}
               />

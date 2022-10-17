@@ -16,15 +16,10 @@ class Achievement extends Component {
                             </View>
                         </View>
                     </View>
-                    {/* {this.props.unlocked == "yes" ? */}
-                        <View style={styles.descriptionContainer}>
-                            <Text style={styles.title}>{this.props.name}</Text>
-                            <Text style={styles.desc}>{this.props.desc}</Text>
-                        </View> 
-                        {/* <View style={styles.descriptionContainer}>
-                            <Text style={styles.title}>{this.props.name}</Text>
-                            <Text style={styles.desc}>{this.props.desc}</Text>
-                        </View>} */}
+                    <View style={styles.descriptionContainer}>
+                        <Text style={styles.title}>{this.props.name}</Text>
+                        <Text style={styles.desc}>{this.props.desc}</Text>
+                    </View>
                 </View>
             </TouchableOpacity>
         )

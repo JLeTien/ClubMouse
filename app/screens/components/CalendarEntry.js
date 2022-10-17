@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity, Pressable } from 'react-native'
-import { Card, Avatar, Button } from 'react-native-paper';
-
-
+import { View, Text, TouchableOpacity, } from 'react-native'
+import { Card, Avatar, } from 'react-native-paper';
 
 class CalendarEntry extends Component {
   render() {
@@ -16,7 +14,8 @@ class CalendarEntry extends Component {
                 justifyContent: 'space-between',
                 alignItems: 'center',
               }}>
-              <Avatar.Text label={this.props.name.slice(0, 1)} />
+              {this.props.name == "Sleep" ? <Avatar.Icon icon="clock" /> : null}
+              <Avatar.Icon icon="clock" />
               <Text>{this.props.name}</Text>
             </View>
           </Card.Content>
