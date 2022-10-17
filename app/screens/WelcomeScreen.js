@@ -38,14 +38,18 @@ const WelcomeScreen = () => {
                     monitor your sleep for a healthy brain. </Text>
             </View>
 
-            <Image style={styles.saturn} source={require('../assets/Saturn.png')} />
-            <Image style={styles.purpleplanet} source={require('../assets/PurplePlanet.png')} />
-
-            <View style={styles.buttonContainer}>
-                <Button onPress={() => navigation.navigate("LoginScreen")} title="LOGIN" color="white" />
+            <View style={{ flex: 0.6 }}>
+                <Image style={styles.saturn} source={require('../assets/Saturn.png')} />
+                <Image style={styles.purpleplanet} source={require('../assets/PurplePlanet.png')} />
             </View>
-            <View style={styles.buttonContainer}>
-                <Button onPress={() => navigation.navigate("SignUpScreen")} title="SIGN UP" color="white" />
+
+            <View style={{ flex: 0.1 }}>
+                <View style={styles.buttonContainer}>
+                    <Button onPress={() => navigation.navigate("LoginScreen")} title="LOGIN" color="white" />
+                </View>
+                <View style={styles.buttonContainer}>
+                    <Button onPress={() => navigation.navigate("SignUpScreen")} title="SIGN UP" color="white" />
+                </View>
             </View>
         </ImageBackground>
     );
@@ -82,7 +86,7 @@ const styles = StyleSheet.create({
         top: 30,
         alignItems: "center",
         borderColor: "white",
-        flex: 0.7,
+        flex: 1,
         padding: 30,
     },
     button: {

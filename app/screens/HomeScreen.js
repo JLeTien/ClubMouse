@@ -51,8 +51,9 @@ const HomeScreen = () => {
     function addSprite(image) {
 
       // random y location
-      yPos = randomPlacement();
+      // yPos = randomPlacement();
       xPos = randomPlacementX();
+      yPos = randomPlacementY();
 
       const map = new TextureLoader().load(image);
       const material = new THREE.SpriteMaterial({ map: map });
@@ -74,6 +75,13 @@ const HomeScreen = () => {
       return ((randInt / 10) - 0.5);
     }
 
+    // TESTING DELETE LATER
+    function randomPlacementY() {
+      randInt = Math.floor(Math.random() * 11);
+      console.log(((randInt / 10) - 0.5))
+      return ((randInt / 10) - 0.5);
+    }
+
     if (global.addSprite) {
       console.log("we made it");
       addSprite();
@@ -85,6 +93,10 @@ const HomeScreen = () => {
     addSprite(require('../assets/Flowers.png'));
     addSprite(require('../assets/FlowerBush.png'));
     addSprite(require('../assets/Pot.png'));
+    addSprite(require('../assets/Eagle.png'));
+    addSprite(require('../assets/AppleTree.png'));
+    addSprite(require('../assets/Horse.png'));
+    addSprite(require('../assets/Monkey.png'));
 
     // create render function
     const render = () => {
@@ -94,7 +106,8 @@ const HomeScreen = () => {
       // sphere.rotation.x += 0.01;
 
       // rotate around y axis
-      world.rotation.y += 0.005
+      // world.rotation.y += 0.005
+      world.rotation.y += 0
       // group.rotation.y += 0 .005
 
 
