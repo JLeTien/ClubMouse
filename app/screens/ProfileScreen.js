@@ -230,8 +230,6 @@ const styles = StyleSheet.create({
         marginRight: 40,
         alignSelf: 'flex-end',
         position: 'absolute',
-        width: innerWidth/8,
-        height: innerHeight/14,
     }
 })
 

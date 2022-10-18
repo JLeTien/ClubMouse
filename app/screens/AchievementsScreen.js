@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
         fontFamily: "HelveticaNeue-Light",
         color: 'black',
         fontSize: 15,
-        // fontWeight: 'bold',
+        textAlign: 'center',
     },
     buttonContainer: {
         top: '20%',
