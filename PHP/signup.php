@@ -1,7 +1,8 @@
 <?php
 include('dbconnect.php');
 $UserName = $decodedData['username'];
-$UserPW = md5($decodedData['password']); //password is hashed
+$UserPWRaw = $decodedData['password']; //password is hasheid
+$Email = $decodedData['email'];
 
 $SQL = "SELECT * FROM user WHERE username = '$UserName'";
 $exeSQL = mysqli_query($conn, $SQL);
@@ -9,20 +10,23 @@ $checkName =  mysqli_num_rows($exeSQL);
 
 if ($checkName != 0) {
     $Message = "Already registered";
+} elseif (empty($UserName) or empty($UserPWRaw)) {
+    $Message = "Please fill in the blank";
 } else {
+    $UserPW = md5($UserPWRaw);
+    $InsertQuery = "INSERT INTO user(username, password, email)VALUES('$UserName', '$UserPW','$Email')";
+	
+    $Signup = mysqli_query($conn, $InsertQuery);
 
-    $InsertQuerry = "INSERT INTO user(username, password) VALUES('$UserName', '$UserPW')";
-
-    $Signup = mysqli_query($conn, $InsertQuerry);
 
     if ($Signup) {
-        $Message = "Complete--!";
+        $Message= "valid";
     } else {
-        $Message = "Error";
+        $Message = "Please fill in the blank 2";	
     }
 }
-$response[] = array("Message" => $Message);
+$responseRaw[] = array("Message" => $Message);
+$response = json_encode($responseRaw);
 
-echo json_encode($response);
-
+echo $response;
 ?>

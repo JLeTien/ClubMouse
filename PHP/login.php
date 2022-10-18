@@ -8,12 +8,12 @@ $exeSQL = mysqli_query($conn, $SQL);
 $checkName =  mysqli_num_rows($exeSQL);
 
 if ($checkName == 0) {
-    $Message = 'Not registered / wrong password';
+    $Message = "Not registered / wrong password";
 } else {
         $Message = "valid";
-}
-$response[] = array("Message" => $Message);
 
+}
+$response[] = array("Message" => $Message,"Username"=>$UserName);
 echo json_encode($response);
 
 ?>
