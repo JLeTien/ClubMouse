@@ -106,8 +106,7 @@ const HomeScreen = () => {
       // sphere.rotation.x += 0.01;
 
       // rotate around y axis
-      // world.rotation.y += 0.005
-      world.rotation.y += 0
+      world.rotation.y += 0.005
       // group.rotation.y += 0 .005
 
 

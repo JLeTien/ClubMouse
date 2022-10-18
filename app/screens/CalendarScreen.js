@@ -31,12 +31,12 @@ const CalendarScreen = () => {
   // START TIME
   const showStartPicker = () => { setStartPickerVisibility(true); };
   const hideStartPicker = () => { setStartPickerVisibility(false); };
-  const handleStartConfirm = (time) => { setSelectedStart(time); hideStartPicker(); };
+  const handleStartConfirm = (time) => { setSelectedStart(moment(time).format('hh:mm a')); hideStartPicker(); };
 
   // END TIME
   const showEndPicker = () => { setEndPickerVisibility(true); };
   const hideEndPicker = () => { setEndPickerVisibility(false); };
-  const handleEndConfirm = (time) => { setSelectedEnd(time); hideEndPicker(); };
+  const handleEndConfirm = (time) => { setSelectedEnd(moment(time).format('hh:mm a')); hideEndPicker(); };
 
   const [username1, setGetValue] = useState('');
 
@@ -233,14 +233,14 @@ const CalendarScreen = () => {
               />
 
               <TouchableOpacity styles={{ paddingBottom: 20 }} onPress={showStartPicker}>
-                <Text style={styles.textStyle}>{`Start: ${selectedStart ? moment(selectedStart).format("h:mm a") : "Select Start"}`}</Text>
+                <Text style={styles.textStyle}>{`Start: ${selectedStart ? selectedStart : "Select Start"}`}</Text>
               </TouchableOpacity>
               <DateTimePickerModal
                 isVisible={isStartPickerVisible} mode="time" onConfirm={handleStartConfirm} onCancel={hideStartPicker}
               />
 
               <TouchableOpacity styles={{ paddingBottom: 20 }} onPress={showEndPicker}>
-                <Text style={styles.textStyle}>{`End: ${selectedEnd ? moment(selectedEnd).format("h:mm a") : "Select End"}`}</Text>
+                <Text style={styles.textStyle}>{`End: ${selectedEnd ? selectedEnd : "Select End"}`}</Text>
               </TouchableOpacity>
               <DateTimePickerModal
                 isVisible={isEndPickerVisible} mode="time" onConfirm={handleEndConfirm} onCancel={hideEndPicker}
@@ -310,7 +310,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 10,
     elevation: 5,
-    flex: 0.4,
+    flex: 0.7,
   },
   pressContainer: {
     flexDirection: 'row',
