@@ -31,12 +31,12 @@ const CalendarScreen = () => {
   // START TIME
   const showStartPicker = () => { setStartPickerVisibility(true); };
   const hideStartPicker = () => { setStartPickerVisibility(false); };
-  const handleStartConfirm = (time) => { setSelectedStart(time); hideStartPicker(); };
+  const handleStartConfirm = (time) => { setSelectedStart(moment(time).format('hh:mm a')); hideStartPicker(); };
 
   // END TIME
   const showEndPicker = () => { setEndPickerVisibility(true); };
   const hideEndPicker = () => { setEndPickerVisibility(false); };
-  const handleEndConfirm = (time) => { setSelectedEnd(time); hideEndPicker(); };
+  const handleEndConfirm = (time) => { setSelectedEnd(moment(time).format('hh:mm a')); hideEndPicker(); };
 
   const [username1, setGetValue] = useState('');
 
@@ -67,9 +67,8 @@ const CalendarScreen = () => {
           for (var index = 0; index < date.length; index++) {
             if (strTime === date[index]) {
               items[strTime].push({
-                name: task[index] + ":" + timeStart[index] + " - " + timeEnd[index] + ": ",
+                name: task[index] + "\n" + timeStart[index] + " - " + timeEnd[index],
                 height: 100,
-                color: "pink",
               });
             }
           }
@@ -161,7 +160,7 @@ const CalendarScreen = () => {
 
   const renderItem = (item) => {
     return (
-      <CalendarEntry name={item.name}></CalendarEntry>
+      <CalendarEntry name={item.name} />
     );
   };
 
@@ -210,35 +209,39 @@ const CalendarScreen = () => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <View style={styles.pressContainer}>
-              <TouchableOpacity style={styles.button}
+              <TouchableOpacity style={styles.buttonX}
                 onPress={() => setModalVisible(!modalVisible)}>
-                <Text style={styles.textStyle}>X</Text>
+                <Text style={styles.buttonText}>X</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.button}
+              <TouchableOpacity style={styles.buttonSave}
                 onPress={() => onSavePressed()}>
-                <Text style={styles.textStyle}>SAVE</Text>
+                <Text style={styles.buttonText}>SAVE</Text>
               </TouchableOpacity>
             </View>
 
             <View style={styles.inputBox}>
-              <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 30 }}
+              <TextInput placeholder="Add Title" style={{ color: "white", fontSize: 40, paddingBottom: 20, fontWeight: "bold" }}
                 onChangeText={(selected) => setSelectedTask(selected)}
                 value={selectedTask} />
 
-              <Text style={styles.textStyle}>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Select date"}`}</Text>
-              <Button title="Show Date Picker" onPress={showDatePicker} />
+              <TouchableOpacity styles={{ paddingBottom: 20 }} onPress={showDatePicker}>
+                <Text style={styles.textStyle}>{`Date:  ${selectedDate ? moment(selectedDate).format("MM/DD/YYYY") : "Select date"}`}</Text>
+              </TouchableOpacity>
               <DateTimePickerModal
-                // display={Platform.OS === 'ios' ? 'inline' : 'default'}
                 isVisible={isDatePickerVisible} mode="date" onConfirm={handleConfirm} onCancel={hideDatePicker}
               />
-              <Text style={styles.textStyle}>{`${selectedStart ? moment(selectedStart).format("h:mm a") : "Start Time"}`}</Text>
-              <Button title="Show Date Picker" onPress={showStartPicker} />
+
+              <TouchableOpacity styles={{ paddingBottom: 20 }} onPress={showStartPicker}>
+                <Text style={styles.textStyle}>{`Start: ${selectedStart ? selectedStart : "Select Start"}`}</Text>
+              </TouchableOpacity>
               <DateTimePickerModal
                 isVisible={isStartPickerVisible} mode="time" onConfirm={handleStartConfirm} onCancel={hideStartPicker}
               />
-              <Text style={styles.textStyle}>{`${selectedEnd ? moment(selectedEnd).format("h:mm a") : "End Time"}`}</Text>
-              <Button title="Show Date Picker" onPress={showEndPicker} />
+
+              <TouchableOpacity styles={{ paddingBottom: 20 }} onPress={showEndPicker}>
+                <Text style={styles.textStyle}>{`End: ${selectedEnd ? selectedEnd : "Select End"}`}</Text>
+              </TouchableOpacity>
               <DateTimePickerModal
                 isVisible={isEndPickerVisible} mode="time" onConfirm={handleEndConfirm} onCancel={hideEndPicker}
               />
@@ -254,7 +257,7 @@ const CalendarScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10,
+    paddingTop: 15,
     backgroundColor: '#2E1F56',
   },
   headingContainer: {
@@ -262,9 +265,9 @@ const styles = StyleSheet.create({
   },
   heading: {
     textAlign: "center",
-    fontSize: 25,
+    fontSize: 28,
     color: "white",
-    fontWeight: "bold",
+    fontFamily: "HelveticaNeue-Light",
     padding: 10,
   },
   buttonContainer: {
@@ -307,10 +310,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 10,
     elevation: 5,
-    flex: 0.4,
+    flex: 0.7,
   },
   pressContainer: {
     flexDirection: 'row',
+    width: '100%',
   },
   inputBox: {
     display: "flex",
@@ -319,16 +323,29 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
   },
-  button: {
-    borderRadius: 20,
+  buttonSave: {
+    borderRadius: 10,
     padding: 10,
-    elevation: 2
+    elevation: 2,
+    marginLeft: '75%',
+    backgroundColor: "#65AC2D"
+  },
+  buttonX: {
+    padding: 10,
+    elevation: 2,
   },
   textStyle: {
     fontWeight: "bold",
     textAlign: "center",
     fontSize: 20,
-    color: "#BBBEFE"
+    color: "#BBBEFE",
+    paddingBottom: 10
+  },
+  buttonText: {
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 15,
+    color: "white"
   },
 });
 AppRegistry.registerComponent('IosFonts', () => IosFonts);

@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import { AppRegistry, View, Text, StyleSheet, Modal, TouchableOpacity, Pressable } from 'react-native'
-import { Card, Avatar, Button } from 'react-native-paper';
-
-
+import { View, Text, TouchableOpacity, } from 'react-native'
+import { Card, Avatar, } from 'react-native-paper';
 
 class CalendarEntry extends Component {
-    render() {
-        return (
-        <TouchableOpacity style={{ marginRight: 30, marginTop: 30 }}>
+  render() {
+    return (
+      <TouchableOpacity style={{ marginRight: 20, marginTop: 30 }}>
         <Card>
           <Card.Content>
             <View
@@ -16,13 +14,17 @@ class CalendarEntry extends Component {
                 justifyContent: 'space-between',
                 alignItems: 'center',
               }}>
-              <Text>{this.props.name}</Text>
+              {this.props.name == "Sleep" ? <Avatar.Icon icon="clock" /> : null}
+              <Avatar.Icon icon="clock" />
+              <View style={{ flex: 0.9 }}>
+                <Text>{this.props.name}</Text>
+              </View>
             </View>
           </Card.Content>
         </Card>
       </TouchableOpacity>
-        )
-    }
+    )
+  }
 }
 
 export default CalendarEntry;

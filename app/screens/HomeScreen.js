@@ -51,8 +51,9 @@ const HomeScreen = () => {
     function addSprite(image) {
 
       // random y location
-      yPos = randomPlacement();
+      // yPos = randomPlacement();
       xPos = randomPlacementX();
+      yPos = randomPlacementY();
 
       const map = new TextureLoader().load(image);
       const material = new THREE.SpriteMaterial({ map: map });
@@ -74,6 +75,13 @@ const HomeScreen = () => {
       return ((randInt / 10) - 0.5);
     }
 
+    // TESTING DELETE LATER
+    function randomPlacementY() {
+      randInt = Math.floor(Math.random() * 11);
+      console.log(((randInt / 10) - 0.5))
+      return ((randInt / 10) - 0.5);
+    }
+
     if (global.addSprite) {
       console.log("we made it");
       addSprite();
@@ -85,6 +93,10 @@ const HomeScreen = () => {
     addSprite(require('../assets/Flowers.png'));
     addSprite(require('../assets/FlowerBush.png'));
     addSprite(require('../assets/Pot.png'));
+    // addSprite(require('../assets/Eagle.png'));
+    // addSprite(require('../assets/AppleTree.png'));
+    // addSprite(require('../assets/Horse.png'));
+    // addSprite(require('../assets/Monkey.png'));
 
     // create render function
     const render = () => {
@@ -121,7 +133,7 @@ const HomeScreen = () => {
 
     const timer = setInterval(() => {
       var hours = new Date().getHours();
-      setTime(new Date().toLocaleString());
+      setTime(new Date().toLocaleString().split(' ')[1] + new Date().toLocaleString().split(' ')[2]);
       if (hours > 18 && hours < 24) {
         setTitle("Good Night");
       } else if (hours > 1 && hours < 10) {
@@ -148,7 +160,9 @@ const HomeScreen = () => {
     }}>
 
       <View style={styles.root}>
-        <Text style={styles.text}>{time}</Text>
+        <Text style={styles.time}>{time}</Text>
+      </View>
+      <View style = {styles.root}>
         <Text style={styles.text}>{title} {username}!</Text>
       </View>
 
@@ -165,11 +179,23 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     flex: 0.2,
   },
+  time: {
+    color:"white",
+    fontSize: 56,
+    fontFamily: "HelveticaNeue-Bold",
+    textAlign: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20,
+  },
   text: {
     color: "white",
-    fontSize: 20,
-    fontWeight: "bold",
-    textAlign: "center"
+    fontSize: 28,
+    fontFamily: 'HelveticaNeue-Light',
+    textAlign: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 30,
   }
 })
 

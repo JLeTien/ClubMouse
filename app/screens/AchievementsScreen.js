@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, ScrollView, Modal, Button } from 'react-native'
+import { ImageBackground, View, Text, StyleSheet, Image, ScrollView, Modal, Button } from 'react-native'
 import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -52,119 +52,124 @@ const AchievementsScreen = () => {
     global.addSprite = false;
 
     return (
-        <SafeAreaView style={styles.background}>
-            <View stlye={styles.headingContainer}>
-                <Text style={styles.heading}>Challenges</Text>
-            </View>
-            <ScrollView scrollEventThrottle={16}>
-                <View style={styles.row}>
-                    <Text style={styles.categoryHeading}>
-                        Pets
-                    </Text>
-                    <View style={{ height: 170, marginTop: 10, backgroundColor: '#2E1F56' }}>
-                        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                            <Achievement imageUri={(require('../assets/Dog2.png'))}
-                                name="DOG" desc="Complete 1 sleep on schedule" unlocked="1" requirement={numSleep}></Achievement>
-                            <Achievement imageUri={(require('../assets/Cat.png'))}
-                                name="CAT" desc="Complete 3 sleep on schedule" unlocked="3" requirement={numSleep}></Achievement>
-                            <Achievement imageUri={(require('../assets/Eagle.png'))}
-                                name="EAGLE" desc="Complete 10 sleep on schedule" unlocked="10" requirement={numSleep}></Achievement>
-                            <Achievement imageUri={(require('../assets/Monkey.png'))}
-                                name="MONKEY" desc="Complete 15 sleep on schedule" unlocked="15" requirement={numSleep}></Achievement>
-                            <Achievement imageUri={(require('../assets/Horse.png'))}
-                                name="HORSE" desc="Complete 20 sleep on schedule" unlocked="20" requirement={numSleep}></Achievement>
-                        </ScrollView>
-                    </View>
+        <ImageBackground source={require('../assets/Space.jpg')} style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "black"
+          }}>
+            <SafeAreaView style={styles.background}>
+                <View stlye={styles.headingContainer}>
+                    <Text style={styles.heading}>Challenges</Text>
                 </View>
-
-                <View style={styles.row}>
-                    <Text style={styles.categoryHeading}>
-                        Plants
-                    </Text>
-                    <View style={{ height: 170, marginTop: 10, backgroundColor: '#2E1F56' }}>
-                        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                            <Achievement imageUri={(require('../assets/Flowers.png'))} name="FLOWERS"
-                                desc="Add an entry to Calendar" unlocked="1" requirement={numEntry}></Achievement>
-                            <Achievement imageUri={(require('../assets/FlowerBush.png'))} name="BUSH"
-                                desc="Add an entry to Calendar" unlocked="3" requirement={numEntry}></Achievement>
-                            <Achievement imageUri={(require('../assets/Pot.png'))} name="POTTED PLANT"
-                                desc="Add 5 entry to Calendar" unlocked="5" requirement={numEntry}></Achievement>
-                            <Achievement imageUri={(require('../assets/Tree.png'))} name="TREE"
-                                desc="Add 10 entries to Calendar" unlocked="10" requirement={numEntry}></Achievement>
-                            <Achievement imageUri={(require('../assets/AppleTree.png'))} name="APPLE TREE"
-                                desc="Add 15 entries to Calendar" unlocked="15" requirement={numEntry}></Achievement>
-                        </ScrollView>
-                    </View>
-                </View>
-
-                <View style={styles.row}>
-                    <Text style={styles.categoryHeading}>
-                        Rare
-                    </Text>
-                    <View style={{ height: 170, marginTop: 10, backgroundColor: '#2E1F56' }}>
-                        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                            <Achievement imageUri={(require('../assets/Robot.png'))} name="ROBOT"
-                                desc="Add an entry to Calendar" unlocked="yes"></Achievement>
-                            <Achievement imageUri={(require('../assets/Narwhal.png'))} name="NARWHAL"
-                                desc="Add 5 entries to Calendar" unlocked="no"></Achievement>
-                        </ScrollView>
-                    </View>
-                </View>
-            </ScrollView>
-
-            {/* The pop up screen */}
-            <Modal
-                animationType="fade"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    Alert.alert("Modal has been closed.");
-                    setModalVisible(!modalVisible);
-                }}>
-                {/* The container for the pop up screen */}
-                <View style={styles.modalView}>
-                    {/* Container for the image */}
-                    <View style={styles.smallContainer}>
-                        <View style={{ flex: 1, padding: 10 }}>
-                            <Image style={styles.image} source={(require('../assets/Cat.png'))} />
+                <ScrollView scrollEventThrottle={16}>
+                    <View style={styles.row}>
+                        <Text style={styles.categoryHeading}>
+                            Pets
+                        </Text>
+                        <View style={{ height: 170, marginTop: 10 }}>
+                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                                <Achievement imageUri={(require('../assets/Dog2.png'))}
+                                    name="DOG" desc="Complete 1 sleep on schedule" unlocked="1" requirement={numSleep}></Achievement>
+                                <Achievement imageUri={(require('../assets/Cat.png'))}
+                                    name="CAT" desc="Complete 3 sleep on schedule" unlocked="3" requirement={numSleep}></Achievement>
+                                <Achievement imageUri={(require('../assets/Eagle.png'))}
+                                    name="EAGLE" desc="Complete 10 sleep on schedule" unlocked="10" requirement={numSleep}></Achievement>
+                                <Achievement imageUri={(require('../assets/Monkey.png'))}
+                                    name="MONKEY" desc="Complete 15 sleep on schedule" unlocked="15" requirement={numSleep}></Achievement>
+                                <Achievement imageUri={(require('../assets/Horse.png'))}
+                                    name="HORSE" desc="Complete 20 sleep on schedule" unlocked="20" requirement={numSleep}></Achievement>
+                            </ScrollView>
                         </View>
                     </View>
-                    {/* Container for the text */}
-                    <View style={styles.textContainer}>
-                        <Text style={styles.textMessage}>Congratulations, you have completed an achievement</Text>
+
+                    <View style={styles.row}>
+                        <Text style={styles.categoryHeading}>
+                            Plants
+                        </Text>
+                        <View style={{ height: 170, marginTop: 10 }}>
+                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                                <Achievement imageUri={(require('../assets/Flowers.png'))} name="FLOWERS"
+                                    desc="Add an entry to Calendar" unlocked="1" requirement={numEntry}></Achievement>
+                                <Achievement imageUri={(require('../assets/FlowerBush.png'))} name="BUSH"
+                                    desc="Add an entry to Calendar" unlocked="3" requirement={numEntry}></Achievement>
+                                <Achievement imageUri={(require('../assets/Pot.png'))} name="POTTED PLANT"
+                                    desc="Add 5 entries to Calendar" unlocked="5" requirement={numEntry}></Achievement>
+                                <Achievement imageUri={(require('../assets/Tree.png'))} name="TREE"
+                                    desc="Add 10 entries to Calendar" unlocked="10" requirement={numEntry}></Achievement>
+                                <Achievement imageUri={(require('../assets/AppleTree.png'))} name="APPLE TREE"
+                                    desc="Add 15 entries to Calendar" unlocked="15" requirement={numEntry}></Achievement>
+                            </ScrollView>
+                        </View>
                     </View>
-                    {/* Container for the button */}
-                    <View style={styles.buttonContainer}>
-                        <Button title="Continue" onPress={() => (setModalVisible(!modalVisible), global.addSprite = true)} color="white" />
+
+                    <View style={styles.row}>
+                        <Text style={styles.categoryHeading}>
+                            Rare
+                        </Text>
+                        <View style={{ height: 170, marginTop: 10 }}>
+                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                                <Achievement imageUri={(require('../assets/Robot.png'))} name="ROBOT"
+                                    desc="Add an entry to Calendar" unlocked="yes"></Achievement>
+                                <Achievement imageUri={(require('../assets/Narwhal.png'))} name="NARWHAL"
+                                    desc="Add 5 entries to Calendar" unlocked="no"></Achievement>
+                            </ScrollView>
+                        </View>
                     </View>
-                </View>
-            </Modal>
-        </SafeAreaView >
+                </ScrollView>
+
+                {/* The pop up screen */}
+                <Modal
+                    animationType="fade"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible(!modalVisible);
+                    }}>
+                    {/* The container for the pop up screen */}
+                    <View style={styles.modalView}>
+                        {/* Container for the image */}
+                        <View style={styles.smallContainer}>
+                            <View style={{ flex: 1, padding: 10 }}>
+                                <Image style={styles.image} source={(require('../assets/Cat.png'))} />
+                            </View>
+                        </View>
+                        {/* Container for the text */}
+                        <View style={styles.textContainer}>
+                            <Text style={styles.textMessage}>Congratulations, you have completed an achievement</Text>
+                        </View>
+                        {/* Container for the button */}
+                        <View style={styles.buttonContainer}>
+                            <Button title="Continue" onPress={() => (setModalVisible(!modalVisible), global.addSprite = true)} color="white" />
+                        </View>
+                    </View>
+                </Modal>
+            </SafeAreaView >
+        </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: "#2E1F56",
         flex: 1
     },
     row: {
-        backgroundColor: "#2E1F56",
         flex: 1,
         paddingBottom: 20,
     },
     heading: {
         textAlign: "center",
-        fontSize: 25,
+        fontSize: 28,
         color: "white",
-        fontWeight: "bold",
         padding: 20,
+        fontFamily: "HelveticaNeue-Light",
     },
     categoryHeading: {
         fontSize: 18,
         color: "white",
-        fontWeight: "bold",
-        paddingLeft: 30
+        paddingLeft: 30,
+        fontFamily: "Helvetica Neue",
     },
     modalView: {
         backgroundColor: '#BEF0C3',
@@ -194,11 +199,13 @@ const styles = StyleSheet.create({
     textContainer: {
         top: '12.5%',
         marginLeft: '5%',
+        fontFamily: "HelveticaNeue-Light",
     },
     textMessage: {
+        fontFamily: "HelveticaNeue-Light",
         color: 'black',
         fontSize: 15,
-        // fontWeight: 'bold',
+        textAlign: 'center',
     },
     buttonContainer: {
         top: '20%',
@@ -208,6 +215,7 @@ const styles = StyleSheet.create({
         borderColor: "black",
         backgroundColor: "black",
         borderRadius: 40,
+        fontFamily: "HelveticaNeue-Light",
     },
 })
 

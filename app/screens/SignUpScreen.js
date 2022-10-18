@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, Text, Button, TextInput } from 'react-native';
+import { ImageBackground, StyleSheet, View, Image, Text, Button, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 import NavigationBar from '../navigation/NavigationBar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -49,42 +49,60 @@ const LoginScreen = () => {
       })
   }
   return (
-    <View style={styles.root}>
-      <Text style={styles.title}>SIGN UP</Text>
-      <View style={styles.container}>
-        <Image style={styles.icon} source={require('../assets/user.png')} />
-        <TextInput
-          onChangeText={(username) => setUsername(username)}
-          placeholder="Username"
-          style={styles.input}
-          value={username}
-        />
-      </View>
-      <View style={styles.container}>
-        <Image style={styles.icon} source={require('../assets/lock.png')} />
+    <ImageBackground source={require('../assets/Space.jpg')} style={{
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "black"
+    }}>
+      <View style={styles.root}>
+        <Image style={styles.logo} source={require('../assets/LogoWhite.png')} />
+        <View style={styles.container}>
+          <TextInput
+            onChangeText={(username) => setUsername(username)}
+            placeholder="Username"
+            placeholderTextColor = "grey"
+            style={styles.input}
+            value={username}
+            selectionColor="green"
+          />
+          <Image style={styles.icon} source={require('../assets/user.png')} />
+        </View>
+        <View style={styles.container}>
+          <TextInput
+            onChangeText={(password) => setPassword(password)}
+            placeholder="Password"
+            placeholderTextColor = "grey"
+            style={styles.input}
+            value={password}
+            selectionColor="green"
+            secureTextEntry
+          />
+          <Image style={styles.icon} source={require('../assets/lock.png')} />
+        </View>
+        <View style={styles.container}>
+          <TextInput
+            onChangeText={(email) => setEmail(email)}
+            placeholder="Email"
+            placeholderTextColor = "grey"
+            style={styles.input}
+            value={email}
+            selectionColor="green"
+          />
+          <Image style={styles.icon} source={require('../assets/mail.png')} />
+        </View>
 
-        <TextInput
-          onChangeText={(password) => setPassword(password)}
-          placeholder="Password"
-          style={styles.input}
-          value={password}
-        />
+        <View style={styles.button}>
+          <Button 
+            onPress={onSignInPressed} 
+            color="white"
+            title="Register" />
+        </View>
+        <Text style={styles.text}>By signing up, you are indicating 
+        that you have read and agree to the Terms of Service 
+        and Privacy Policy.</Text>
       </View>
-      <View style={styles.container}>
-        <Image style={styles.icon} source={require('../assets/mail.png')} />
-
-        <TextInput
-          onChangeText={(email) => setEmail(email)}
-          placeholder="Email"
-          style={styles.input}
-          value={email}
-        />
-      </View>
-
-      <View style={styles.buttonContainer}>
-        <Button onPress={onSignInPressed} title="SIGN UP" />
-      </View>
-    </View>
+    </ImageBackground>
   )
 }
 
@@ -94,50 +112,77 @@ function useForceUpdate() {
 }
 
 const styles = StyleSheet.create({
-  title: {
-    color: "#FFFFFF",
-    fontWeight: "bold"
-  },
+  logo: {
+    width: innerWidth/1.25,
+    height: innerHeight/5,
+    justifyContent: "center",
+    alignItems: "center",
+    bottom: 60
+},
   root: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2E1F56"
+  },
+  box: {
+    display: "flex",
+    width: "80%",
+    height: "80%",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 1.2,
+    shadowRadius: 3,
+  },
+  text: {
+    textAlign: "center",
+    color: "white",
+    width: 280,
+    top: 30,
+    fontSize: 12,
+    fontFamily: 'HelveticaNeue-Light'
   },
   container: {
     display: "flex",
     flexDirection: "row",
-    backgroundColor: "white",
-    width: '90%',
+    backgroundColor: "transparent",
+    width: 325,
     borderRadius: 5,
-    borderColor: '#e8e8e8',
-    borderWidth: 1,
+    borderColor: "grey",
+    borderBottomWidth: 2,
     paddingHorizontal: 10,
     marginVertical: 10,
-    padding: 10,
+    padding: 5,
     shadowColor: '#171717',
     shadowOffset: { width: -2, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
+    bottom: 30
   },
-  input: {
-    backgroundColor: "white",
-    width: "80%",
-
-  },
-  icon: {
-    marginRight: "2%",
-  },
-  buttonContainer: {
-    bottom: 10,
+  button: {
+    top: 15,
     margin: 10,
-    width: 200,
+    width: 325,
     flexDirection: "column",
     borderWidth: 1,
-    borderColor: "white",
-    backgroundColor: "white",
-    borderRadius: 40,
+    borderColor: "black",
+    backgroundColor: "rgba(52, 52, 52, 0.8)",
+    borderRadius: 20,
+    padding: 10,
   },
+  icon: {
+    width: innerWidth/16,
+    height: innerHeight/32,
+    top: 10,
+  },
+  input: {
+    backgroundColor: "transparent",
+    width: "90%",
+    padding: 10,
+    fontSize: 18,
+    fontFamily: "HelveticaNeue-Light",
+    color: "white"
+  }
 })
-
 export default LoginScreen
