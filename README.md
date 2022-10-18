@@ -9,7 +9,7 @@ Hello, This is our group Club Mouse. Our members are:
 
 
 # Plan-it
-Plan-it is our project for his DECO3801 class that we have developed throughout a mobile application that improve the sleep schedule for insomnia patient.
+Plan-it is our project for this DECO3801 class that we have developed throughout a mobile application that improve the sleep schedule for insomnia patient.
 It was built on React Native and Node JS. The database is stored at PHPMyAdmin and access via PHP codes. For the features of the app, it consists of a login and signup system which allows users to manage their individual accounts
 and provide a more dynamic functionality for the application. In addition, it has a calendar system so that users can keep track of their input time as well as 
 input their desired time slots. The application also have an achievement page which illustrates all the available achievement they can obtain while interacting with the app.
