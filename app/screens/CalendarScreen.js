@@ -257,7 +257,7 @@ const CalendarScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10,
+    paddingTop: 15,
     backgroundColor: '#2E1F56',
   },
   headingContainer: {
@@ -265,9 +265,9 @@ const styles = StyleSheet.create({
   },
   heading: {
     textAlign: "center",
-    fontSize: 25,
+    fontSize: 28,
     color: "white",
-    fontWeight: "bold",
+    fontFamily: "HelveticaNeue-Light",
     padding: 10,
   },
   buttonContainer: {
