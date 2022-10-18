@@ -16,7 +16,9 @@ class CalendarEntry extends Component {
               }}>
               {this.props.name == "Sleep" ? <Avatar.Icon icon="clock" /> : null}
               <Avatar.Icon icon="clock" />
-              <Text>{this.props.name}</Text>
+              <View style={{ flex: 0.9 }}>
+                <Text>{this.props.name}</Text>
+              </View>
             </View>
           </Card.Content>
         </Card>
