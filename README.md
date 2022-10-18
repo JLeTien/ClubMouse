@@ -14,7 +14,7 @@ It was built on React Native and Node JS. The database is stored at PHPMyAdmin a
 and provide a more dynamic functionality for the application. In addition, it has a calendar system so that users can keep track of their input time as well as 
 input their desired time slots. The application also have an achievement page which illustrates all the available achievement they can obtain while interacting with the app.
 Depending on the achievement they received, the world (located in the home page) will render different characters (dog, cat, plants, etc). User can build their own world 
-by successfully achieve the achievements. 
+by successfully complete the achievements. 
 
 # How to install 
 1. Install React Native via https://reactnative.dev/docs/environment-setup
